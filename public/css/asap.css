@@ -1,0 +1,19 @@
+:root {
+    --primary: #6d6d18;
+    --secondary: #0a7c15;
+    --cream: #fcfbf4;
+}
+/* #6d6d18 #0a7c15 */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Smooth transition for navbar color changes */
+#navbar {
+    transition: all 0.4s ease-in-out;
+}
+
+.nav-link {
+    transition: color 0.3s ease;
+}
