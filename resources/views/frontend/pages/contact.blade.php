@@ -130,7 +130,7 @@
                     Have questions about the roads, the weather, or special requests? We are here to help you plan your perfect escape.
                 </p> --}}
 
-                @if($header)
+                @if ($header)
                     <span
                         class="inline-block py-1 px-4 border border-[#cdcd2e] text-[#cdcd44] bg-black/30 backdrop-blur-sm font-bold tracking-[0.2em] text-xs uppercase mb-6 rounded-2xl">
                         {{ $header->badge_text }}
@@ -144,7 +144,6 @@
                         {{ $header->description }}
                     </p>
                 @endif
-
             </div>
         </header>
 
@@ -162,11 +161,9 @@
                     <h3 class="font-['Playfair_Display'] font-bold text-2xl mb-2 text-gray-800">Call Us</h3>
                     <p class="text-gray-500 text-sm mb-6 font-light">Available 24/7 for bookings</p>
                     <a href="tel:+9779812345678"
-                        class="text-[#6d6d18] font-bold text-lg hover:text-[#0a7c15] transition-colors block mb-1">+977
-                        9869083625</a>
+                        class="text-[#6d6d18] font-bold text-lg hover:text-[#0a7c15] transition-colors block mb-1">+977 9869083625</a>
                     <a href="tel:+977065520123"
-                        class="text-[#6d6d18] font-bold text-lg hover:text-[#0a7c15] transition-colors block">+977
-                        065-520125</a>
+                        class="text-[#6d6d18] font-bold text-lg hover:text-[#0a7c15] transition-colors block">+977 065-520125</a>
                 </div>
 
                 <!-- Card 2: Email -->
@@ -194,6 +191,42 @@
                     <p class="text-gray-500 text-sm mb-6 font-light">Towards the Old Bazaar</p>
                     <p class="text-[#6d6d18] font-medium text-lg leading-relaxed">Tudikhel,Bandipur,Nepal</p>
                 </div>
+
+@foreach($contactInfos as $info)
+<div
+    class="reveal-on-scroll bg-white p-10 shadow-lg hover:shadow-2xl
+           border-t-4 text-center group hover:-translate-y-2
+           transition-all duration-500 rounded-2xl"
+    style="border-color: {{ $info->theme_color }}">
+
+    <div
+        class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6
+               transition-all duration-500 group-hover:text-white"
+        style="background-color: {{ $info->theme_color }}15; color: {{ $info->theme_color }}">
+        <i class="fas {{ $info->icon }} text-2xl"></i>
+    </div>
+
+    <h3 class="font-bold text-2xl mb-2 text-gray-800">
+        {{ $info->title }}
+    </h3>
+
+    <p class="text-gray-500 text-sm mb-6 font-light">
+        {{ $info->subtitle }}
+    </p>
+
+    @if($info->link)
+        <a href="{{ $info->link }}"
+           class="font-bold text-lg block transition-colors"
+           style="color: {{ $info->theme_color }}">
+            {{ $info->value }}
+        </a>
+    @else
+        <p class="font-medium text-lg">
+            {{ $info->value }}
+        </p>
+    @endif
+</div>
+@endforeach
 
             </div>
         </section>

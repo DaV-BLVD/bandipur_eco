@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\Admin\ContactHeroController;
 use App\Http\Controllers\Admin\ContactHeaderController;
+use App\Http\Controllers\Admin\ContactInfoController;
 
 Route::middleware(['auth'])->group(function () {
     /*
@@ -70,7 +71,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::resource('/admin/dashboard/contact-header', ContactHeaderController::class);
 
-        
+        Route::resource('/admin/dashboard/contact-info', ContactInfoController::class);
     });
 });
 
