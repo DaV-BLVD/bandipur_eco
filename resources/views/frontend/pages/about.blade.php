@@ -3,6 +3,14 @@
 @section('content')
     @push('style')
         <style>
+            .font-playfair {
+                font-family: 'Playfair Display', serif;
+            }
+
+            .font-poppins {
+                font-family: 'Poppins', sans-serif;
+            }
+
             /* Ken Burns Effect for Hero */
             @keyframes zoomSlow {
                 0% {
@@ -59,7 +67,6 @@
                 text-orientation: mixed;
             }
         </style>
-
     @endpush
     {{-- --}}
     {{-- hero --}}
@@ -316,7 +323,8 @@
                             class="text-2xl font-['Playfair_Display'] font-bold mb-2 text-neutral-50 group-hover:text-white transition-colors">
                             Village Walk</h3>
                         <div class="activity-content h-0 md:h-auto overflow-hidden">
-                            <p class="text-sm font-light leading-relaxed max-w-xs">Guided cultural tours through the cobbled
+                            <p class="text-sm font-light leading-relaxed max-w-xs">Guided cultural tours through the
+                                cobbled
                                 streets of Old Bandipur bazaar.</p>
                         </div>
                     </div>
@@ -355,11 +363,37 @@
                             class="text-2xl font-['Playfair_Display'] font-bold mb-2 text-neutral-50 group-hover:text-white transition-colors">
                             Stargazing</h3>
                         <div class="activity-content h-0 md:h-auto overflow-hidden">
-                            <p class="text-sm font-light leading-relaxed max-w-xs">With minimal light pollution, our terrace
+                            <p class="text-sm font-light leading-relaxed max-w-xs">With minimal light pollution, our
+                                terrace
                                 offers a spectacular view of the Milky Way.</p>
                         </div>
                     </div>
                 </div>
+
+            </div>
+        </section>
+        {{-- SECTION QUOTE 5 --}}
+        <section class="relative py-24 px-6 overflow-hidden bg-white">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-50 rounded-full blur-3xl opacity-50 -z-10">
+            </div>
+
+            <div class="max-w-5xl mx-auto text-center">
+                <div class="mb-8 animate-bounce transition-all duration-1000">
+                    <i class="fa-solid fa-mountain-sun text-4xl text-[#0a7c15] opacity-60"></i>
+                </div>
+
+                <div class="space-y-8">
+                    <p class="text-slate-500 uppercase tracking-[0.3em] text-sm font-poppins font-light">The Spirit of
+                        Bandipur</p>
+
+                    <h2 class="font-playfair text-3xl md:text-5xl text-slate-800 leading-tight italic px-4">
+                        "Unlike the busy streets of Kathmandu or Pokhara, Bandipur is a place for <span
+                            class="text-[#6d6d18] not-italic font-bold">slow travel</span>, where peace is not the absence
+                        of noise, but the presence of serenity."
+                    </h2>
+                </div>
+
 
             </div>
         </section>
@@ -411,12 +445,12 @@
                             entry.target.classList.add('active');
                         }
                     });
-                }, { threshold: 0.1 });
+                }, {
+                    threshold: 0.1
+                });
 
                 document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
             });
         </script>
-
     @endpush
-
 @endsection
