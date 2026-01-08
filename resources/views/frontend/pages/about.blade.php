@@ -102,7 +102,8 @@
     </section>
     {{-- end hero --}}
     <!-- ABOUT DESCRIPTION SECTION -->
-    <section class="py-24 bg-white overflow-hidden relative">
+    <section id="about" class="py-[70px]"></section>
+    <section class="pb-24 bg-white overflow-hidden relative">
         <!-- Decorative background leaf pattern (Subtle) -->
         <div class="absolute top-0 right-0 w-64 h-64 bg-[#0a7c15]/5 rounded-bl-full -z-10"></div>
 

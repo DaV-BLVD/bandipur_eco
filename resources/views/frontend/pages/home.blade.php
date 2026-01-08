@@ -212,7 +212,7 @@
                             id='hero-text'>
 
                             <span
-                                class="text-reveal-1 text-white px-5 rounded-full bg-[#6d6d18] font-semibold tracking-[0.3em] uppercase text-sm sm:text-base mb-4">
+                                class="text-reveal-1 text-white px-5 py-1 rounded-full bg-[#6d6d18] font-semibold tracking-[0.3em] uppercase text-sm sm:text-base mb-4">
                                 Welcome to Paradise
                             </span>
                             <h1
@@ -249,7 +249,7 @@
                         <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8"
                             id='hero-text'>
                             <span
-                                class="text-reveal-1 text-white px-5 rounded-full bg-[#0a7c15] font-semibold tracking-[0.3em] uppercase text-sm sm:text-base mb-4">
+                                class="text-reveal-1 text-white px-5 py-1 rounded-full bg-[#0a7c15] font-semibold tracking-[0.3em] uppercase text-sm sm:text-base mb-4">
                                 Since 1995
                             </span>
                             <h1
@@ -284,7 +284,7 @@
                         <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8"
                             id='hero-text'>
                             <span
-                                class="text-reveal-1 text-white px-5 rounded-full bg-[#6d6d18] font-semibold tracking-[0.3em] uppercase text-sm sm:text-base mb-4">
+                                class="text-reveal-1 text-white px-5 py-1 rounded-full bg-[#6d6d18] font-semibold tracking-[0.3em] uppercase text-sm sm:text-base mb-4">
                                 Our Philosophy
                             </span>
                             <h1
@@ -320,7 +320,7 @@
                         <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8"
                             id='hero-text' f>
                             <span
-                                class="text-reveal-1 text-white px-5 rounded-full bg-[#0a7c15] font-semibold tracking-[0.3em] uppercase text-sm sm:text-base mb-4">
+                                class="text-reveal-1 text-white px-5 py-1 rounded-full bg-[#0a7c15] font-semibold tracking-[0.3em] uppercase text-sm sm:text-base mb-4">
                                 Meet The Team
                             </span>
                             <h1
@@ -442,11 +442,12 @@
         </div>
     </div>
 
-
-
+    {{-- just for id --}}
+    <section id="about" class="p-10"></section>
+    
     <main class="relative z-10 bg-white shadow-[0_-20px_60px_rgba(0,0,0,0.2)]">
 
-        <section id="about" class="py-28 px-4 bg-white">
+        <section class="py-28 px-4 bg-white">
             <div class="max-w-5xl mx-auto text-center">
                 <h2 class="text-[#6d6d18] uppercase tracking-[0.3em] text-sm font-bold mb-6 reveal">
                     Namaste & Welcome

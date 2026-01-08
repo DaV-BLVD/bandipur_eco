@@ -42,7 +42,7 @@
             <!-- Content -->
             <div class="relative z-10 text-center px-4 fade-in-section">
                 <span
-                    class="inline-block py-1 px-3 border border-[#6d6d18] text-[#6d6d18] bg-white/90 uppercase tracking-[0.2em] text-xs font-bold mb-4 rounded-sm shadow-lg">
+                    class="inline-block py-1 px-5 border border-[#6d6d18] text-[#6d6d18] bg-white/90 uppercase tracking-[0.2em] text-xs font-bold mb-4 rounded-sm shadow-lg">
                     The Heritage Experience
                 </span>
                 <h1 class="text-5xl md:text-7xl font-['Playfair_Display'] text-white font-bold mb-6 drop-shadow-2xl">
@@ -57,7 +57,7 @@
         <!-- Filter Buttons -->
         <section class="py-12 bg-white sticky top-[70px] z-40 shadow-sm border-b border-gray-100">
             <div class="container mx-auto px-6">
-                <div class="flex flex-wrap justify-center gap-3 md:gap-6 fade-in-section">
+                <div class="flex flex-wrap justify-center gap-3 fade-in-section">
                     <button onclick="filterRooms('all')"
                         class="filter-btn active px-6 py-2 rounded-full border border-[#0a7c15] bg-[#0a7c15] text-white font-semibold text-sm tracking-wide hover:shadow-lg transition-all duration-300">All
                         Rooms</button>

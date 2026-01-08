@@ -117,7 +117,7 @@
 
             <div class="relative z-10 text-center text-white px-6 reveal-on-scroll">
                 <span
-                    class="inline-block py-1 px-4 border border-[#6d6d18] text-[#6d6d18] bg-black/30 backdrop-blur-sm font-bold tracking-[0.2em] text-xs uppercase mb-6 rounded-2xl">
+                    class="inline-block py-1 px-4 border border-[#cdcd2e] text-[#cdcd44] bg-black/30 backdrop-blur-sm font-bold tracking-[0.2em] text-xs uppercase mb-6 rounded-2xl">
                     Get in Touch
                 </span>
                 <h1 class="text-5xl md:text-7xl font-['Playfair_Display'] font-bold mb-6 drop-shadow-xl">Start Your Journey

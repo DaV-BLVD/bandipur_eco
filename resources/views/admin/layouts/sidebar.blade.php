@@ -42,166 +42,16 @@
 
             {{-- @php
                 $dropdowns = [
+                    
                     [
-                        'title' => 'Home Page',
-                        'icon' => 'fa-solid fa-house-chimney',
-                        'routes' => [
-                            'home-first-hero.*',
-                            'about-features.*',
-                            'home-highlight.*',
-                            'services.*',
-                            'rooms.*',
-                            'carousel.*',
-                        ],
-                        'links' => [
-                            [
-                                'route' => 'home-first-hero.index',
-                                'icon' => 'fa-solid fa-image',
-                                'text' => 'First Hero Section',
-                            ],
-                            [
-                                'route' => 'about-features.index',
-                                'icon' => 'fa-solid fa-address-card',
-                                'text' => 'About Section',
-                            ],
-                            [
-                                'route' => 'home-highlight.index',
-                                'icon' => 'fa-solid fa-star',
-                                'text' => 'Home Highlight',
-                            ],
-                            ['route' => 'services.index', 'icon' => 'fa-solid fa-bell-concierge', 'text' => 'Services'],
-                            ['route' => 'rooms.index', 'icon' => 'fa-solid fa-bed', 'text' => 'Rooms'],
-                            ['route' => 'carousel.index', 'icon' => 'fa-solid fa-images', 'text' => 'Carousels'],
-                        ],
-                    ],
-                    [
-                        'title' => 'About Page',
-                        'icon' => 'fa-solid fa-circle-info',
-                        'routes' => [
-                            'aboutHero.*',
-                            'aboutDescription.*',
-                            'about-highlight.*',
-                            'aboutprovide.*',
-                            'aboutquote.*',
-                        ],
-                        'links' => [
-                            [
-                                'route' => 'aboutHero.index',
-                                'icon' => 'fa-solid fa-mountain-sun',
-                                'text' => 'Hero Section',
-                            ],
-                            [
-                                'route' => 'aboutDescription.index',
-                                'icon' => 'fa-solid fa-align-left',
-                                'text' => 'About Description',
-                            ],
-                            [
-                                'route' => 'about-highlight.index',
-                                'icon' => 'fa-solid fa-highlighter',
-                                'text' => 'About Highlight',
-                            ],
-                            [
-                                'route' => 'aboutprovide.index',
-                                'icon' => 'fa-solid fa-hand-holding-heart',
-                                'text' => 'We Provide',
-                            ],
-                            ['route' => 'aboutquote.index', 'icon' => 'fa-solid fa-quote-left', 'text' => 'Quote'],
-                        ],
-                    ],
-                    [
-                        'title' => 'Accommodation Page',
-                        'icon' => 'fa-solid fa-hotel',
-                        'routes' => [
-                            'accommodation-hero-first-image.*',
-                            'accommodation-hero-header.*',
-                            'accommodation-rooms.*',
-                            'accommodation-amenities.*',
-                            'guest-experiences.*',
-                            'accommodation-policies.*',
-                            'faqs.*',
-                        ],
-                        'links' => [
-                            [
-                                'route' => 'accommodation-hero-first-image.index',
-                                'icon' => 'fa-solid fa-panorama',
-                                'text' => 'Hero Page',
-                            ],
-                            [
-                                'route' => 'accommodation-hero-header.index',
-                                'icon' => 'fa-solid fa-heading',
-                                'text' => 'Hero Header',
-                            ],
-                            [
-                                'route' => 'accommodation-rooms.index',
-                                'icon' => 'fa-solid fa-door-open',
-                                'text' => 'Rooms',
-                            ],
-                            [
-                                'route' => 'accommodation-amenities.index',
-                                'icon' => 'fa-solid fa-wifi',
-                                'text' => 'Amenities',
-                            ],
-                            [
-                                'route' => 'guest-experiences.index',
-                                'icon' => 'fa-solid fa-comment-dots',
-                                'text' => 'Reviews',
-                            ],
-                            [
-                                'route' => 'accommodation-policies.index',
-                                'icon' => 'fa-solid fa-file-contract',
-                                'text' => 'Policies',
-                            ],
-                            ['route' => 'faqs.index', 'icon' => 'fa-solid fa-circle-question', 'text' => 'FAQs'],
-                        ],
-                    ],
-                    [
-                        'title' => 'Gallery Page',
-                        'icon' => 'fa-solid fa-camera-retro',
-                        'routes' => ['gallery-hero-images.*', 'gallery-headers.*', 'gallery-grid.*', 'gallery-views.*'],
-                        'links' => [
-                            [
-                                'route' => 'gallery-hero-images.index',
-                                'icon' => 'fa-solid fa-image',
-                                'text' => 'Hero Section',
-                            ],
-                            ['route' => 'gallery-headers.index', 'icon' => 'fa-solid fa-font', 'text' => 'Hero Header'],
-                            [
-                                'route' => 'gallery-grid.index',
-                                'icon' => 'fa-solid fa-border-all',
-                                'text' => 'Gallery Grid',
-                            ],
-                            ['route' => 'gallery-views.index', 'icon' => 'fa-solid fa-eye', 'text' => 'Gallery Views'],
-                        ],
-                    ],
-                    [
-                        'title' => 'Contact Us Page',
+                        'title' => 'Footer',
                         'icon' => 'fa-solid fa-envelope-open-text',
-                        'routes' => ['contact-hero.*', 'contact-info.*', 'contact-message.*', 'partners.*', 'map.*'],
+                        'routes' => ['Home-hero.*'],
                         'links' => [
                             [
                                 'route' => 'contact-hero.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Hero Section',
-                            ],
-                            [
-                                'route' => 'contact-info.index',
-                                'icon' => 'fa-solid fa-address-book',
-                                'text' => 'Contact Info',
-                            ],
-                            [
-                                'route' => 'contact-message.index',
-                                'icon' => 'fa-solid fa-paper-plane',
-                                'text' => 'Contact Message',
-                            ],
-                            [
-                                'route' => 'partners.index',
-                                'icon' => 'fa-solid fa-handshake',
-                                'text' => 'Trusting Partners',
-                            ],
-                            [
-                                'route' => 'map.index',
-                                'icon' => 'fa-solid fa-map-location-dot',
-                                'text' => 'Map Location',
                             ],
                         ],
                     ],

@@ -336,11 +336,10 @@
     </header>
 
 
+    <section class="py-[70px]" id="rates"></section>
     <!-- Rate Section  -->
-    <section class="py-16 px-4 bg-(--primary)/20 relative overflow-hidden">
-        <!-- Decorative Elements -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-[#0a7c15]/30 rounded-full -translate-x-20 -translate-y-20 blur-3xl">
-        </div>
+    <section class="pb-16 px-4 bg-(--primary)/20 relative overflow-hidden">
+        
         <div class="absolute bottom-0 left-0 w-72 h-72 bg-[#6d6d18]/30 rounded-full translate-x-10 translate-y-20 blur-3xl">
         </div>
 

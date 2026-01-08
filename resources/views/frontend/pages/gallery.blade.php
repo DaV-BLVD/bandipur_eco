@@ -73,7 +73,7 @@
         
         <!-- Content -->
         <div class="relative z-10 container mx-auto px-6 text-center reveal-on-scroll">
-            <span class="inline-block py-1 px-3 border border-[#6d6d18] text-[#6d6d18] bg-black/20 backdrop-blur-sm uppercase tracking-[0.2em] text-[10px] md:text-xs font-bold mb-6 rounded-sm">
+            <span class="inline-block py-1 px-4 border border-[#6d6d18] text-[#6d6d18] bg-black/20 backdrop-blur-sm uppercase tracking-[0.2em] text-[10px] md:text-xs font-bold mb-6 rounded-sm">
                 Bandipur Heritage
             </span>
             <h1 class="text-5xl md:text-7xl font-['Playfair_Display'] font-bold text-white mb-6 drop-shadow-xl">
