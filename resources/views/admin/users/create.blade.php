@@ -4,7 +4,7 @@
 <div class="p-6 max-w-3xl mx-auto">
     {{-- Breadcrumb/Back Link --}}
     <div class="mb-6">
-        <a href="{{ route('users.index') }}" class="text-sm text-black hover:text-green-500 transition-colors flex items-center space-x-1 font-semibold">
+        <a href="{{ route('users.index') }}" class="text-sm text-black hover:text-[#9a9a1e] transition-colors flex items-center space-x-1 font-semibold">
             <i class="fas fa-arrow-left text-xs"></i>
             <span>Back to Admins</span>
         </a>
@@ -129,7 +129,7 @@
                         <span>Cancel</span>
                     </a>
                     <button type="submit"
-                        class="px-8 py-3 bg-primary text-white rounded-xl font-bold shadow-lg shadow-indigo-200 hover:bg-green-500 transition-all flex items-center space-x-2">
+                        class="px-8 py-3 bg-primary text-white rounded-xl font-bold shadow-lg shadow-indigo-200 hover:bg-[#9a9a1e] transition-all flex items-center space-x-2">
                         <i class="fas fa-user-plus text-sm"></i>
                         <span>Create Admin</span>
                     </button>

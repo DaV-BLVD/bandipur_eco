@@ -25,7 +25,7 @@
 
             {{-- Dashboard --}}
             <a href="{{ route('admin.dashboard') }}" @click="sidebarOpen = false"
-                class="flex items-center px-4 py-3 hover:bg-[#38CE3C] hover:text-black hover:rounded-lg {{ request()->routeIs('admin.dashboard') ? 'bg-secondary text-black font-semibold rounded-lg' : '' }}">
+                class="flex items-center px-4 py-3 hover:bg-[#9a9a1e] hover:text-black hover:rounded-lg {{ request()->routeIs('admin.dashboard') ? 'bg-secondary text-black font-semibold rounded-lg' : '' }}">
                 <i class="fas fa-tachometer-alt w-6"></i>
                 <span class="font-medium">Dashboard</span>
             </a>
@@ -33,7 +33,7 @@
             {{-- Users (Super Admin Only) --}}
             @if (auth()->user()->role === 'super_admin')
                 <a href="{{ route('users.index') }}" @click="sidebarOpen = false"
-                    class="flex items-center px-4 py-3 hover:bg-[#38CE3C] hover:text-black hover:rounded-lg
+                    class="flex items-center px-4 py-3 hover:bg-[#9a9a1e] hover:text-black hover:rounded-lg
                     {{ request()->routeIs('users.*') ? 'bg-secondary text-black font-semibold rounded-lg' : '' }}">
                     <i class="fa-solid fa-users w-6"></i>
                     <span class="font-medium">Users</span>
@@ -76,8 +76,8 @@
                         @click="activeDropdown === '{{ $dropdown['title'] }}'
                     ? activeDropdown = null
                     : activeDropdown = '{{ $dropdown['title'] }}'"
-                        class="flex items-center justify-between w-full px-4 py-3 hover:bg-[#38CE3C] hover:text-black hover:rounded-lg transition
-                    {{ $isActive ? 'bg-[#38CE3C] text-black font-semibold rounded-lg' : '' }}">
+                        class="flex items-center justify-between w-full px-4 py-3 hover:bg-[#9a9a1e] hover:text-black hover:rounded-lg transition
+                    {{ $isActive ? 'bg-[#9a9a1e] text-black font-semibold rounded-lg' : '' }}">
 
                         <span class="flex items-center space-x-2">
                             <i class="{{ $dropdown['icon'] }} w-6"></i>
@@ -96,9 +96,9 @@
 
                         @foreach ($dropdown['links'] as $link)
                             <a href="{{ route($link['route']) }}" @click="sidebarOpen = false"
-                                class="flex items-center px-4 py-2 rounded-lg hover:bg-[#38CE3C] hover:text-black
+                                class="flex items-center px-4 py-2 rounded-lg hover:bg-[#9a9a1e] hover:text-black
                                                         {{ request()->routeIs(explode('.', $link['route'])[0] . '.*')
-                                                            ? 'bg-[#38CE3C]  text-black font-semibold'
+                                                            ? 'bg-[#9a9a1e]  text-black font-semibold'
                                                             : 'text-white' }}">
                                 <i class="{{ $link['icon'] }} w-6"></i>
                                 <span class="font-medium">{{ $link['text'] }}</span>

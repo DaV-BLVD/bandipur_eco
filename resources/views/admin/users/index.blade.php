@@ -13,7 +13,7 @@
             </div>
 
             <a href="{{ route('users.create') }}"
-                class="flex items-center space-x-2 bg-primary text-white px-5 py-2.5 rounded-xl font-semibold transition-all hover:bg-green-500 shadow-lg shadow-indigo-100 focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+                class="flex items-center space-x-2 bg-primary text-white px-5 py-2.5 rounded-xl font-semibold transition-all hover:bg-[#9a9a1e] shadow-lg shadow-indigo-100 focus:ring-2 focus:ring-primary focus:ring-opacity-50">
                 <i class="fas fa-user-plus text-xs"></i>
                 <span>Add New Admin</span>
             </a>
