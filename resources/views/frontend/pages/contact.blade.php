@@ -1,7 +1,6 @@
 @extends('frontend.app')
 
 @section('content')
-
     @push('style')
         <style>
             /* --- Animations --- */
@@ -107,25 +106,45 @@
         <header class="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-[#1a1a1a]">
             <!-- Background with Zoom Animation -->
             <div class="absolute inset-0 w-full h-full overflow-hidden">
-                <div class="w-full h-full bg-cover bg-center animate-slow-zoom"
+                {{-- <div class="w-full h-full bg-cover bg-center animate-slow-zoom"
                     style="background-image: url('{{ asset('frontendimages/people.png') }}');">
-                </div>
+                </div> --}}
+                @if ($hero)
+                    <div class="w-full h-full bg-cover bg-center animate-slow-zoom"
+                        style="background-image: url('{{ asset('storage/' . $hero->image) }}');">
+                    </div>
+                @endif
             </div>
 
             <!-- Elegant Gradient Overlay -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/60"></div>
 
             <div class="relative z-10 text-center text-white px-6 reveal-on-scroll">
-                <span
+                {{-- <span
                     class="inline-block py-1 px-4 border border-[#cdcd2e] text-[#cdcd44] bg-black/30 backdrop-blur-sm font-bold tracking-[0.2em] text-xs uppercase mb-6 rounded-2xl">
                     Get in Touch
                 </span>
                 <h1 class="text-5xl md:text-7xl font-['Playfair_Display'] font-bold mb-6 drop-shadow-xl">Start Your Journey
                 </h1>
                 <p class="font-light text-gray-200 max-w-xl mx-auto text-lg md:text-xl leading-relaxed">
-                    Have questions about the roads, the weather, or special requests? We are here to help you plan your
-                    perfect escape.
-                </p>
+                    Have questions about the roads, the weather, or special requests? We are here to help you plan your perfect escape.
+                </p> --}}
+
+                @if($header)
+                    <span
+                        class="inline-block py-1 px-4 border border-[#cdcd2e] text-[#cdcd44] bg-black/30 backdrop-blur-sm font-bold tracking-[0.2em] text-xs uppercase mb-6 rounded-2xl">
+                        {{ $header->badge_text }}
+                    </span>
+
+                    <h1 class="text-5xl md:text-7xl font-['Playfair_Display'] font-bold mb-6 drop-shadow-xl">
+                        {{ $header->title }}
+                    </h1>
+
+                    <p class="font-light text-gray-200 max-w-xl mx-auto text-lg md:text-xl leading-relaxed">
+                        {{ $header->description }}
+                    </p>
+                @endif
+
             </div>
         </header>
 
@@ -185,103 +204,103 @@
                 class="reveal-on-scroll flex flex-col lg:flex-row bg-white shadow-2xl overflow-hidden rounded-lg border border-gray-100">
 
                 <!-- Left: Contact Form -->
-                    <!-- Form Section -->
+                <!-- Form Section -->
                 <div class="w-full lg:w-1/2 bg-white p-10 md:p-14 relative overflow-hidden shadow-2xl rounded-sm">
 
-                        <!-- Background Decor: Subtle Leaf/Organic Shape -->
-                        <div
-                            class="absolute -top-16 -right-16 w-40 h-40 bg-[#0a7c15] opacity-[0.03] rounded-full blur-2xl pointer-events-none">
-                        </div>
-                        <div
-                            class="absolute bottom-10 left-10 w-20 h-20 bg-[#6d6d18] opacity-[0.03] rounded-full blur-xl pointer-events-none">
-                        </div>
+                    <!-- Background Decor: Subtle Leaf/Organic Shape -->
+                    <div
+                        class="absolute -top-16 -right-16 w-40 h-40 bg-[#0a7c15] opacity-[0.03] rounded-full blur-2xl pointer-events-none">
+                    </div>
+                    <div
+                        class="absolute bottom-10 left-10 w-20 h-20 bg-[#6d6d18] opacity-[0.03] rounded-full blur-xl pointer-events-none">
+                    </div>
 
-                        <!-- Header -->
-                        <div class="relative z-10 mb-10">
-                            <span class="text-[#6d6d18] font-bold text-xs tracking-[0.2em] uppercase mb-2 block">Contact
-                                Us</span>
-                            <h2 class="text-3xl md:text-4xl font-['Playfair_Display'] font-bold text-[#0a7c15] mb-4">
-                                Send a Message
-                            </h2>
-                            <div class="w-16 h-1 bg-[#6d6d18] mb-4"></div>
-                            <p class="text-gray-400 text-sm font-light leading-relaxed max-w-md">
-                                Have a question about your stay? Fill out the form below and our reception team will get
-                                back to you shortly.
-                            </p>
-                        </div>
+                    <!-- Header -->
+                    <div class="relative z-10 mb-10">
+                        <span class="text-[#6d6d18] font-bold text-xs tracking-[0.2em] uppercase mb-2 block">Contact
+                            Us</span>
+                        <h2 class="text-3xl md:text-4xl font-['Playfair_Display'] font-bold text-[#0a7c15] mb-4">
+                            Send a Message
+                        </h2>
+                        <div class="w-16 h-1 bg-[#6d6d18] mb-4"></div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed max-w-md">
+                            Have a question about your stay? Fill out the form below and our reception team will get
+                            back to you shortly.
+                        </p>
+                    </div>
 
-                        <form action="#" method="POST" class="relative z-10 space-y-8">
+                    <form action="#" method="POST" class="relative z-10 space-y-8">
 
-                            <!-- Grid for Name & Email -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Grid for Name & Email -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                                <!-- Name Input (Floating Label) -->
-                                <div class="relative z-0 w-full group">
-                                    <input type="text" name="name" id="name"
-                                        class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#0a7c15] peer"
-                                        placeholder=" " required />
-                                    <label for="name"
-                                        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#0a7c15] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        Your Name
-                                    </label>
-                                </div>
-
-                                <!-- Email Input (Floating Label) -->
-                                <div class="relative z-0 w-full group">
-                                    <input type="email" name="email" id="email"
-                                        class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#0a7c15] peer"
-                                        placeholder=" " required />
-                                    <label for="email"
-                                        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#0a7c15] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                        Your Email
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Phone Input -->
+                            <!-- Name Input (Floating Label) -->
                             <div class="relative z-0 w-full group">
-                                <input type="tel" name="phone" id="phone"
+                                <input type="text" name="name" id="name"
                                     class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#0a7c15] peer"
                                     placeholder=" " required />
-                                <label for="phone"
+                                <label for="name"
                                     class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#0a7c15] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                    Phone Number
+                                    Your Name
                                 </label>
                             </div>
 
-                            <!-- Message Input -->
+                            <!-- Email Input (Floating Label) -->
                             <div class="relative z-0 w-full group">
-                                <textarea name="message" id="message" rows="3"
-                                    class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#0a7c15] peer resize-none"
-                                    placeholder=" " required></textarea>
-                                <label for="message"
+                                <input type="email" name="email" id="email"
+                                    class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#0a7c15] peer"
+                                    placeholder=" " required />
+                                <label for="email"
                                     class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#0a7c15] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                                    How can we help you?
+                                    Your Email
                                 </label>
                             </div>
+                        </div>
 
-                            <!-- Action Button -->
-                            <div class="pt-4">
-                                <button type="submit"
-                                    class="group relative w-full md:w-auto overflow-hidden bg-[#0a7c15] px-12 py-4 shadow-lg transition-all duration-300 hover:shadow-xl active:scale-95">
+                        <!-- Phone Input -->
+                        <div class="relative z-0 w-full group">
+                            <input type="tel" name="phone" id="phone"
+                                class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#0a7c15] peer"
+                                placeholder=" " required />
+                            <label for="phone"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#0a7c15] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Phone Number
+                            </label>
+                        </div>
 
-                                    <!-- Sliding Background Layer -->
-                                    <div
-                                        class="absolute inset-0 h-full w-full bg-[#6d6d18] transition-transform duration-300 ease-out transform translate-y-full group-hover:translate-y-0">
-                                    </div>
+                        <!-- Message Input -->
+                        <div class="relative z-0 w-full group">
+                            <textarea name="message" id="message" rows="3"
+                                class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#0a7c15] peer resize-none"
+                                placeholder=" " required></textarea>
+                            <label for="message"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#0a7c15] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                How can we help you?
+                            </label>
+                        </div>
 
-                                    <!-- Button Text -->
-                                    <span
-                                        class="relative z-10 flex items-center justify-center gap-3 font-bold uppercase tracking-widest text-white text-xs">
-                                        Send Message
-                                        <i
-                                            class="fas fa-paper-plane text-xs transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"></i>
-                                    </span>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
- 
+                        <!-- Action Button -->
+                        <div class="pt-4">
+                            <button type="submit"
+                                class="group relative w-full md:w-auto overflow-hidden bg-[#0a7c15] px-12 py-4 shadow-lg transition-all duration-300 hover:shadow-xl active:scale-95">
+
+                                <!-- Sliding Background Layer -->
+                                <div
+                                    class="absolute inset-0 h-full w-full bg-[#6d6d18] transition-transform duration-300 ease-out transform translate-y-full group-hover:translate-y-0">
+                                </div>
+
+                                <!-- Button Text -->
+                                <span
+                                    class="relative z-10 flex items-center justify-center gap-3 font-bold uppercase tracking-widest text-white text-xs">
+                                    Send Message
+                                    <i
+                                        class="fas fa-paper-plane text-xs transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
 
                 <!-- Right: Google Map -->
                 <div class="w-full lg:w-1/2 h-[500px] lg:h-auto relative group">
@@ -374,5 +393,4 @@
             document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
         });
     </script>
-
 @endsection

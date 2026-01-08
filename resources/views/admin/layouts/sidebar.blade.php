@@ -40,26 +40,31 @@
                 </a>
             @endif
 
-            {{-- @php
+            @php
                 $dropdowns = [
                     
                     [
-                        'title' => 'Footer',
+                        'title' => 'Contact',
                         'icon' => 'fa-solid fa-envelope-open-text',
-                        'routes' => ['Home-hero.*'],
+                        'routes' => ['contact-hero.*', 'contact-header.*'],
                         'links' => [
                             [
                                 'route' => 'contact-hero.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Hero Section',
                             ],
+                            [
+                                'route' => 'contact-header.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Hero Header',
+                            ],
                         ],
                     ],
                 ];
-            @endphp --}}
+            @endphp
 
             {{-- Dropdown Loop --}}
-            {{-- @foreach ($dropdowns as $dropdown)
+            @foreach ($dropdowns as $dropdown)
                 @php
                     $isActive = false;
                     foreach ($dropdown['routes'] as $pattern) {
@@ -106,7 +111,7 @@
                         @endforeach
                     </div>
                 </div>
-            @endforeach --}}
+            @endforeach
         </nav>
 
         <!-- Logout -->
