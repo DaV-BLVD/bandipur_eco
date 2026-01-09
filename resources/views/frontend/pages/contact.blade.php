@@ -238,7 +238,7 @@
                                 @if (!empty($links[$index]))
                                     {{-- Link with hover color --}}
                                     <a href="{{ $links[$index] }}"
-                                    class="font-bold text-lg block transition-colors duration-300 text-[var(--link-text)] hover:text-[var(--link-hover)]">
+                                        class="font-bold text-lg block transition-colors duration-300 text-[var(--link-text)] hover:text-[var(--link-hover)]">
                                         {{ $val }}
                                     </a>
                                 @else
@@ -277,8 +277,7 @@
                         </h2>
                         <div class="w-16 h-1 bg-[#6d6d18] mb-4"></div>
                         <p class="text-gray-400 text-sm font-light leading-relaxed max-w-md">
-                            Have a question about your stay? Fill out the form below and our reception team will get
-                            back to you shortly.
+                            Have a question about your stay? Fill out the form below and our reception team will get back to you shortly.
                         </p>
                     </div>
 
@@ -354,23 +353,44 @@
                     </form>
                 </div>
 
-
                 <!-- Right: Google Map -->
-                <div class="w-full lg:w-1/2 h-[500px] lg:h-auto relative group">
-                    <!-- Google Map Iframe -->
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3523.5471649718446!2d84.41724431500366!3d27.935105982702115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399505a74e503387%3A0xe5a37172c91839e2!2sBandipur%2C%20Nepal!5e0!3m2!1sen!2snp!4v1684321234567!5m2!1sen!2snp"
-                        class="absolute inset-0 w-full h-full custom-map" style="border:0;" allowfullscreen=""
-                        loading="lazy">
+                <div class="w-full lg:w-1/2 relative group overflow-hidden shadow-lg border border-gray-200">
+                    <iframe src="https://www.google.com/maps/embed?pb=YOUR_EMBED_URL_HERE"
+                        class="absolute inset-0 w-full h-full grayscale-[0.3] contrast-[1.1] transition-all duration-700 group-hover:grayscale-0"
+                        style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
 
-                    <!-- Overlay Info -->
                     <div
-                        class="absolute bottom-8 left-8 bg-white/95 backdrop-blur-md p-6 rounded shadow-2xl max-w-xs border-l-4 border-[#6d6d18] transform translate-y-4 opacity-90 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                        <p class="text-[#0a7c15] font-bold text-xs uppercase mb-2 tracking-wide">Getting Here</p>
-                        <p class="text-sm text-gray-600 leading-relaxed">We are 145km from Kathmandu (approx 4-5 hrs) and
-                            75km from Pokhara
-                            (2.5 hrs).</p>
+                        class="absolute bottom-6 left-6 right-6 lg:right-auto bg-white/90 backdrop-blur-lg p-6 rounded-2xl shadow-2xl max-w-sm border border-white/50 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-[#0a7c15] flex items-center justify-center text-white shadow-md">
+                                <i class="fas fa-route text-xs"></i>
+                            </div>
+                            <p class="text-[#0a7c15] font-black text-[11px] uppercase tracking-[0.15em]">Getting Here</p>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <span class="w-1 h-1 rounded-full bg-[#6d6d18] mt-2"></span>
+                                <p class="text-sm text-gray-700 leading-relaxed font-medium">
+                                    <span class="text-gray-900 font-bold">Kathmandu:</span> 145km (approx 4-5 hrs)
+                                </p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="w-1 h-1 rounded-full bg-[#6d6d18] mt-2"></span>
+                                <p class="text-sm text-gray-700 leading-relaxed font-medium">
+                                    <span class="text-gray-900 font-bold">Pokhara:</span> 75km (approx 2.5 hrs)
+                                </p>
+                            </div>
+                        </div>
+
+                        {{-- Optional Button for real navigation --}}
+                        <a href="https://maps.google.com" target="_blank"
+                            class="mt-4 flex items-center justify-center w-full py-2 bg-primary text-white text-xs font-bold rounded-xl hover:bg-[#9a9a1e] transition-colors uppercase tracking-widest">
+                            Open in Google Maps
+                        </a>
                     </div>
                 </div>
 
