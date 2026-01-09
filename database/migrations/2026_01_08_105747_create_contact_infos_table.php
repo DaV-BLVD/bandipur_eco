@@ -12,8 +12,8 @@ return new class extends Migration {
             $table->string('icon'); // fa-phone-alt, fa-envelope, fa-map-marker-alt
             $table->string('title'); // Call Us, Email Us
             $table->string('subtitle')->nullable();
-            $table->string('value'); // phone number / email / address
-            $table->string('link')->nullable(); // tel:, mailto:, map link
+            $table->json('value'); // phone number / email / address
+            $table->json('link')->nullable(); // tel:, mailto:, map link
             $table->string('theme_color')->default('#0a7c15');
             $table->boolean('is_active')->default(true);
             $table->timestamps();

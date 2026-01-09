@@ -3,44 +3,140 @@
 @section('title', 'Contact Info')
 
 @section('content')
-    <div class="p-6">
-        <div class="flex justify-between mb-6">
-            <h1 class="text-2xl font-bold">Contact Info Cards</h1>
-            <a href="{{ route('contact-info.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded">
-                Add New
+    <div class="p-6 max-w-7xl mx-auto">
+        
+        {{-- Header Section --}}
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">
+                    <i class="fas fa-address-card mr-2 text-primary"></i> Contact Info Cards
+                </h1>
+                <p class="text-sm text-gray-500 mt-1">Manage the contact detail cards (Phone, Email, Location) displayed on the contact page.</p>
+            </div>
+
+            <a href="{{ route('contact-info.create') }}"
+                class="flex items-center space-x-2 bg-primary text-white px-5 py-2.5 rounded-xl font-semibold transition-all hover:bg-[#9a9a1e] shadow-lg shadow-indigo-100 focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+                <i class="fas fa-plus text-xs"></i>
+                <span>Add New Info</span>
             </a>
         </div>
 
-        <table class="w-full border">
-            <thead class="bg-gray-100">
-                <tr>
-                    <th class="p-2 border">Icon</th>
-                    <th class="p-2 border">Title</th>
-                    <th class="p-2 border">Value</th>
-                    <th class="p-2 border">Active</th>
-                    <th class="p-2 border">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($infos as $info)
-                    <tr>
-                        <td class="p-2 border text-center">
-                            <i class="fas {{ $info->icon }}"></i>
-                        </td>
-                        <td class="p-2 border">{{ $info->title }}</td>
-                        <td class="p-2 border">{{ $info->value }}</td>
-                        <td class="p-2 border">{{ $info->is_active ? 'Yes' : 'No' }}</td>
-                        <td class="p-2 border flex gap-3">
-                            <a href="{{ route('contact-info.edit', $info) }}" class="text-blue-600">Edit</a>
+        {{-- Success Message --}}
+        @if(session('success'))
+            <div class="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-xl mb-6 flex items-center shadow-sm">
+                <i class="fas fa-check-circle mr-2 text-green-500"></i>
+                <span class="text-sm font-medium">{{ session('success') }}</span>
+            </div>
+        @endif
 
-                            <form method="POST" action="{{ route('contact-info.destroy', $info) }}">
-                                @csrf @method('DELETE')
-                                <button class="text-red-600" onclick="return confirm('Delete?')">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        {{-- Table Section (Card Layout) --}}
+        <div class="overflow-hidden shadow-xl rounded-2xl border border-gray-200 bg-white">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    {{-- Table Header --}}
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-widest w-16">SN</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-widest w-20">Icon</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-widest">Title</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-widest">Values</th>
+                            <th class="px-6 py-4 text-center text-xs font-bold uppercase tracking-widest w-32">Status</th>
+                            <th class="px-6 py-4 text-center text-xs font-bold uppercase tracking-widest w-40">Actions</th>
+                        </tr>
+                    </thead>
+
+                    {{-- Table Body --}}
+                    <tbody class="divide-y divide-gray-100">
+                        @forelse($infos as $info)
+                            <tr class="hover:bg-gray-50/50 transition-colors">
+                                {{-- SN --}}
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-400">
+                                    {{ $loop->iteration }}
+                                </td>
+
+                                {{-- Icon --}}
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="w-10 h-10 rounded-lg flex items-center justify-center text-white shadow-sm" style="background-color: {{ $info->theme_color }}">
+                                        <i class="fas {{ $info->icon }}"></i>
+                                    </div>
+                                </td>
+
+                                {{-- Title --}}
+                                <td class="px-6 py-4">
+                                    <div class="text-sm font-bold text-gray-900">{{ $info->title }}</div>
+                                    @if($info->subtitle)
+                                        <div class="text-xs text-gray-400 font-medium">{{ $info->subtitle }}</div>
+                                    @endif
+                                </td>
+
+                                {{-- Values --}}
+                                <td class="px-6 py-4">
+                                    <div class="flex flex-wrap gap-1">
+                                        @if(is_array($info->value))
+                                            @foreach($info->value as $val)
+                                                <span class="px-2 py-0.5 bg-gray-100 text-gray-600 text-[11px] font-bold rounded border border-gray-200">
+                                                    {{ $val }}
+                                                </span>
+                                            @endforeach
+                                        @else
+                                            <span class="text-sm text-gray-600">{{ $info->value }}</span>
+                                        @endif
+                                    </div>
+                                </td>
+
+                                {{-- Active Badge --}}
+                                <td class="px-6 py-4 text-center whitespace-nowrap">
+                                    @if($info->is_active)
+                                        <span class="px-3 py-1 inline-flex text-xs leading-5 font-bold rounded-full bg-green-100 text-green-700 border border-green-200 uppercase tracking-tighter">
+                                            Active
+                                        </span>
+                                    @else
+                                        <span class="px-3 py-1 inline-flex text-xs leading-5 font-bold rounded-full bg-gray-100 text-gray-500 border border-gray-200 uppercase tracking-tighter">
+                                            Inactive
+                                        </span>
+                                    @endif
+                                </td>
+
+                                {{-- Actions --}}
+                                <td class="px-6 py-4 text-center whitespace-nowrap">
+                                    <div class="flex justify-center items-center space-x-2">
+                                        {{-- Edit --}}
+                                        <a href="{{ route('contact-info.edit', $info) }}"
+                                            class="p-2 text-secondary hover:bg-green-400 hover:text-white rounded-lg transition-all"
+                                            title="Edit Info">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+
+                                        {{-- Delete --}}
+                                        <form action="{{ route('contact-info.destroy', $info) }}" method="POST"
+                                            onsubmit="return confirm('Are you sure you want to delete this info card?');"
+                                            class="inline-block">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="p-2 text-red-500 hover:bg-red-500 hover:text-white rounded-lg transition-all"
+                                                title="Delete Info">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="6" class="px-6 py-12 text-center">
+                                    <div class="flex flex-col items-center">
+                                        <i class="fas fa-info-circle text-5xl text-gray-200 mb-4"></i>
+                                        <p class="text-gray-500 font-medium">No contact info cards found.</p>
+                                        <a href="{{ route('contact-info.create') }}"
+                                            class="mt-2 text-primary hover:underline text-sm font-semibold">Create your first info card</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-@endsection
+@endsection 

@@ -14,11 +14,11 @@
                 <p class="text-sm text-gray-500 mt-1">Manage the badge text and main title for the contact page header.</p>
             </div>
 
-            <a href="{{ route('contact-header.create') }}"
+            {{-- <a href="{{ route('contact-header.create') }}"
                 class="flex items-center space-x-2 bg-primary text-white px-5 py-2.5 rounded-xl font-semibold transition-all hover:bg-[#9a9a1e] shadow-lg shadow-indigo-100 focus:ring-2 focus:ring-primary focus:ring-opacity-50">
                 <i class="fas fa-plus text-xs"></i>
                 <span>Add New Header</span>
-            </a>
+            </a> --}}
         </div>
 
         {{-- Success Message --}}
@@ -89,7 +89,7 @@
                                         </a>
 
                                         {{-- Delete --}}
-                                        <form action="{{ route('contact-header.destroy', $header) }}" method="POST"
+                                        {{-- <form action="{{ route('contact-header.destroy', $header) }}" method="POST"
                                             onsubmit="return confirm('Are you sure you want to delete this header?');"
                                             class="inline-block">
                                             @csrf
@@ -99,7 +99,7 @@
                                                 title="Delete Header">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
-                                        </form>
+                                        </form> --}}
                                     </div>
                                 </td>
                             </tr>

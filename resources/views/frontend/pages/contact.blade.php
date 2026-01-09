@@ -151,7 +151,7 @@
         <section class="container mx-auto px-6 -mt-24 relative z-20 mb-24">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-                <!-- Card 1: Phone -->
+                {{-- <!-- Card 1: Phone -->
                 <div
                     class="reveal-on-scroll delay-100 bg-white p-10 shadow-lg  hover:shadow-2xl border-t-4 border-[#0a7c15] text-center group hover:-translate-y-2 transition-all duration-500 rounded-2xl">
                     <div
@@ -161,9 +161,11 @@
                     <h3 class="font-['Playfair_Display'] font-bold text-2xl mb-2 text-gray-800">Call Us</h3>
                     <p class="text-gray-500 text-sm mb-6 font-light">Available 24/7 for bookings</p>
                     <a href="tel:+9779812345678"
-                        class="text-[#6d6d18] font-bold text-lg hover:text-[#0a7c15] transition-colors block mb-1">+977 9869083625</a>
+                        class="text-[#6d6d18] font-bold text-lg hover:text-[#0a7c15] transition-colors block mb-1">+977
+                        9869083625</a>
                     <a href="tel:+977065520123"
-                        class="text-[#6d6d18] font-bold text-lg hover:text-[#0a7c15] transition-colors block">+977 065-520125</a>
+                        class="text-[#6d6d18] font-bold text-lg hover:text-[#0a7c15] transition-colors block">+977
+                        065-520125</a>
                 </div>
 
                 <!-- Card 2: Email -->
@@ -190,44 +192,56 @@
                     <h3 class=" font-bold text-2xl mb-2 text-gray-800">Visit Us</h3>
                     <p class="text-gray-500 text-sm mb-6 font-light">Towards the Old Bazaar</p>
                     <p class="text-[#6d6d18] font-medium text-lg leading-relaxed">Tudikhel,Bandipur,Nepal</p>
-                </div>
+                </div> --}}
 
-@foreach($contactInfos as $info)
-<div
-    class="reveal-on-scroll bg-white p-10 shadow-lg hover:shadow-2xl
-           border-t-4 text-center group hover:-translate-y-2
-           transition-all duration-500 rounded-2xl"
-    style="border-color: {{ $info->theme_color }}">
+                @foreach ($contactInfos as $info)
+                    @php
+                        // 1. Pre-calculate logic efficiently
+                        $mainColor = $info->theme_color;
 
-    <div
-        class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6
-               transition-all duration-500 group-hover:text-white"
-        style="background-color: {{ $info->theme_color }}15; color: {{ $info->theme_color }}">
-        <i class="fas {{ $info->icon }} text-2xl"></i>
-    </div>
+                        // Logic: If theme is Green, Links are Yellow (and vice versa)
+                        $isGreen = $mainColor === '#0a7c15';
+                        $altColor = $isGreen ? '#6d6d18' : '#0a7c15';
 
-    <h3 class="font-bold text-2xl mb-2 text-gray-800">
-        {{ $info->title }}
-    </h3>
+                        $values = is_array($info->value) ? $info->value : [$info->value];
+                        $links = is_array($info->link) ? $info->link : [$info->link];
+                    @endphp
 
-    <p class="text-gray-500 text-sm mb-6 font-light">
-        {{ $info->subtitle }}
-    </p>
+                    {{-- 2. Define CSS Variables on the Parent Wrapper --}}
+                    <div class="reveal-on-scroll group bg-white p-10 shadow-lg hover:shadow-2xl border-t-4 text-center hover:-translate-y-2 transition-all duration-500 rounded-2xl"
+                        style="
+                            border-color: {{ $mainColor }}; 
+                            --theme: {{ $mainColor }}; 
+                            --theme-faded: {{ $mainColor }}15;
+                            --link-text: {{ $altColor }};
+                            --link-hover: {{ $mainColor }};
+                        ">
 
-    @if($info->link)
-        <a href="{{ $info->link }}"
-           class="font-bold text-lg block transition-colors"
-           style="color: {{ $info->theme_color }}">
-            {{ $info->value }}
-        </a>
-    @else
-        <p class="font-medium text-lg">
-            {{ $info->value }}
-        </p>
-    @endif
-</div>
-@endforeach
+                        {{-- 3. Icon Circle: Uses CSS Vars for default and group-hover states --}}
+                        <div
+                            class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6 transition-all duration-500 scale-100 group-hover:scale-110
+                                    bg-[var(--theme-faded)] text-[var(--theme)] group-hover:bg-[var(--theme)] group-hover:text-white">
+                            <i class="fas {{ $info->icon }} text-2xl"></i>
+                        </div>
 
+                        <h3 class="font-bold text-2xl mb-2 text-gray-800">{{ $info->title }}</h3>
+                        <p class="text-gray-500 text-sm mb-6 font-light">{{ $info->subtitle }}</p>
+
+                        <div class="space-y-2">
+                            @foreach ($values as $index => $val)
+                                @if (!empty($links[$index]))
+                                    {{-- 4. Links: Uses CSS Vars for hover --}}
+                                    <a href="{{ $links[$index] }}"
+                                        class="font-bold text-lg block transition-colors duration-300 text-[var(--link-text)] hover:text-[var(--link-hover)]">
+                                        {{ $val }}
+                                    </a>
+                                @else
+                                    <p class="font-medium text-lg leading-relaxed text-gray-700">{{ $val }}</p>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </section>
 
