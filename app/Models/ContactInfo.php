@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ContactInfo extends Model
 {
     use HasFactory;
-
     protected $fillable = ['icon', 'title', 'subtitle', 'value', 'link', 'theme_color', 'is_active'];
 
     // ADD THIS SECTION

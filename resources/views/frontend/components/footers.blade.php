@@ -1,89 +1,94 @@
 @push('style')
-        <style>
+    <style>
         /* Smooth transition for the link hover effect */
         .hover-slide {
             transition: transform 0.3s ease, color 0.3s ease;
         }
+
         .hover-slide:hover {
             transform: translateX(5px);
         }
     </style>
 @endpush
 
-    <!-- FOOTER SECTION -->
-    <!-- Primary Color Background: #6d6d18 -->
-    <footer class="bg-[#6d6d18] text-gray-100 font-sans relative">
-        
-        <!-- Decorative Top Border using Secondary Color #0a7c15 -->
-        <div class="w-full h-1 bg-[#0a7c15]"></div>
+<!-- FOOTER SECTION -->
+<!-- Primary Color Background: #6d6d18 -->
+<footer class="bg-[#6d6d18] text-gray-100 font-sans relative">
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-                
-                <!-- COLUMN 1: BRAND & SOCIAL -->
-                <div class="space-y-6">
-                    <div>
-                        <h2 class="text-2xl font-bold uppercase tracking-widest text-white">Bandipur Eco</h2>
-                        <p class="mt-4 text-gray-300 text-sm leading-relaxed">
-                            Experience authentic hospitality and nature at its finest. Your perfect getaway in the hills of Bandipur.
-                        </p>
-                    </div>
+    <!-- Decorative Top Border using Secondary Color #0a7c15 -->
+    <div class="w-full h-1 bg-[#0a7c15]"></div>
 
-                    <div>
-                        <h3 class="text-sm font-semibold uppercase tracking-wider mb-4 text-white">Connect With Us</h3>
-                        <div class="flex space-x-3">
-                            <!-- Social Buttons: Secondary Color Background -->
-                            <a href="#" class="w-10 h-10 rounded-full bg-[#0a7c15] flex items-center justify-center text-white hover:bg-white hover:text-[#0a7c15] transition-all duration-300 shadow-md group">
-                                <i class="fab fa-facebook-f group-hover:scale-110 transition-transform"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-[#0a7c15] flex items-center justify-center text-white hover:bg-white hover:text-[#0a7c15] transition-all duration-300 shadow-md group">
-                                <i class="fab fa-instagram group-hover:scale-110 transition-transform"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-[#0a7c15] flex items-center justify-center text-white hover:bg-white hover:text-[#0a7c15] transition-all duration-300 shadow-md group">
-                                <i class="fab fa-twitter group-hover:scale-110 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+            <!-- COLUMN 1: BRAND & SOCIAL -->
+            <div class="space-y-6">
+                <div>
+                    <h2 class="text-2xl font-bold uppercase tracking-widest text-white">Bandipur Eco</h2>
+                    <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                        Experience authentic hospitality and nature at its finest. Your perfect getaway in the hills of
+                        Bandipur.
+                    </p>
                 </div>
 
-                <!-- COLUMN 2: QUICK MENU -->
                 <div>
-                    <h3 class="text-lg font-bold text-white mb-6 relative inline-block">
-                        Quick Menu
-                        <!-- Underline decoration -->
-                        <span class="absolute -bottom-2 left-0 w-12 h-1 bg-white"></span>
-                    </h3>
-                    <ul class="space-y-3 text-sm">
-                        <li>
-                            <a href="#" class="block hover-slide hover:text-white text-gray-300">
-                                <i class="fas fa-chevron-right text-[10px] text-white mr-2"></i>Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="block hover-slide hover:text-white text-gray-300">
-                                <i class="fas fa-chevron-right text-[10px] text-neutral-50 mr-2"></i>About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="block hover-slide hover:text-white text-gray-300">
-                                <i class="fas fa-chevron-right text-[10px] text-neutral-50 mr-2"></i>Rooms
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="block hover-slide hover:text-white text-gray-300">
-                                <i class="fas fa-chevron-right text-[10px] text-neutral-50 mr-2"></i>Gallery
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="block hover-slide hover:text-white text-gray-300">
-                                <i class="fas fa-chevron-right text-[10px] text-neutral-50 mr-2"></i>Rate
-                            </a>
-                        </li>
-                    </ul>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider mb-4 text-white">Connect With Us</h3>
+                    <div class="flex space-x-3">
+                        <!-- Social Buttons: Secondary Color Background -->
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-[#0a7c15] flex items-center justify-center text-white hover:bg-white hover:text-[#0a7c15] transition-all duration-300 shadow-md group">
+                            <i class="fab fa-facebook-f group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-[#0a7c15] flex items-center justify-center text-white hover:bg-white hover:text-[#0a7c15] transition-all duration-300 shadow-md group">
+                            <i class="fab fa-instagram group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-[#0a7c15] flex items-center justify-center text-white hover:bg-white hover:text-[#0a7c15] transition-all duration-300 shadow-md group">
+                            <i class="fab fa-twitter group-hover:scale-110 transition-transform"></i>
+                        </a>
+                    </div>
                 </div>
+            </div>
 
-                <!-- COLUMN 3: CONTACT INFO -->
-                <div>
+            <!-- COLUMN 2: QUICK MENU -->
+            <div>
+                <h3 class="text-lg font-bold text-white mb-6 relative inline-block">
+                    Quick Menu
+                    <!-- Underline decoration -->
+                    <span class="absolute -bottom-2 left-0 w-12 h-1 bg-white"></span>
+                </h3>
+                <ul class="space-y-3 text-sm">
+                    <li>
+                        <a href="#" class="block hover-slide hover:text-white text-gray-300">
+                            <i class="fas fa-chevron-right text-[10px] text-white mr-2"></i>Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block hover-slide hover:text-white text-gray-300">
+                            <i class="fas fa-chevron-right text-[10px] text-neutral-50 mr-2"></i>About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block hover-slide hover:text-white text-gray-300">
+                            <i class="fas fa-chevron-right text-[10px] text-neutral-50 mr-2"></i>Rooms
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block hover-slide hover:text-white text-gray-300">
+                            <i class="fas fa-chevron-right text-[10px] text-neutral-50 mr-2"></i>Gallery
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block hover-slide hover:text-white text-gray-300">
+                            <i class="fas fa-chevron-right text-[10px] text-neutral-50 mr-2"></i>Rate
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- COLUMN 3: CONTACT INFO -->
+            {{-- <div>
                     <h3 class="text-lg font-bold text-white mb-6 relative inline-block">
                         Contact Us
                         <span class="absolute -bottom-2 left-0 w-12 h-1 bg-neutral-50"></span>
@@ -135,51 +140,93 @@
                             <a href="mailto:bandipureco@gmail.com" class="hover:text-white transition-colors break-all">bandipureco@gmail.com</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+            <div>
+                {{-- Section Title with high contrast --}}
+                <h3 class="text-xl font-bold text-white mb-8 relative inline-block">
+                    Contact Us
+                    <span class="absolute -bottom-2 left-0 w-12 h-1 bg-white"></span>
+                </h3>
 
-                <!-- COLUMN 4: MAP -->
-                <div>
-                    <h3 class="text-lg font-bold text-white mb-6 relative inline-block">
-                        Find Us
-                        <span class="absolute -bottom-2 left-0 w-12 h-1 bg-white"></span>
-                    </h3>
-                    <!-- Map Container with Secondary Color Border -->
-                    <div class="rounded-lg overflow-hidden shadow-lg border-2 border-[#0a7c15] h-56 w-full bg-gray-300">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3522.684347787355!2d84.41097631506456!3d27.93333398270118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39951ca8e42f9b1b%3A0x6d6d18!2sBandipur%20Tundikhel!5e0!3m2!1sen!2snp!4v1625634212345!5m2!1sen!2snp" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy">
-                        </iframe>
-                    </div>
-                </div>
+                <div class="space-y-6">
+                    @foreach ($footerContactInfo as $info)
+                        <div class="flex items-start group">
+                            {{-- Icon: Using a brighter white-transparent background for high visibility --}}
+                            <div
+                                class="w-10 h-10 rounded-xl bg-white/20 hover:bg-white flex items-center justify-center flex-shrink-0 mr-4 shadow-sm transition-all group-hover:text-[#6d6d18]">
+                                <i class="fas {{ $info->icon }} text-lg text-white hover:text-[#6d6d18]"></i>
+                            </div>
 
+                            <div class="flex flex-col">
+                                {{-- Title: Using a bright minty-white for visibility against the olive background --}}
+                                <span class="text-[11px] uppercase tracking-[0.15em] text-white/70 font-black mb-1">
+                                    {{ $info->title }}
+                                </span>
+
+                                <div class="flex flex-col space-y-1">
+                                    @php
+                                        $values = $info->value ?? [];
+                                        $links = $info->link ?? [];
+                                    @endphp
+
+                                    @foreach ($values as $index => $text)
+                                        @if (!empty($links[$index]))
+                                            {{-- Link with hover state: pure white --}}
+                                            <a href="{{ $links[$index] }}"
+                                                class="text-gray-100 hover:text-white font-medium transition-all break-all leading-tight border-b border-transparent hover:border-white/30 inline-block w-fit">
+                                                {{ $text }}
+                                            </a>
+                                        @else
+                                            {{-- Plain Text: pure white --}}
+                                            <span class="text-white font-medium leading-tight">
+                                                {!! nl2br(e($text)) !!}
+                                            </span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <!-- COLUMN 4: MAP -->
+            <div>
+                <h3 class="text-lg font-bold text-white mb-6 relative inline-block">
+                    Find Us
+                    <span class="absolute -bottom-2 left-0 w-12 h-1 bg-white"></span>
+                </h3>
+                <!-- Map Container with Secondary Color Border -->
+                <div class="rounded-lg overflow-hidden shadow-lg border-2 border-[#0a7c15] h-56 w-full bg-gray-300">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3522.684347787355!2d84.41097631506456!3d27.93333398270118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39951ca8e42f9b1b%3A0x6d6d18!2sBandipur%20Tundikhel!5e0!3m2!1sen!2snp!4v1625634212345!5m2!1sen!2snp"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- COPYRIGHT AREA -->
+    <!-- Used a black overlay with opacity to create a darker shade of the primary color -->
+    <div class="bg-black/20 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                <p class="text-center md:text-left">
+                    &copy; <span id="currentYear"></span> Bandipur Eco. All Rights Reserved.
+                </p>
+                <div class="mt-4 md:mt-0 space-x-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms</a>
+                </div>
             </div>
         </div>
-
-        <!-- COPYRIGHT AREA -->
-        <!-- Used a black overlay with opacity to create a darker shade of the primary color -->
-        <div class="bg-black/20 border-t border-white/10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-                    <p class="text-center md:text-left">
-                        &copy; <span id="currentYear"></span> Bandipur Eco. All Rights Reserved.
-                    </p>
-                    <div class="mt-4 md:mt-0 space-x-6">
-                        <a href="#" class="hover:text-white transition-colors">Privacy</a>
-                        <a href="#" class="hover:text-white transition-colors">Terms</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    </div>
+</footer>
 @push('script')
     <!-- DYNAMIC YEAR SCRIPT -->
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
-
 @endpush
-

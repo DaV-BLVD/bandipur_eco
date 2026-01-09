@@ -124,7 +124,8 @@
                     class="inline-block py-1 px-4 border border-[#cdcd2e] text-[#cdcd44] bg-black/30 backdrop-blur-sm font-bold tracking-[0.2em] text-xs uppercase mb-6 rounded-2xl">
                     Get in Touch
                 </span>
-                <h1 class="text-5xl md:text-7xl font-['Playfair_Display'] font-bold mb-6 drop-shadow-xl">Start Your Journey
+                <h1 class="text-5xl md:text-7xl font-['Playfair_Display'] font-bold mb-6 drop-shadow-xl">
+                    Start Your Journey
                 </h1>
                 <p class="font-light text-gray-200 max-w-xl mx-auto text-lg md:text-xl leading-relaxed">
                     Have questions about the roads, the weather, or special requests? We are here to help you plan your perfect escape.
@@ -227,12 +228,17 @@
                         <h3 class="font-bold text-2xl mb-2 text-gray-800">{{ $info->title }}</h3>
                         <p class="text-gray-500 text-sm mb-6 font-light">{{ $info->subtitle }}</p>
 
+                        {{-- only display 2 data from the list to prevent cluster --}}
                         <div class="space-y-2">
                             @foreach ($values as $index => $val)
+                                @if ($index >= 2)
+                                    @break
+                                @endif
+
                                 @if (!empty($links[$index]))
-                                    {{-- 4. Links: Uses CSS Vars for hover --}}
+                                    {{-- Link with hover color --}}
                                     <a href="{{ $links[$index] }}"
-                                        class="font-bold text-lg block transition-colors duration-300 text-[var(--link-text)] hover:text-[var(--link-hover)]">
+                                    class="font-bold text-lg block transition-colors duration-300 text-[var(--link-text)] hover:text-[var(--link-hover)]">
                                         {{ $val }}
                                     </a>
                                 @else
