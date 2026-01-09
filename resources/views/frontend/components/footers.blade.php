@@ -209,7 +209,7 @@
             </div>
 
             <!-- COLUMN 4: MAP -->
-            <div>
+            {{-- <div>
                 <h3 class="text-lg font-bold text-white mb-6 relative inline-block">
                     Find Us
                     <span class="absolute -bottom-2 left-0 w-12 h-1 bg-white"></span>
@@ -221,8 +221,15 @@
                         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
                     </iframe>
                 </div>
-            </div>
-
+            </div> --}}
+            @if ($footerMap)
+                <div class="rounded-lg overflow-hidden shadow-lg border-2"
+                    style="border-color: {{ $footerMap->primary_color }}; height: 14rem; width: 100%; background-color: #e5e7eb;">
+                    <iframe src="{{ $footerMap->embed_url }}" width="100%" height="100%" style="border:0;"
+                        allowfullscreen="" loading="lazy" class="w-full h-full">
+                    </iframe>
+                </div>
+            @endif
         </div>
     </div>
 
