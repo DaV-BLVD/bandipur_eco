@@ -19,6 +19,8 @@ Route::view('/accommodation', 'frontend.pages.accommodation')->name('accommodati
 Route::view('/tare', 'frontend.pages.tare')->name('tare');
 Route::view('/gallery', 'frontend.pages.gallery')->name('gallery');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+
 
 Route::post('/book-now', [BookingModelController::class, 'store'])->name('booking.submit');
 

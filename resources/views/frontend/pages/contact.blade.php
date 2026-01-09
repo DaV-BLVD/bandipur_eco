@@ -277,11 +277,12 @@
                         </h2>
                         <div class="w-16 h-1 bg-[#6d6d18] mb-4"></div>
                         <p class="text-gray-400 text-sm font-light leading-relaxed max-w-md">
-                            Have a question about your stay? Fill out the form below and our reception team will get back to you shortly.
+                            Have a question about your stay? Fill out the form below and our reception team will get back to
+                            you shortly.
                         </p>
                     </div>
 
-                    <form action="#" method="POST" class="relative z-10 space-y-8">
+                    {{-- <form action="#" method="POST" class="relative z-10 space-y-8">
 
                         <!-- Grid for Name & Email -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -350,7 +351,84 @@
                                 </span>
                             </button>
                         </div>
+                    </form> --}}
+                    <form id="contactForm" action="{{ route('contact.submit') }}" method="POST"
+                        class="relative z-10 space-y-8">
+                        @csrf
+
+                        <!-- Name & Email -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="relative z-0 w-full group">
+                                <input type="text" name="name" id="name"
+                                    class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#0a7c15] peer"
+                                    placeholder=" " required />
+                                <label for="name"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#0a7c15] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Your Name
+                                </label>
+                                <p class="text-red-600 text-xs mt-1 error-text" id="error-name"></p>
+                            </div>
+
+                            <div class="relative z-0 w-full group">
+                                <input type="email" name="email" id="email"
+                                    class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#0a7c15] peer"
+                                    placeholder=" " required />
+                                <label for="email"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#0a7c15] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    Your Email
+                                </label>
+                                <p class="text-red-600 text-xs mt-1 error-text" id="error-email"></p>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="relative z-0 w-full group">
+                            <input type="tel" name="phone" id="phone"
+                                class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#0a7c15] peer"
+                                placeholder=" " required />
+                            <label for="phone"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#0a7c15] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                Phone Number
+                            </label>
+                            <p class="text-red-600 text-xs mt-1 error-text" id="error-phone"></p>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="relative z-0 w-full group">
+                            <textarea name="message" id="message" rows="3"
+                                class="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#0a7c15] peer resize-none"
+                                placeholder=" " required></textarea>
+                            <label for="message"
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#0a7c15] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                How can we help you?
+                            </label>
+                            <p class="text-red-600 text-xs mt-1 error-text" id="error-message"></p>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-4">
+                            <button type="submit"
+                                class="group relative w-full md:w-auto overflow-hidden bg-[#0a7c15] px-12 py-4 shadow-lg transition-all duration-300 hover:shadow-xl active:scale-95">
+                                <div
+                                    class="absolute inset-0 h-full w-full bg-[#6d6d18] transition-transform duration-300 ease-out transform translate-y-full group-hover:translate-y-0">
+                                </div>
+                                <span
+                                    class="relative z-10 flex items-center justify-center gap-3 font-bold uppercase tracking-widest text-white text-xs">
+                                    Send Message
+                                    <i
+                                        class="fas fa-paper-plane text-xs transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- Success Message -->
+                        <div id="successMessage"
+                            class="hidden mt-4 p-4 rounded-lg bg-green-50 border border-green-200 text-green-700 text-sm font-medium">
+                            Your message has been sent successfully!
+                        </div>
                     </form>
+
+
                 </div>
 
                 <!-- Right: Google Map -->
@@ -450,8 +528,9 @@
 
     </section>
 
-    <!-- JS for Scroll Animations -->
+    
     <script>
+        // JS for Scroll Animations
         document.addEventListener('DOMContentLoaded', () => {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -464,6 +543,50 @@
             });
 
             document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+        });
+
+        // ajax for form
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Clear previous errors
+                document.querySelectorAll('.error-text').forEach(el => el.textContent = '');
+
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': form.querySelector('input[name="_token"]').value,
+                            'Accept': 'application/json'
+                        },
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.errors) {
+                            // Show validation errors
+                            for (let key in data.errors) {
+                                const errorElement = document.getElementById('error-' + key);
+                                if (errorElement) errorElement.textContent = data.errors[key][0];
+                            }
+                        } else {
+                            // Show success message
+                            successMessage.classList.remove('hidden');
+                            form.reset();
+
+                            // Auto-hide after 5 seconds
+                            setTimeout(() => {
+                                successMessage.classList.add('hidden');
+                            }, 5000);
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
         });
     </script>
 @endsection
