@@ -109,6 +109,20 @@
                             ],
                         ],
                     ],
+                    [
+                        'title' => 'Gallery',
+                        'icon' => 'fa-solid fa-envelope-open-text',
+                        'routes' => [
+                            'gallery-hero.*',
+                        ],
+                        'links' => [
+                            [
+                                'route' => 'gallery-hero.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Hero Section',
+                            ],
+                        ],
+                    ],
                 ];
             @endphp
 

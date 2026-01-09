@@ -223,13 +223,17 @@
                 </div>
             </div> --}}
             @if ($footerMap)
-                <div class="rounded-lg overflow-hidden shadow-lg border-2"
-                    style="border-color: {{ $footerMap->primary_color }}; height: 18rem; width: 120%; background-color: #e5e7eb; align-self:center;">
-                    <iframe src="{{ $footerMap->embed_url }}" width="100%" height="100%" style="border:0;"
-                        allowfullscreen="" loading="lazy" class="w-full h-full">
-                    </iframe>
-                </div>
-            @endif
+    <div class="mx-auto rounded-lg overflow-hidden shadow-lg border-2 w-full lg:w-[110%]"
+        style="border-color: {{ $footerMap->primary_color }}; height: 18rem; background-color: #e5e7eb;">
+        <iframe 
+            src="{{ $footerMap->embed_url }}" 
+            class="w-full h-full border-0"
+            allowfullscreen="" 
+            loading="lazy">
+         Bram
+        </iframe>
+    </div>
+@endif
         </div>
     </div>
 

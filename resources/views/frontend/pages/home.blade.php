@@ -353,7 +353,8 @@
                     </div>
                 </button>
 
-                <button id="nextBtn" class="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 group cursor-pointer">
+                <button id="nextBtn"
+                    class="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 group cursor-pointer">
                     <div
                         class="w-8 h-8 sm:w-14 sm:h-14 rounded-full border-2 border-white/30 hover:border-[#6d6d18] hover:bg-[#6d6d18]/20 flex items-center justify-center transition-all duration-300 backdrop-blur-sm">
                         <i
@@ -404,12 +405,9 @@
                         <span class="text-xs uppercase tracking-widest hidden sm:block">Scroll</span>
                         <div class=" flex justify-center pt-2 text-center">
                             <i class='fa-solid fa-angles-down animate-pulse text-xl'></i>
-
                         </div>
                     </a>
                 </div>
-
-
 
                 <!-- Social Links - Desktop -->
                 <div class="hidden lg:flex absolute left-40 top-1/2 -translate-y-1/2 z-20 flex-col items-center gap-4">
@@ -444,7 +442,7 @@
 
     {{-- just for id --}}
     <section id="about" class="p-10"></section>
-    
+
     <main class="relative z-10 bg-white shadow-[0_-20px_60px_rgba(0,0,0,0.2)]">
 
         <section class="py-28 px-4 bg-white">
@@ -624,7 +622,8 @@
                     class="bg-white/5 p-10 rounded-2xl backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all duration-500 reveal delay-100">
                     <p class="text-green-300 font-bold text-sm mb-4">06:00 AM</p>
                     <h4 class="text-2xl font-serif mb-4">Sunrise Ritual</h4>
-                    <p class="text-sm text-gray-200 leading-relaxed">Watch the sun paint the Dhaulagiri and Annapurna ranges
+                    <p class="text-sm text-gray-200 leading-relaxed">Watch the sun paint the Dhaulagiri and Annapurna
+                        ranges
                         in shades of gold from your balcony.</p>
                 </div>
                 <div
@@ -1005,7 +1004,9 @@
 
             document.getElementById('hero').addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
+            }, {
+                passive: true
+            });
 
             document.getElementById('hero').addEventListener('touchend', (e) => {
                 touchEndX = e.changedTouches[0].screenX;
@@ -1019,7 +1020,9 @@
                     }
                     resetAutoPlay();
                 }
-            }, { passive: true });
+            }, {
+                passive: true
+            });
 
             // Pause on hover (desktop only)
             const heroSection = document.getElementById('hero');

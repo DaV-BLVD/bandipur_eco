@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\BookingModelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\ReserveSubmissionController;
+use App\Http\Controllers\Frontend\GalleryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('welcome', function () {
@@ -18,7 +19,7 @@ Route::get('/', function () {
 Route::view('/about', 'frontend.pages.about')->name('about');
 Route::view('/accommodation', 'frontend.pages.accommodation')->name('accommodation');
 Route::view('/tare', 'frontend.pages.tare')->name('tare');
-Route::view('/gallery', 'frontend.pages.gallery')->name('gallery');
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 Route::post('/reserve-submit', [ReserveSubmissionController::class, 'store'])->name('booking.submit');
@@ -93,6 +94,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/reserve-submissions', App\Http\Controllers\Admin\ReserveSubmissionController::class)->only(['index', 'show', 'destroy']);
         Route::patch('/admin/dashboard/reserve-submissions/{reserveSubmission}/read', [App\Http\Controllers\Admin\ReserveSubmissionController::class, 'markAsRead'])->name('reserve-submissions.read');
         Route::patch('/admin/dashboard/reserve-submissions/{reserveSubmission}/unread', [App\Http\Controllers\Admin\ReserveSubmissionController::class, 'markAsUnread'])->name('reserve-submissions.unread');
+
+        Route::resource('/admin/dashboard/gallery-hero', App\Http\Controllers\Admin\GalleryHeroController::class);
     });
 });
 

@@ -22,12 +22,12 @@
                 <div class="flex flex-col md:flex-row h-full">
 
                     <!-- Left Side: Image & Info (Desktop Only) -->
-                    <div class="hidden md:block md:w-1/3 bg-[#0a7c15] relative">
+                    <div class="hidden md:block md:w-1/3 bg-transparnt relative">
                         <!-- Image -->
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop"
-                            class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40">
+                        <img src="{{ asset('frontendimages/hotel_entrance.png') }}"
+                            class="absolute inset-0 w-full h-full object-cover  ">
                         <!-- Gradient Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-b from-[#0a7c15] to-transparent opacity-90"></div>
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80 opacity-90"></div>
 
                         <div class="relative z-10 p-8 text-white h-full flex flex-col justify-between">
                             <div>
