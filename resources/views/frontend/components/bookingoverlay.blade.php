@@ -143,7 +143,6 @@
                                     Check Availability
                                 </button>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -185,7 +184,7 @@
         }
 
         // Close on Escape Key
-        document.addEventListener('keydown', function (event) {
+        document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
                 closeBookingModal();
             }

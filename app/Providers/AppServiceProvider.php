@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\View;
 use App\Models\SocialLink;
 use App\Models\ContactSubmission;
 use App\Models\MapLocation;
+use App\Models\ReserveSubmission;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -41,6 +42,10 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('*', function ($view) {
             $view->with('footerMap', MapLocation::where('is_active', true)->first());
+        });
+
+        View::composer('*', function ($view) {
+            $view->with('unreadReservationCount', ReserveSubmission::where('is_read', false)->count());
         });
     }
 }
