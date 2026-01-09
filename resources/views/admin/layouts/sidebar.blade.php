@@ -60,7 +60,7 @@
                     [
                         'title' => 'Contact',
                         'icon' => 'fa-solid fa-envelope-open-text',
-                        'routes' => ['contact-hero.*', 'contact-header.*', 'contact-info.*'],
+                        'routes' => ['contact-hero.*', 'contact-header.*', 'contact-info.*', 'map-location.*'],
                         'links' => [
                             [
                                 'route' => 'contact-hero.index',
@@ -76,6 +76,11 @@
                                 'route' => 'contact-info.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Contact Info',
+                            ],
+                            [
+                                'route' => 'map-location.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Map Location',
                             ],
                         ],
                     ],

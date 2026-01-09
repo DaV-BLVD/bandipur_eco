@@ -433,7 +433,7 @@
 
                 <!-- Right: Google Map -->
                 <div class="w-full lg:w-1/2 relative group overflow-hidden shadow-lg border border-gray-200">
-                    <iframe src="https://www.google.com/maps/embed?pb=YOUR_EMBED_URL_HERE"
+                    {{-- <iframe src="https://www.google.com/maps/embed?pb=YOUR_EMBED_URL_HERE"
                         class="absolute inset-0 w-full h-full grayscale-[0.3] contrast-[1.1] transition-all duration-700 group-hover:grayscale-0"
                         style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
@@ -464,12 +464,39 @@
                             </div>
                         </div>
 
-                        {{-- Optional Button for real navigation --}}
                         <a href="https://maps.google.com" target="_blank"
                             class="mt-4 flex items-center justify-center w-full py-2 bg-primary text-white text-xs font-bold rounded-xl hover:bg-[#9a9a1e] transition-colors uppercase tracking-widest">
                             Open in Google Maps
                         </a>
-                    </div>
+                    </div> --}}
+
+                    @if ($mapLocation)
+                        <iframe src="{{ $mapLocation->embed_url }}"
+                            class="absolute inset-0 w-full h-full grayscale-[0.3] contrast-[1.1] transition-all duration-700 group-hover:grayscale-0"
+                            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+
+                        <div
+                            class="absolute bottom-6 left-6 right-6 lg:right-auto bg-white/90 backdrop-blur-lg p-6 rounded-2xl shadow-2xl max-w-sm border border-white/50 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+
+                            <div class="flex items-center space-x-3 mb-3">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-[{{ $mapLocation->primary_color }}] flex items-center justify-center text-white shadow-md">
+                                    <i class="fas fa-route text-xs"></i>
+                                </div>
+                                <p
+                                    class="text-[{{ $mapLocation->primary_color }}] font-black text-[11px] uppercase tracking-[0.15em]">
+                                    {{ $mapLocation->title }}
+                                </p>
+                            </div>
+
+                            @if ($mapLocation->description)
+                                <p class="text-sm text-gray-700 leading-relaxed font-medium">
+                                    {!! nl2br(e($mapLocation->description)) !!}
+                                </p>
+                            @endif
+                        </div>
+                    @endif
                 </div>
 
             </div>
@@ -528,7 +555,7 @@
 
     </section>
 
-    
+
     <script>
         // JS for Scroll Animations
         document.addEventListener('DOMContentLoaded', () => {
