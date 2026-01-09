@@ -21,7 +21,6 @@ Route::view('/gallery', 'frontend.pages.gallery')->name('gallery');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
-
 Route::post('/book-now', [BookingModelController::class, 'store'])->name('booking.submit');
 
 // admin
@@ -32,6 +31,7 @@ use App\Http\Controllers\Admin\ContactHeroController;
 use App\Http\Controllers\Admin\ContactHeaderController;
 use App\Http\Controllers\Admin\ContactInfoController;
 use App\Http\Controllers\Admin\SocialLinkController;
+use App\Http\Controllers\Admin\ContactSubmissionController;
 
 Route::middleware(['auth'])->group(function () {
     /*
@@ -77,6 +77,12 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/contact-info', ContactInfoController::class);
 
         Route::resource('/admin/dashboard/social-links', SocialLinkController::class);
+
+        Route::resource('/admin/dashboard/contact-submissions', ContactSubmissionController::class)->only(['index', 'show', 'destroy']);
+
+        Route::patch('/admin/dashboard/contact-submissions/{contactSubmission}/read', [ContactSubmissionController::class, 'markAsRead'])->name('contact-submissions.read');
+
+        Route::patch('/admin/dashboard/contact-submissions/{contactSubmission}/unread', [ContactSubmissionController::class, 'markAsUnread'])->name('contact-submissions.unread');
     });
 });
 
