@@ -224,7 +224,7 @@
             </div> --}}
             @if ($footerMap)
                 <div class="rounded-lg overflow-hidden shadow-lg border-2"
-                    style="border-color: {{ $footerMap->primary_color }}; height: 14rem; width: 100%; background-color: #e5e7eb;">
+                    style="border-color: {{ $footerMap->primary_color }}; height: 18rem; width: 120%; background-color: #e5e7eb; align-self:center;">
                     <iframe src="{{ $footerMap->embed_url }}" width="100%" height="100%" style="border:0;"
                         allowfullscreen="" loading="lazy" class="w-full h-full">
                     </iframe>
