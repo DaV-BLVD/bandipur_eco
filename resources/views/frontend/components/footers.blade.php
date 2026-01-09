@@ -18,7 +18,7 @@
     <!-- Decorative Top Border using Secondary Color #0a7c15 -->
     <div class="w-full h-1 bg-[#0a7c15]"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
             <!-- COLUMN 1: BRAND & SOCIAL -->
@@ -236,7 +236,7 @@
     <!-- COPYRIGHT AREA -->
     <!-- Used a black overlay with opacity to create a darker shade of the primary color -->
     <div class="bg-black/20 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
                 <p class="text-center md:text-left">
                     &copy; <span id="currentYear"></span> Bandipur Eco. All Rights Reserved.
