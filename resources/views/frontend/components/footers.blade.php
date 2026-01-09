@@ -24,6 +24,8 @@
             <!-- COLUMN 1: BRAND & SOCIAL -->
             <div class="space-y-6">
                 <div>
+                    <img src="{{ asset('frontendimages/logo.png') }}" alt=""
+                        class="bg-white py-1 px-3 rounded-lg my-2">
                     <h2 class="text-2xl font-bold uppercase tracking-widest text-white">Bandipur Eco</h2>
                     <p class="mt-4 text-gray-300 text-sm leading-relaxed">
                         Experience authentic hospitality and nature at its finest. Your perfect getaway in the hills of
@@ -35,7 +37,7 @@
                     <h3 class="text-sm font-semibold uppercase tracking-wider mb-4 text-white">Connect With Us</h3>
                     <div class="flex space-x-3">
                         <!-- Social Buttons: Secondary Color Background -->
-                        <a href="#"
+                        {{-- <a href="#"
                             class="w-10 h-10 rounded-full bg-[#0a7c15] flex items-center justify-center text-white hover:bg-white hover:text-[#0a7c15] transition-all duration-300 shadow-md group">
                             <i class="fab fa-facebook-f group-hover:scale-110 transition-transform"></i>
                         </a>
@@ -46,44 +48,60 @@
                         <a href="#"
                             class="w-10 h-10 rounded-full bg-[#0a7c15] flex items-center justify-center text-white hover:bg-white hover:text-[#0a7c15] transition-all duration-300 shadow-md group">
                             <i class="fab fa-twitter group-hover:scale-110 transition-transform"></i>
-                        </a>
+                        </a> --}}
+
+                        @foreach ($footerSocialLinks as $link)
+                            <a href="{{ $link->url }}" target="_blank"
+                                class="w-10 h-10 rounded-full bg-[{{ $link->color }}] flex items-center justify-center text-white hover:bg-white hover:text-[#0a7c15] transition-all duration-300 shadow-md group">
+                                <i class="{{ $link->icon }} group-hover:scale-110 transition-transform"></i>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
 
             <!-- COLUMN 2: QUICK MENU -->
             <div>
-                <h3 class="text-lg font-bold text-white mb-6 relative inline-block">
+                {{-- Header with stylized underline --}}
+                <h3 class="text-xl font-bold text-white mb-8 relative inline-block tracking-wide">
                     Quick Menu
-                    <!-- Underline decoration -->
                     <span class="absolute -bottom-2 left-0 w-12 h-1 bg-white"></span>
                 </h3>
-                <ul class="space-y-3 text-sm">
-                    <li>
-                        <a href="#" class="block hover-slide hover:text-white text-gray-300">
-                            <i class="fas fa-chevron-right text-[10px] text-white mr-2"></i>Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block hover-slide hover:text-white text-gray-300">
-                            <i class="fas fa-chevron-right text-[10px] text-neutral-50 mr-2"></i>About Us
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block hover-slide hover:text-white text-gray-300">
-                            <i class="fas fa-chevron-right text-[10px] text-neutral-50 mr-2"></i>Rooms
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block hover-slide hover:text-white text-gray-300">
-                            <i class="fas fa-chevron-right text-[10px] text-neutral-50 mr-2"></i>Gallery
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block hover-slide hover:text-white text-gray-300">
-                            <i class="fas fa-chevron-right text-[10px] text-neutral-50 mr-2"></i>Rate
-                        </a>
-                    </li>
+
+                <ul class="space-y-4">
+                    @php
+                        $menuItems = [
+                            'Home' => '/',
+                            'About Us' => '/about',
+                            'Rooms' => '/accommodation',
+                            'Gallery' => '/gallery',
+                            'Rate' => '/tare',
+                            'Contact' => '/contact',
+                        ];
+                    @endphp
+
+                    @foreach ($menuItems as $label => $link)
+                        <li>
+                            <a href="{{ $link }}"
+                                class="group flex items-center text-gray-200 hover:text-white transition-all duration-300 ease-in-out">
+
+                                {{-- Icon/Marker: Changes from a line to a chevron on hover --}}
+                                <span class="relative flex items-center justify-center mr-3">
+                                    {{-- Static Line --}}
+                                    <span
+                                        class="w-2 h-[2px] bg-white group-hover:w-4 group-hover:bg-white transition-all duration-300"></span>
+                                    {{-- Hidden Chevron that slides in --}}
+                                    <i
+                                        class="fas fa-chevron-right text-[8px] absolute opacity-0 -left-2 group-hover:opacity-100 group-hover:left-0 transition-all duration-300"></i>
+                                </span>
+
+                                <span
+                                    class="text-sm font-medium tracking-wide transform group-hover:translate-x-1 transition-transform duration-300">
+                                    {{ $label }}
+                                </span>
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 
@@ -153,7 +171,7 @@
                         <div class="flex items-start group">
                             {{-- Icon: Using a brighter white-transparent background for high visibility --}}
                             <div
-                                class="w-10 h-10 rounded-xl bg-white/20 hover:bg-white flex items-center justify-center flex-shrink-0 mr-4 shadow-sm transition-all group-hover:text-[#6d6d18]">
+                                class="w-10 h-10 rounded-xl bg-white/20 hover:bg-white flex items-center justify-center flex-shrink-0 mr-4 shadow-sm transition-all">
                                 <i class="fas {{ $info->icon }} text-lg text-white hover:text-[#6d6d18]"></i>
                             </div>
 

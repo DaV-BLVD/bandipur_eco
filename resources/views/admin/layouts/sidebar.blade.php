@@ -117,6 +117,13 @@
                     </div>
                 </div>
             @endforeach
+
+            <a href="{{ route('social-links.index') }}" @click="sidebarOpen = false"
+                    class="flex items-center px-4 py-3 hover:bg-[#9a9a1e] hover:text-black hover:rounded-lg
+                    {{ request()->routeIs('social-links.*') ? 'bg-secondary text-black font-semibold rounded-lg' : '' }}">
+                    <i class="fa-solid fa-users w-6"></i>
+                    <span class="font-medium">Social Links (Footer)</span>
+                </a>
         </nav>
 
         <!-- Logout -->
