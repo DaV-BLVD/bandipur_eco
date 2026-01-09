@@ -9,6 +9,7 @@ use App\Models\ContactHeader;
 use App\Models\ContactInfo;
 use App\Models\ContactSubmission;
 use App\Models\MapLocation;
+use App\Models\Faq;
 
 class ContactController extends Controller
 {
@@ -22,7 +23,9 @@ class ContactController extends Controller
 
         $mapLocation = MapLocation::where('is_active', true)->latest()->first();
 
-        return view('frontend.pages.contact', compact('hero', 'header', 'contactInfos', 'mapLocation'));
+        $faqs = Faq::where('is_active', true)->get();
+
+        return view('frontend.pages.contact', compact('hero', 'header', 'contactInfos', 'mapLocation' ,'faqs'));
     }
 
     // Handle form submission

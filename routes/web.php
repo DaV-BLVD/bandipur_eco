@@ -85,6 +85,8 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('/admin/dashboard/contact-submissions/{contactSubmission}/unread', [ContactSubmissionController::class, 'markAsUnread'])->name('contact-submissions.unread');
 
         Route::resource('/admin/dashboard/map-location', App\Http\Controllers\Admin\MapLocationController::class);
+
+        Route::resource('/admin/dashboard/faqs', App\Http\Controllers\Admin\FaqController::class);
     });
 });
 

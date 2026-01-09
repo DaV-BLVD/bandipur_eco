@@ -427,8 +427,6 @@
                             Your message has been sent successfully!
                         </div>
                     </form>
-
-
                 </div>
 
                 <!-- Right: Google Map -->
@@ -505,11 +503,12 @@
         <!-- FAQ SECTION -->
         <section class="container mx-auto px-6 pb-24 text-center">
             <h2 class="reveal-on-scroll text-3xl md:text-4xl font-['Playfair_Display'] font-bold text-[#1a1a1a] mb-12">
-                Frequently Asked Questions</h2>
+                Frequently Asked Questions
+            </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto">
                 <!-- FAQ Item 1 -->
-                <div
+                {{-- <div
                     class="reveal-on-scroll delay-100 bg-white p-8 rounded-lg shadow-sm hover:shadow-md border border-gray-100 transition-all duration-300">
                     <h4 class="font-bold text-[#0a7c15] mb-3 text-lg flex items-center">
                         <i class="fas fa-car mr-3 text-[#6d6d18]"></i> Is there parking available?
@@ -532,8 +531,7 @@
                     <h4 class="font-bold text-[#0a7c15] mb-3 text-lg flex items-center">
                         <i class="fas fa-wifi mr-3 text-[#6d6d18]"></i> Is the Wi-Fi reliable?
                     </h4>
-                    <p class="text-gray-600 text-sm leading-relaxed pl-8">We have dedicated fiber internet suitable for
-                        remote work, though speeds may vary during storms.</p>
+                    <p class="text-gray-600 text-sm leading-relaxed pl-8">We have dedicated fiber internet suitable for remote work, though speeds may vary during storms.</p>
                 </div>
                 <!-- FAQ Item 4 -->
                 <div
@@ -541,9 +539,21 @@
                     <h4 class="font-bold text-[#0a7c15] mb-3 text-lg flex items-center">
                         <i class="fas fa-snowflake mr-3 text-[#6d6d18]"></i> Is there heating?
                     </h4>
-                    <p class="text-gray-600 text-sm leading-relaxed pl-8">All rooms are equipped with electric heaters
-                        during winter, and thick woolen blankets are provided.</p>
-                </div>
+                    <p class="text-gray-600 text-sm leading-relaxed pl-8">All rooms are equipped with electric heaters during winter, and thick woolen blankets are provided.</p>
+                </div> --}}
+
+                @foreach ($faqs as $faq)
+                    <div
+                        class="reveal-on-scroll delay-100 bg-white p-8 rounded-lg shadow-sm hover:shadow-md border border-gray-100 transition-all duration-300">
+                        <h4 class="font-bold text-[#0a7c15] mb-3 text-lg flex items-center">
+                            @if ($faq->icon)
+                                <i class="{{ $faq->icon }} mr-3 text-[#6d6d18]"></i>
+                            @endif
+                            {{ $faq->question }}
+                        </h4>
+                        <p class="text-gray-600 text-sm leading-relaxed pl-8">{{ $faq->answer }}</p>
+                    </div>
+                @endforeach
             </div>
         </section>
 
