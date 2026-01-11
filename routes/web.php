@@ -112,6 +112,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/rates-table', \App\Http\Controllers\Admin\RatesTableController::class);
 
         Route::resource('/admin/dashboard/exclusive-special-offer', \App\Http\Controllers\Admin\ExclusiveSpecialOfferController::class);
+
+        Route::resource('/admin/dashboard/important-infos', \App\Http\Controllers\Admin\ImportantInfoController::class);
     });
 });
 

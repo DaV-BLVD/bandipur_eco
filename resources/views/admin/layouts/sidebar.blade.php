@@ -80,6 +80,7 @@
                             'room-rates.*',
                             'rates-table.*',
                             'exclusive-special-offer.*',
+                            'important-infos.*',
                         ],
                         'links' => [
                             [
@@ -106,6 +107,11 @@
                                 'route' => 'exclusive-special-offer.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Exclusive Offers',
+                            ],
+                            [
+                                'route' => 'important-infos.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Important Info',
                             ],
                         ],
                     ],

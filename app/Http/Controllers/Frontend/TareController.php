@@ -9,6 +9,7 @@ use App\Models\RoomRate;
 use App\Models\RatesHero;
 use App\Models\RatesTable;
 use App\Models\ExclusiveSpecialOffer;
+use App\Models\ImportantInfo;
 
 class TareController extends Controller
 {
@@ -22,10 +23,10 @@ class TareController extends Controller
 
         $rates = RatesTable::orderBy('sort_order')->get();
 
-        $offers = ExclusiveSpecialOffer::where('status', true)
-                    ->orderBy('created_at', 'desc')
-                    ->get();
+        $offers = ExclusiveSpecialOffer::where('status', true)->orderBy('created_at', 'desc')->get();
 
-        return view('frontend.pages.tare', compact('rateHeader', 'roomRates', 'hero', 'rates', 'offers'));
+        $infos = ImportantInfo::where('status', true)->orderBy('id', 'asc')->get();
+
+        return view('frontend.pages.tare', compact('rateHeader', 'roomRates', 'hero', 'rates', 'offers', 'infos'));
     }
 }
