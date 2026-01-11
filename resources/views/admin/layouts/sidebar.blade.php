@@ -74,7 +74,7 @@
                     [
                         'title' => 'Rates',
                         'icon' => 'fa-solid fa-envelope-open-text',
-                        'routes' => ['rates-hero.*', 'rate-header.*', 'room-rates.*'],
+                        'routes' => ['rates-hero.*', 'rate-header.*', 'room-rates.*', 'rates-table.*'],
                         'links' => [
                             [
                                 'route' => 'rates-hero.index',
@@ -90,6 +90,11 @@
                                 'route' => 'room-rates.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Room Rates',
+                            ],
+                            [
+                                'route' => 'rates-table.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Rates Table',
                             ],
                         ],
                     ],

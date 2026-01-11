@@ -359,7 +359,6 @@
             </div>
         @endif
 
-
         <!-- Scroll Indicator -->
         <div class="absolute bottom-3 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in-up stagger-4">
             <a href="#rates"
@@ -788,7 +787,7 @@
                 <div
                     class="overflow-hidden bg-white rounded-2xl shadow-xl seasonal-table block transform transition-all duration-500">
                     <div class="overflow-x-auto">
-                        <table class="w-full border-collapse">
+                        {{-- <table class="w-full border-collapse">
                             <thead>
                                 <tr class="bg-gradient-to-r from-[#0a7c15] to-[#6d6d18] text-white">
                                     <th class="py-4 px-6 text-left font-medium">Room Type</th>
@@ -858,10 +857,62 @@
                                     </td>
                                 </tr>
                             </tbody>
+                        </table> --}}
+                        <table class="w-full border-collapse bg-white">
+                            <thead>
+                                <tr class="bg-gradient-to-r from-[#0a7c15] to-[#6d6d18] text-white">
+                                    <th class="py-4 px-6 text-left font-bold uppercase text-xs tracking-widest">Room Type
+                                    </th>
+                                    <th class="py-4 px-6 text-center font-bold uppercase text-xs tracking-widest">Single
+                                        Occupancy</th>
+                                    <th class="py-4 px-6 text-center font-bold uppercase text-xs tracking-widest">Double
+                                        Occupancy</th>
+                                    <th class="py-4 px-6 text-center font-bold uppercase text-xs tracking-widest">Extra Bed
+                                    </th>
+                                    <th class="py-4 px-6 text-center font-bold uppercase text-xs tracking-widest">
+                                        Inclusions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                @foreach ($rates as $rate)
+                                    <tr class="hover:bg-[#0a7c15]/5 transition-colors duration-300 group">
+                                        {{-- Room Type --}}
+                                        <td class="py-4 px-6 text-left font-semibold text-gray-900">
+                                            {{ $rate->room_type }}
+                                        </td>
+
+                                        {{-- Prices --}}
+                                        <td class="py-4 px-6 text-center font-medium text-gray-700">
+                                            {{ $rate->single_price ? ($rate->currency == 'USD' ? '$' : 'रु') . number_format($rate->single_price) : 'N/A' }}
+                                        </td>
+                                        <td class="py-4 px-6 text-center font-medium text-gray-700">
+                                            {{ $rate->double_price ? ($rate->currency == 'USD' ? '$' : 'रु') . number_format($rate->double_price) : 'N/A' }}
+                                        </td>
+                                        <td class="py-4 px-6 text-center font-medium text-gray-700">
+                                            {{ $rate->extra_bed ? ($rate->currency == 'USD' ? '$' : 'रु') . number_format($rate->extra_bed) : 'N/A' }}
+                                        </td>
+
+                                        {{-- Inclusions --}}
+                                        <td class="py-4 px-6">
+                                            <div class="flex flex-wrap justify-center gap-1.5">
+                                                @if (is_array($rate->inclusions))
+                                                    @foreach ($rate->inclusions as $inc)
+                                                        <span
+                                                            class="px-2.5 py-0.5 bg-[#0a7c15]/10 text-[#0a7c15] rounded-full text-[11px] font-bold uppercase tracking-tight">
+                                                            {{ $inc }}
+                                                        </span>
+                                                    @endforeach
+                                                @else
+                                                    <span class="text-gray-400 text-xs">No inclusions</span>
+                                                @endif
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
-
             </div>
 
             <!-- Enhanced Special Offers Section with Animation -->

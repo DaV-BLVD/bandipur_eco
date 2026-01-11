@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\RateHeader;
 use App\Models\RoomRate;
 use App\Models\RatesHero;
+use App\Models\RatesTable;
 
 class TareController extends Controller
 {
@@ -18,6 +19,8 @@ class TareController extends Controller
 
         $hero = RatesHero::latest()->first();
 
-        return view('frontend.pages.tare', compact('rateHeader', 'roomRates', 'hero'));
+        $rates = RatesTable::orderBy('sort_order')->get();
+
+        return view('frontend.pages.tare', compact('rateHeader', 'roomRates', 'hero', 'rates'));
     }
 }

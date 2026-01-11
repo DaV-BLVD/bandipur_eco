@@ -108,6 +108,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/room-rates', App\Http\Controllers\Admin\RoomRateController::class);
 
         Route::resource('/admin/dashboard/rates-hero', \App\Http\Controllers\Admin\RatesHeroController::class);
+
+        Route::resource('/admin/dashboard/rates-table', \App\Http\Controllers\Admin\RatesTableController::class);
     });
 });
 
