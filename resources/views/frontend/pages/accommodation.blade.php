@@ -33,8 +33,11 @@
         <header class="relative h-[85vh] min-h-[500px] flex items-center justify-center overflow-hidden">
             <!-- Background Image -->
             <div class="absolute inset-0 z-0">
-                <img src="{{ asset('frontendimages/way_to_room.png') }}" alt="Bandipur Architecture"
-                    class="w-full h-full object-cover brightness-[0.7]">
+                {{-- <img src="{{ asset('frontendimages/way_to_room.png') }}" alt="Bandipur Architecture"
+                    class="w-full h-full object-cover brightness-[0.7]"> --}}
+                @if ($hero)
+                    <img src="{{ asset('storage/' . $hero->image) }}" alt="{{ $hero->alt_text ?? 'Accommodation Hero Image' }}" class="w-full h-full object-cover brightness-[0.7]">
+                @endif
             </div>
             <!-- Gradient Overlay -->
             <div class="absolute inset-0 bg-gradient-to-t from-[#0a7c15]/40 via-transparent to-black/70"></div>
@@ -226,32 +229,36 @@
                             <li class="flex items-center gap-4">
                                 <div
                                     class="w-10 h-10 rounded-full bg-[#0a7c15]/20 flex items-center justify-center text-[#0a7c15]">
-                                    <i class="fas fa-coffee"></i></div>
+                                    <i class="fas fa-coffee"></i>
+                                </div>
                                 <span>Organic Breakfast with local produce</span>
                             </li>
                             <li class="flex items-center gap-4">
                                 <div
                                     class="w-10 h-10 rounded-full bg-[#0a7c15]/20 flex items-center justify-center text-[#0a7c15]">
-                                    <i class="fas fa-wifi"></i></div>
+                                    <i class="fas fa-wifi"></i>
+                                </div>
                                 <span>High-speed Fiber Internet</span>
                             </li>
                             <li class="flex items-center gap-4">
                                 <div
                                     class="w-10 h-10 rounded-full bg-[#0a7c15]/20 flex items-center justify-center text-[#0a7c15]">
-                                    <i class="fas fa-om"></i></div>
+                                    <i class="fas fa-om"></i>
+                                </div>
                                 <span>Morning Yoga Session</span>
                             </li>
                             <li class="flex items-center gap-4">
                                 <div
                                     class="w-10 h-10 rounded-full bg-[#0a7c15]/20 flex items-center justify-center text-[#0a7c15]">
-                                    <i class="fas fa-hiking"></i></div>
+                                    <i class="fas fa-hiking"></i>
+                                </div>
                                 <span>Guided Village Walk</span>
                             </li>
                         </ul>
                     </div>
                     <div class="relative">
                         <div class="border-4 border-[#6d6d18] rounded-lg p-2">
-                            <img src="{{ asset('frontendimages/hotel_entrance.png')}}" alt="Breakfast View"
+                            <img src="{{ asset('frontendimages/hotel_entrance.png') }}" alt="Breakfast View"
                                 class="w-full rounded shadow-2xl">
                         </div>
                         <div class="absolute -bottom-10 -left-10 bg-[#0a7c15] p-6 rounded-lg shadow-xl hidden md:block">

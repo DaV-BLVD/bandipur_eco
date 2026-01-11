@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\AccommodationController;
 use App\Http\Controllers\Frontend\BookingModelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontend\ContactController;
@@ -18,8 +19,9 @@ Route::get('/', function () {
     return view('frontend.pages.home');
 });
 Route::view('/about', 'frontend.pages.about')->name('about');
-Route::view('/accommodation', 'frontend.pages.accommodation')->name('accommodation');
-Route::view('/tare', 'frontend.pages.tare')->name('tare');
+// Route::view('/accommodation', 'frontend.pages.accommodation')->name('accommodation');
+// Route::view('/tare', 'frontend.pages.tare')->name('tare');
+Route::get('/accommodation', [AccommodationController::class, 'index'])->name('accommodation');
 Route::get('/tare', [TareController::class, 'index'])->name('tare');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
@@ -114,6 +116,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/exclusive-special-offer', \App\Http\Controllers\Admin\ExclusiveSpecialOfferController::class);
 
         Route::resource('/admin/dashboard/important-infos', \App\Http\Controllers\Admin\ImportantInfoController::class);
+
+        Route::resource('/admin/dashboard/accommodation-hero', \App\Http\Controllers\Admin\AccommodationHeroController::class);
     });
 });
 
