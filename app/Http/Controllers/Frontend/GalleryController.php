@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\GalleryHero;
 use App\Models\GalleryHeader;
+use App\Models\GalleryContent;
 
 class GalleryController extends Controller
 {
@@ -14,6 +15,16 @@ class GalleryController extends Controller
 
         $header = GalleryHeader::where('is_active', true)->latest()->first();
 
-        return view('frontend.pages.gallery', compact('hero', 'header'));
+        $galleryItems = GalleryContent::where('is_active', true)
+            ->orderBy('sort_order')
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'src' => asset('storage/' . $item->image),
+                    'category' => $item->category,
+                    'title' => $item->title,
+                ];
+            });
+        return view('frontend.pages.gallery', compact('hero', 'header', 'galleryItems'));
     }
 }

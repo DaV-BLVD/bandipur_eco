@@ -74,12 +74,22 @@
                     [
                         'title' => 'Gallery',
                         'icon' => 'fa-solid fa-envelope-open-text',
-                        'routes' => ['gallery-hero.*'],
+                        'routes' => ['gallery-hero.*', 'gallery-headers.*', 'gallery-contents.*'],
                         'links' => [
                             [
                                 'route' => 'gallery-hero.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Hero Section',
+                            ],
+                            [
+                                'route' => 'gallery-headers.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Hero Header',
+                            ],
+                            [
+                                'route' => 'gallery-contents.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Gallery Contents',
                             ],
                         ],
                     ],

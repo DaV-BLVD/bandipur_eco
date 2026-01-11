@@ -98,6 +98,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/gallery-hero', App\Http\Controllers\Admin\GalleryHeroController::class);
 
         Route::resource('/admin/dashboard/gallery-headers', App\Http\Controllers\Admin\GalleryHeaderController::class);
+
+        Route::resource('/admin/dashboard/gallery-contents', App\Http\Controllers\Admin\GalleryContentController::class);
     });
 });
 

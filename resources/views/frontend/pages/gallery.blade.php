@@ -221,52 +221,54 @@
     @push('script')
         <script>
             // --- 1. JSON DATA CONFIGURATION ---
-            const galleryData = [{
-                    src: "{{ asset('frontendimages/hotel_entrance.png') }}",
-                    category: "exterior",
-                    title: "The Main Lodge"
-                },
-                {
-                    src: "{{ asset('frontendimages/rooms/double.png') }}",
-                    category: "interiors",
-                    title: "Deluxe Suite"
-                },
-                {
-                    src: "{{ asset('frontendimages/tempels.png') }}",
-                    category: "culture",
-                    title: "Newari Architecture"
-                },
-                {
-                    src: "{{ asset('frontendimages/cusin.png') }}",
-                    category: "dining",
-                    title: "Morning Coffee"
-                },
-                {
-                    src: "{{ asset('frontendimages/site_view.png') }}",
-                    category: "exterior",
-                    title: "Sunrise View"
-                },
-                {
-                    src: "{{ asset('frontendimages/bath.png') }}",
-                    category: "interiors",
-                    title: "Royal Bathroom"
-                },
-                {
-                    src: "{{ asset('frontendimages/cusin.png') }}",
-                    category: "culture",
-                    title: "Bandipur Streets"
-                },
-                {
-                    src: "{{ asset('frontendimages/bandipureco.png') }}",
-                    category: "dining",
-                    title: "Traditional Dinner"
-                },
-                {
-                    src: "{{ asset('frontendimages/order.png') }}",
-                    category: "exterior",
-                    title: "The Terrace"
-                }
-            ];
+            // const galleryData = [{
+            //         src: "{{ asset('frontendimages/hotel_entrance.png') }}",
+            //         category: "exterior",
+            //         title: "The Main Lodge"
+            //     },
+            //     {
+            //         src: "{{ asset('frontendimages/rooms/double.png') }}",
+            //         category: "interiors",
+            //         title: "Deluxe Suite"
+            //     },
+            //     {
+            //         src: "{{ asset('frontendimages/tempels.png') }}",
+            //         category: "culture",
+            //         title: "Newari Architecture"
+            //     },
+            //     {
+            //         src: "{{ asset('frontendimages/cusin.png') }}",
+            //         category: "dining",
+            //         title: "Morning Coffee"
+            //     },
+            //     {
+            //         src: "{{ asset('frontendimages/site_view.png') }}",
+            //         category: "exterior",
+            //         title: "Sunrise View"
+            //     },
+            //     {
+            //         src: "{{ asset('frontendimages/bath.png') }}",
+            //         category: "interiors",
+            //         title: "Royal Bathroom"
+            //     },
+            //     {
+            //         src: "{{ asset('frontendimages/cusin.png') }}",
+            //         category: "culture",
+            //         title: "Bandipur Streets"
+            //     },
+            //     {
+            //         src: "{{ asset('frontendimages/bandipureco.png') }}",
+            //         category: "dining",
+            //         title: "Traditional Dinner"
+            //     },
+            //     {
+            //         src: "{{ asset('frontendimages/order.png') }}",
+            //         category: "exterior",
+            //         title: "The Terrace"
+            //     }
+            // ];
+
+            const galleryData = @json($galleryItems);
 
             // --- 2. RENDER LOGIC (Enhanced for Style) ---
             function renderGallery() {
@@ -278,34 +280,30 @@
                     const delay = index * 100;
 
                     html += `
-            <div class="gallery-item gallery-item-loaded group relative overflow-hidden rounded-md cursor-pointer shadow-md hover:shadow-xl transition-all duration-500" 
-                 data-category="${item.category}" 
-                 onclick="openLightbox(${index})"
-                 style="animation-delay: ${delay}ms">
+                        <div class="gallery-item gallery-item-loaded group relative overflow-hidden rounded-md cursor-pointer shadow-md hover:shadow-xl transition-all duration-500" data-category="${item.category}" onclick="openLightbox(${index})" style="animation-delay: ${delay}ms">    
                 
-                <!-- Image with Zoom on Hover -->
-                <img src="${item.src}" 
-                     class="w-full h-auto transform transition-transform duration-700 ease-in-out group-hover:scale-110 grayscale-[10%] group-hover:grayscale-0" 
-                     alt="${item.title}">
+                        <!-- Image with Zoom on Hover -->
+                        <img src="${item.src}" class="w-full h-auto transform transition-transform duration-700 ease-in-out group-hover:scale-110 grayscale-[10%] group-hover:grayscale-0" alt="${item.title}">
                 
-                <!-- Overlay with Gradient & Text Slide Up -->
-                <div class="absolute inset-0 bg-gradient-to-t from-[#0a7c15]/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end items-center pb-8">
+                        <!-- Overlay with Gradient & Text Slide Up -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a7c15]/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end items-center pb-8">
                     
-                    <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
-                        <i class="fas fa-expand text-white text-2xl mb-2 opacity-80"></i>
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                            <i class="fas fa-expand text-white text-2xl mb-2 opacity-80"></i>
+                        </div>
+                    
+                        <span class="font-['Playfair_Display'] font-bold text-xl text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150 relative">
+                            ${item.title}
+                            <span class="block w-full h-[1px] bg-[#6d6d18] mt-2 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-200">
+                            </span>
+                        </span>
+                    
+                        <span class="text-[#6d6d18] text-[10px] uppercase tracking-widest mt-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200 bg-white/90 px-2 py-1 rounded-sm">
+                            ${item.category}
+                        </span>
                     </div>
-                    
-                    <span class="font-['Playfair_Display'] font-bold text-xl text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150 relative">
-                        ${item.title}
-                        <span class="block w-full h-[1px] bg-[#6d6d18] mt-2 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-200"></span>
-                    </span>
-                    
-                    <span class="text-[#6d6d18] text-[10px] uppercase tracking-widest mt-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200 bg-white/90 px-2 py-1 rounded-sm">
-                        ${item.category}
-                    </span>
                 </div>
-            </div>
-            `;
+                `;
                 });
 
                 container.innerHTML = html;
