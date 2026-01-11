@@ -36,7 +36,9 @@
                 {{-- <img src="{{ asset('frontendimages/way_to_room.png') }}" alt="Bandipur Architecture"
                     class="w-full h-full object-cover brightness-[0.7]"> --}}
                 @if ($hero)
-                    <img src="{{ asset('storage/' . $hero->image) }}" alt="{{ $hero->alt_text ?? 'Accommodation Hero Image' }}" class="w-full h-full object-cover brightness-[0.7]">
+                    <img src="{{ asset('storage/' . $hero->image) }}"
+                        alt="{{ $hero->alt_text ?? 'Accommodation Hero Image' }}"
+                        class="w-full h-full object-cover brightness-[0.7]">
                 @endif
             </div>
             <!-- Gradient Overlay -->
@@ -44,7 +46,7 @@
 
             <!-- Content -->
             <div class="relative z-10 text-center px-4 fade-in-section">
-                <span
+                {{-- <span
                     class="inline-block py-1 px-5 border border-[#6d6d18] text-[#6d6d18] bg-white/90 uppercase tracking-[0.2em] text-xs font-bold mb-4 rounded-sm shadow-lg">
                     The Heritage Experience
                 </span>
@@ -53,7 +55,23 @@
                 </h1>
                 <p class="text-gray-100 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
                     Traditional Newari aesthetics meet modern hillside luxury. Choose your perfect sanctuary.
-                </p>
+                </p> --}}
+
+                @if ($header)
+                    <span
+                        class="inline-block py-1 px-5 border border-[#6d6d18] text-[#6d6d18] bg-white/90 uppercase tracking-[0.2em] text-xs font-bold mb-4 rounded-sm shadow-lg">
+                        {{ $header->badge_text }}
+                    </span>
+
+                    <h1 class="text-5xl md:text-7xl font-['Playfair_Display'] text-white font-bold mb-6 drop-shadow-2xl">
+                        {{ $header->title }}
+                    </h1>
+
+                    <p class="text-gray-100 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+                        {{ $header->description }}
+                    </p>
+                @endif
+
             </div>
         </header>
 

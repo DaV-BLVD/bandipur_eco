@@ -75,13 +75,18 @@
                         'title' => 'Accommodation',
                         'icon' => 'fa-solid fa-envelope-open-text',
                         'routes' => [
-                            'accommodation-hero.*',
+                            'accommodation-hero.*', 'accommodation-header.*',
                         ],
                         'links' => [
                             [
                                 'route' => 'accommodation-hero.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Hero Section',
+                            ],
+                            [
+                                'route' => 'accommodation-header.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Header Section',
                             ],
                         ],
                     ],

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AccommodationHero;
+use App\Models\AccommodationHeader;
 
 class AccommodationController extends Controller
 {
@@ -12,6 +13,8 @@ class AccommodationController extends Controller
     {
         $hero = AccommodationHero::where('status', true)->latest()->first();
 
-        return view('frontend.pages.accommodation', compact('hero'));
+        $header = AccommodationHeader::where('status', true)->latest()->first();
+
+        return view('frontend.pages.accommodation', compact('hero', 'header'));
     }
 }

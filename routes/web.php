@@ -118,6 +118,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/important-infos', \App\Http\Controllers\Admin\ImportantInfoController::class);
 
         Route::resource('/admin/dashboard/accommodation-hero', \App\Http\Controllers\Admin\AccommodationHeroController::class);
+
+        Route::resource('/admin/dashboard/accommodation-header', \App\Http\Controllers\Admin\AccommodationHeaderController::class);
     });
 });
 
