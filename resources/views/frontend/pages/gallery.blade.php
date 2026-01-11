@@ -111,7 +111,7 @@
 
             <!-- Content -->
             <div class="relative z-10 container mx-auto px-6 text-center reveal-on-scroll">
-                <span
+                {{-- <span
                     class="inline-block py-1 px-4 border border-[#6d6d18] text-[#6d6d18] bg-black/20 backdrop-blur-sm uppercase tracking-[0.2em] text-[10px] md:text-xs font-bold mb-6 rounded-sm">
                     Bandipur Heritage
                 </span>
@@ -120,7 +120,28 @@
                 </h1>
                 <p class="text-gray-200 text-lg md:text-xl max-w-lg mx-auto font-light leading-relaxed">
                     Glimpses of life above the clouds.
-                </p>
+                </p> --}}
+
+                @if ($header)
+                    <span
+                        class="inline-block py-1 px-4 border border-[#6d6d18] text-[#6d6d18]
+                        bg-black/20 backdrop-blur-sm uppercase tracking-[0.2em]
+                        text-[10px] md:text-xs font-bold mb-6 rounded-sm">
+                        {{ $header->badge_text }}
+                    </span>
+
+                    <h1
+                        class="text-5xl md:text-7xl font-['Playfair_Display']
+                        font-bold text-white mb-6 drop-shadow-xl">
+                        {{ $header->title }}
+                    </h1>
+
+                    <p
+                        class="text-gray-200 text-lg md:text-xl max-w-lg mx-auto
+                        font-light leading-relaxed">
+                        {{ $header->subtitle }}
+                    </p>
+                @endif
             </div>
         </header>
 

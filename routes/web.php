@@ -96,6 +96,8 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('/admin/dashboard/reserve-submissions/{reserveSubmission}/unread', [App\Http\Controllers\Admin\ReserveSubmissionController::class, 'markAsUnread'])->name('reserve-submissions.unread');
 
         Route::resource('/admin/dashboard/gallery-hero', App\Http\Controllers\Admin\GalleryHeroController::class);
+
+        Route::resource('/admin/dashboard/gallery-headers', App\Http\Controllers\Admin\GalleryHeaderController::class);
     });
 });
 
