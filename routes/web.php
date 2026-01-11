@@ -110,6 +110,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/rates-hero', \App\Http\Controllers\Admin\RatesHeroController::class);
 
         Route::resource('/admin/dashboard/rates-table', \App\Http\Controllers\Admin\RatesTableController::class);
+
+        Route::resource('/admin/dashboard/exclusive-special-offer', \App\Http\Controllers\Admin\ExclusiveSpecialOfferController::class);
     });
 });
 

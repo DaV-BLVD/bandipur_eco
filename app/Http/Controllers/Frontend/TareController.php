@@ -8,6 +8,7 @@ use App\Models\RateHeader;
 use App\Models\RoomRate;
 use App\Models\RatesHero;
 use App\Models\RatesTable;
+use App\Models\ExclusiveSpecialOffer;
 
 class TareController extends Controller
 {
@@ -21,6 +22,10 @@ class TareController extends Controller
 
         $rates = RatesTable::orderBy('sort_order')->get();
 
-        return view('frontend.pages.tare', compact('rateHeader', 'roomRates', 'hero', 'rates'));
+        $offers = ExclusiveSpecialOffer::where('status', true)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+
+        return view('frontend.pages.tare', compact('rateHeader', 'roomRates', 'hero', 'rates', 'offers'));
     }
 }

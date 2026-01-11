@@ -74,7 +74,13 @@
                     [
                         'title' => 'Rates',
                         'icon' => 'fa-solid fa-envelope-open-text',
-                        'routes' => ['rates-hero.*', 'rate-header.*', 'room-rates.*', 'rates-table.*'],
+                        'routes' => [
+                            'rates-hero.*',
+                            'rate-header.*',
+                            'room-rates.*',
+                            'rates-table.*',
+                            'exclusive-special-offer.*',
+                        ],
                         'links' => [
                             [
                                 'route' => 'rates-hero.index',
@@ -95,6 +101,11 @@
                                 'route' => 'rates-table.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Rates Table',
+                            ],
+                            [
+                                'route' => 'exclusive-special-offer.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Exclusive Offers',
                             ],
                         ],
                     ],

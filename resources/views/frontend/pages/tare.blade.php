@@ -937,7 +937,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto" id="offers-container">
                     <!-- Special Offer 1 - Enhanced Design -->
-                    <div class="bg-white rounded-xl overflow-hidden shadow-xl relative group special-offer-card">
+                    {{-- <div class="bg-white rounded-xl overflow-hidden shadow-xl relative group special-offer-card">
                         <div
                             class="absolute -right-16 -top-16 w-32 h-32 bg-gradient-to-br from-[#0a7c15] to-[#6d6d18] rounded-full opacity-10 group-hover:scale-150 transition-transform duration-500">
                         </div>
@@ -949,7 +949,7 @@
                         <div class="p-8 relative">
                             <div class="flex items-center mb-6">
                                 <div
-                                    class="bg-[#6d6d18]/70 p-4 rounded-full mr-5 group-hover:scale-110 transition-transform duration-300">
+                                    class="bg-[#6d6d18]/10 p-4 rounded-full mr-5 group-hover:scale-110 transition-transform duration-300">
                                     <svg class="h-8 w-8 text-[#6d6d18]" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1106,7 +1106,84 @@
                                 class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0a7c15] to-[#6d6d18] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+
+                    @foreach ($offers as $offer)
+                        <div
+                            class="bg-white rounded-xl overflow-hidden shadow-xl relative group transition-all duration-300 hover:-translate-y-2">
+                            {{-- Animated Background Decorative Circle --}}
+                            <div
+                                class="absolute -right-16 -top-16 w-32 h-32 bg-gradient-to-br from-[#0a7c15] to-[#6d6d18] rounded-full opacity-10 group-hover:scale-150 transition-transform duration-500">
+                            </div>
+
+                            {{-- Exclusive Badge --}}
+                            <div class="absolute right-0 top-0 bg-gradient-to-l from-[#0a7c15] to-[#6d6d18] text-white px-5 py-2 font-bold text-sm z-10"
+                                style="clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);">
+                                EXCLUSIVE
+                            </div>
+
+                            <div class="p-8 relative">
+                                {{-- Header: Icon & Title --}}
+                                <div class="flex items-center mb-6">
+                                    <div
+                                        class="bg-[#6d6d18]/10 p-4 rounded-full mr-5 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center w-16 h-16">
+                                        {{-- Uses dynamic icon from DB, falls back to star --}}
+                                        <i class="{{ $offer->icon ?? 'fas fa-star' }} text-2xl text-[#6d6d18]"></i>
+                                    </div>
+                                    <div>
+                                        <h4
+                                            class="text-2xl font-bold text-gray-800 mb-1 group-hover:text-[#0a7c15] transition-colors duration-300">
+                                            {{ $offer->title }}
+                                        </h4>
+                                        <div class="flex items-center">
+                                            <span
+                                                class="text-sm font-semibold text-[#0a7c15]">{{ $offer->discount ?? 'Special Offer' }}</span>
+
+                                            {{-- Static 5-star rating for aesthetic --}}
+                                            <div class="flex items-center ml-3 text-amber-500">
+                                                @for ($i = 0; $i < 5; $i++)
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                        fill="currentColor" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                                    </svg>
+                                                @endfor
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- Description --}}
+                                <div class="mb-8">
+                                    <p class="text-gray-600 leading-relaxed min-h-[4.5rem]">
+                                        {{ Str::limit($offer->description, 140) }}
+                                    </p>
+                                </div>
+
+                                {{-- Footer: Tags & Button --}}
+                                <div class="flex flex-col md:flex-row gap-4 items-center justify-between relative z-10">
+                                    <div class="flex flex-wrap gap-2">
+                                        @forelse ($offer->tags ?? [] as $tag)
+                                            <span
+                                                class="px-3 py-1 bg-[#0a7c15]/10 text-[#0a7c15] rounded-full text-xs font-medium">
+                                                {{ $tag }}
+                                            </span>
+                                        @empty
+                                            <span
+                                                class="px-3 py-1 bg-gray-100 text-gray-500 rounded-full text-xs font-medium">
+                                                Limited Offer
+                                            </span>
+                                        @endforelse
+                                    </div>
+                                </div>
+
+                                {{-- Bottom Animated Border --}}
+                                <div
+                                    class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0a7c15] to-[#6d6d18] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
 
