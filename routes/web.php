@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\ReserveSubmissionController;
 use App\Http\Controllers\Frontend\GalleryController;
+use App\Http\Controllers\Frontend\TareController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('welcome', function () {
@@ -19,6 +20,7 @@ Route::get('/', function () {
 Route::view('/about', 'frontend.pages.about')->name('about');
 Route::view('/accommodation', 'frontend.pages.accommodation')->name('accommodation');
 Route::view('/tare', 'frontend.pages.tare')->name('tare');
+Route::get('/tare', [TareController::class, 'index'])->name('tare');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
@@ -100,6 +102,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/gallery-headers', App\Http\Controllers\Admin\GalleryHeaderController::class);
 
         Route::resource('/admin/dashboard/gallery-contents', App\Http\Controllers\Admin\GalleryContentController::class);
+
+        Route::resource('/admin/dashboard/rate-header', App\Http\Controllers\Admin\RateHeaderController::class);
     });
 });
 

@@ -282,48 +282,83 @@
     <header
         style="background-image: url('{{ asset('frontendimages/bandipureco.png') }}');  background-size: cover; background-position: center; background-repeat: no-repeat;"
         class=" relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-black/90 via-[#1a2a1a]/70 to-black/90"></div>
-        <div class="relative z-10 max-w-6xl mx-auto px-6 text-center pt-14 pb-20 ">
-            <!-- Decorative Line -->
-            <div class="flex items-center justify-center gap-4 mb-8 opacity-0 animate-fade-in-up">
-                <div class="w-16 h-px bg-gradient-to-r from-transparent to-[#6d6d18]"></div>
-                <div class="w-2 h-2 bg-[#6d6d18] rotate-45"></div>
-                <span class="text-[#9d9d48] uppercase tracking-[0.3em] text-sm font-medium">Luxury Resort</span>
-                <div class="w-2 h-2 bg-[#0a7c15] rotate-45"></div>
-                <div class="w-16 h-px bg-gradient-to-l from-transparent to-[#0a7c15]"></div>
+        @if ($rateHeader)
+            <div class="absolute inset-0 bg-gradient-to-br from-black/90 via-[#1a2a1a]/70 to-black/90"></div>
+            <div class="relative z-10 max-w-6xl mx-auto px-6 text-center pt-14 pb-20 ">
+                <!-- Decorative Line -->
+                <div class="flex items-center justify-center gap-4 mb-8 opacity-0 animate-fade-in-up">
+                    <div class="w-16 h-px bg-gradient-to-r from-transparent to-[#6d6d18]"></div>
+                    <div class="w-2 h-2 bg-[#6d6d18] rotate-45"></div>
+                    {{-- <span class="text-[#9d9d48] uppercase tracking-[0.3em] text-sm font-medium">Luxury Resort</span> --}}
+                    <span class="text-[#9d9d48] uppercase tracking-[0.3em] text-sm font-medium">
+                        {{ $rateHeader->badge_text }}
+                    </span>
+                    <div class="w-2 h-2 bg-[#0a7c15] rotate-45"></div>
+                    <div class="w-16 h-px bg-gradient-to-l from-transparent to-[#0a7c15]"></div>
+                </div>
+
+                {{-- <h1
+                    class="font-display text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 opacity-0 animate-fade-in-up stagger-1">
+                    Our <span class="gradient-text ">Rates</span>
+                </h1> --}}
+                <h1 class="font-display text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6">
+                    {{ $rateHeader->title }}
+                    <span class="gradient-text">{{ $rateHeader->highlight_text }}</span>
+                </h1>
+                {{-- <p
+                    class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 opacity-0 animate-fade-in-up stagger-2 leading-relaxed">
+                    Experience unparalleled luxury with transparent pricing designed for your perfect getaway
+                </p> --}}
+                <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                    {{ $rateHeader->description }}
+                </p>
+
+                <!-- Stats -->
+                {{-- <div class="flex flex-wrap justify-center gap-8 md:gap-16 mt-12 opacity-0 animate-fade-in-up stagger-3">
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold text-white mb-2 counter" data-target="5">0</div>
+                        <div class="text-[#9d9d48] uppercase tracking-wider text-sm">Room Types</div>
+                    </div>
+                    <div class="w-px h-16 bg-gradient-to-b from-transparent via-[#6d6d18] to-transparent hidden md:block">
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold text-white mb-2"><span class="counter"
+                                data-target="30">0</span>%</div>
+                        <div class="text-[#9d9d48] uppercase tracking-wider text-sm">Off-Season Savings</div>
+                    </div>
+                    <div class="w-px h-16 bg-gradient-to-b from-transparent via-[#0a7c15] to-transparent hidden md:block">
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold text-white mb-2 counter" data-target="24">0</div>
+                        <div class="text-[#9d9d48] uppercase tracking-wider text-sm">Hour Service</div>
+                    </div>
+                </div> --}}
+                <div class="flex flex-wrap justify-center gap-8 md:gap-16 mt-12 opacity-0 animate-fade-in-up stagger-3">
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold text-white mb-2 counter"
+                            data-target="{{ $rateHeader->room_types }}">{{ $rateHeader->room_types }}</div>
+                        <div class="text-[#9d9d48] uppercase tracking-wider text-sm">Room Types</div>
+                    </div>
+                    <div class="w-px h-16 bg-gradient-to-b from-transparent via-[#6d6d18] to-transparent hidden md:block">
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold text-white mb-2">
+                            <span class="counter"
+                                data-target="{{ $rateHeader->off_season_discount }}">{{ $rateHeader->off_season_discount }}</span>%
+                        </div>
+                        <div class="text-[#9d9d48] uppercase tracking-wider text-sm">Off-Season Savings</div>
+                    </div>
+                    <div class="w-px h-16 bg-gradient-to-b from-transparent via-[#0a7c15] to-transparent hidden md:block">
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold text-white counter"
+                            data-target="{{ $rateHeader->service_hours }}">{{ $rateHeader->service_hours }}</div>
+                        <div class="text-[#9d9d48] uppercase tracking-wider text-sm">Hour Service</div>
+                    </div>
+                </div>
             </div>
+        @endif
 
-            <h1
-                class="font-display text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 opacity-0 animate-fade-in-up stagger-1">
-                Our <span class="gradient-text ">Rates</span>
-            </h1>
-
-            <p
-                class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 opacity-0 animate-fade-in-up stagger-2 leading-relaxed">
-                Experience unparalleled luxury with transparent pricing designed for your perfect getaway
-            </p>
-
-            <!-- Stats -->
-            <div class="flex flex-wrap justify-center gap-8 md:gap-16 mt-12 opacity-0 animate-fade-in-up stagger-3">
-                <div class="text-center">
-                    <div class="text-4xl md:text-5xl font-bold text-white mb-2 counter" data-target="5">0</div>
-                    <div class="text-[#9d9d48] uppercase tracking-wider text-sm">Room Types</div>
-                </div>
-                <div class="w-px h-16 bg-gradient-to-b from-transparent via-[#6d6d18] to-transparent hidden md:block">
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl md:text-5xl font-bold text-white mb-2"><span class="counter"
-                            data-target="30">0</span>%</div>
-                    <div class="text-[#9d9d48] uppercase tracking-wider text-sm">Off-Season Savings</div>
-                </div>
-                <div class="w-px h-16 bg-gradient-to-b from-transparent via-[#0a7c15] to-transparent hidden md:block">
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl md:text-5xl font-bold text-white mb-2 counter" data-target="24">0</div>
-                    <div class="text-[#9d9d48] uppercase tracking-wider text-sm">Hour Service</div>
-                </div>
-            </div>
-        </div>
 
         <!-- Scroll Indicator -->
         <div class="absolute bottom-3 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in-up stagger-4">
@@ -339,7 +374,7 @@
     <section class="py-[70px]" id="rates"></section>
     <!-- Rate Section  -->
     <section class="pb-16 px-4 bg-(--primary)/20 relative overflow-hidden">
-        
+
         <div class="absolute bottom-0 left-0 w-72 h-72 bg-[#6d6d18]/30 rounded-full translate-x-10 translate-y-20 blur-3xl">
         </div>
 
@@ -1110,7 +1145,8 @@
             </div>
 
             <!-- Enhanced Policy Information with Animated Cards -->
-            <div class="mt-24 opacity-0 translate-y-10 transition-all duration-1000 delay-900 ease-out" id="policy-section">
+            <div class="mt-24 opacity-0 translate-y-10 transition-all duration-1000 delay-900 ease-out"
+                id="policy-section">
                 <div class="text-center mb-12">
                     <span
                         class="inline-block px-4 py-1 bg-[#6d6d18]/10 text-[#6d6d18] rounded-full text-sm font-semibold mb-3">RESORT
@@ -1296,7 +1332,7 @@
 
     @push('script')
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 // Reveal animations on scroll
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -1355,7 +1391,7 @@
                 const offSeasonalRates = document.querySelectorAll('.off-seasonal-rate');
 
                 // Card toggle with enhanced slider effect
-                seasonalBtn.addEventListener('click', function () {
+                seasonalBtn.addEventListener('click', function() {
                     toggleBackground.style.transform = 'translateX(0)';
                     seasonalBtn.classList.add('text-white');
                     seasonalBtn.classList.remove('text-gray-700');
@@ -1372,7 +1408,7 @@
                     });
                 });
 
-                offSeasonBtn.addEventListener('click', function () {
+                offSeasonBtn.addEventListener('click', function() {
                     toggleBackground.style.transform = 'translateX(100%)';
                     offSeasonBtn.classList.add('text-white');
                     offSeasonBtn.classList.remove('text-gray-700');
@@ -1396,7 +1432,7 @@
                 const seasonalTable = document.getElementById('seasonalTable');
                 const offSeasonTable = document.getElementById('offSeasonTable');
 
-                tableSeasonalBtn.addEventListener('click', function () {
+                tableSeasonalBtn.addEventListener('click', function() {
                     tableToggleBackground.style.transform = 'translateX(0)';
                     tableSeasonalBtn.classList.add('text-white');
                     tableSeasonalBtn.classList.remove('text-gray-700');
@@ -1412,7 +1448,7 @@
                     animateTableRows(seasonalTable);
                 });
 
-                tableOffSeasonBtn.addEventListener('click', function () {
+                tableOffSeasonBtn.addEventListener('click', function() {
                     tableToggleBackground.style.transform = 'translateX(100%)';
                     tableOffSeasonBtn.classList.add('text-white');
                     tableOffSeasonBtn.classList.remove('text-gray-700');

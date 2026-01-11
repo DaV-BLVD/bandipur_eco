@@ -72,6 +72,18 @@
             @php
                 $dropdowns = [
                     [
+                        'title' => 'Rates',
+                        'icon' => 'fa-solid fa-envelope-open-text',
+                        'routes' => ['rate-header.*'],
+                        'links' => [
+                            [
+                                'route' => 'rate-header.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Rate Headers',
+                            ],
+                        ],
+                    ],
+                    [
                         'title' => 'Gallery',
                         'icon' => 'fa-solid fa-envelope-open-text',
                         'routes' => ['gallery-hero.*', 'gallery-headers.*', 'gallery-contents.*'],
