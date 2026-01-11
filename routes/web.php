@@ -104,6 +104,10 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/gallery-contents', App\Http\Controllers\Admin\GalleryContentController::class);
 
         Route::resource('/admin/dashboard/rate-header', App\Http\Controllers\Admin\RateHeaderController::class);
+
+        Route::resource('/admin/dashboard/room-rates', App\Http\Controllers\Admin\RoomRateController::class);
+
+        Route::resource('/admin/dashboard/rates-hero', \App\Http\Controllers\Admin\RatesHeroController::class);
     });
 });
 

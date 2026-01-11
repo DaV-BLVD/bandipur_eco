@@ -186,7 +186,7 @@
             }
         </style>
     @endpush
-
+    <title>Home | Bandipur</title>
     {{-- hero section --}}
     <div id="hero-wrapper" class="sticky top-0 h-screen w-full overflow-hidden z-0 bg-black">
         <div class="" id='hero-bg'>

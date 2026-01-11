@@ -280,7 +280,7 @@
     @endpush
     <!-- Hero Section -->
     <header
-        style="background-image: url('{{ asset('frontendimages/bandipureco.png') }}');  background-size: cover; background-position: center; background-repeat: no-repeat;"
+        style="background-image: url('{{ $hero ? asset('storage/' . $hero->image) : '' }}');  background-size: cover; background-position: center; background-repeat: no-repeat;"
         class=" relative min-h-screen flex items-center justify-center overflow-hidden">
         @if ($rateHeader)
             <div class="absolute inset-0 bg-gradient-to-br from-black/90 via-[#1a2a1a]/70 to-black/90"></div>
@@ -370,7 +370,6 @@
         </div>
     </header>
 
-
     <section class="py-[70px]" id="rates"></section>
     <!-- Rate Section  -->
     <section class="pb-16 px-4 bg-(--primary)/20 relative overflow-hidden">
@@ -388,13 +387,13 @@
 
         <div class="max-w-6xl mx-auto relative">
             <!-- Section Header with Enhanced Animation -->
-            <div class="text-center mb-16 opacity-0 translate-y-10 transition-all duration-1000 ease-out"
+            <div class="text-center mb-5 opacity-0 translate-y-10 transition-all duration-1000 ease-out"
                 id="section-header">
                 <span
                     class="inline-block px-4 py-1 bg-[#0a7c15]/10 text-[#0a7c15] rounded-full text-sm font-semibold mb-3 animate-pulse">RESORT
                     ACCOMMODATION</span>
                 <h2
-                    class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#6d6d18] to-[#0a7c15] bg-clip-text text-transparent">
+                    class="text-4xl md:text-5xl font-bold mb-4 p-2 bg-gradient-to-r from-[#6d6d18] to-[#0a7c15] bg-clip-text text-transparent">
                     Experience Luxury in Bandipur</h2>
                 <div class="flex items-center justify-center mb-5">
                     <div class="h-1 w-10 bg-[#6d6d18] rounded-full"></div>
@@ -407,30 +406,11 @@
                 </p>
             </div>
 
-            <!-- Enhanced Season Toggle with Animation -->
-            <div class="flex justify-center mb-12 opacity scale-95 transition-all duration-700 delay-300 ease-out"
-                id="season-toggle">
-                <div
-                    class="bg-(--primary)/50 rounded-full inline-flex shadow-lg border border-gray-100 relative overflow-hidden group">
-                    <div id="toggleBackground"
-                        class="absolute h-full w-1/2 bg-gradient-to-r from-[#0a7c15] to-[#6d6d18] rounded-full left-0 transition-all duration-500 ease-in-out">
-                    </div>
-                    <button id="seasonalBtn"
-                        class="relative z-10 px-4 py-3 rounded-full font-medium transition-all duration-300 text-white">
-                        Peak Season
-                    </button>
-                    <button id="offSeasonBtn"
-                        class="relative z-10 px-4 py-3 rounded-full font-medium transition-all duration-300 text-gray-700">
-                        Off Season
-                    </button>
-                </div>
-            </div>
-
             <!-- Enhanced Rate Cards Container with Staggered Animations -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="rate-cards">
 
                 <!-- Enhanced Rate Card 1 - Standard Room -->
-                <div
+                {{-- <div
                     class="relative bg-white rounded-2xl overflow-hidden shadow-xl group transition-all duration-500 card-animate">
                     <div
                         class="absolute inset-0 bg-gradient-to-b from-[#0a7c15]/0 via-[#0a7c15]/0 to-[#0a7c15]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none">
@@ -450,7 +430,6 @@
                     </div>
 
                     <div class="p-8 relative">
-
 
                         <span class="text-sm text-[#0a7c15] font-semibold tracking-wider uppercase">Standard</span>
                         <h3
@@ -515,24 +494,6 @@
                             </div>
                         </div>
 
-                        <div class="rate off-seasonal-rate hidden transform transition-all duration-500">
-                            <div class="flex justify-between items-start flex-col gap-6">
-                                <div>
-                                    <p class="text-sm text-gray-500">From</p>
-                                    <div class="flex items-baseline">
-                                        <p class="md:text-3xl text-base font-bold text-[#6d6d18]">$85</p>
-                                        <p class="text-sm text-gray-500 ml-1">/ night</p>
-                                    </div>
-                                </div>
-                                <a onclick="openBookingModal()"
-                                    class="relative overflow-hidden bg-[#0a7c15] text-white px-4 py-2 lg:px-6 lg:py-3 rounded-lg shadow-lg transform transition-all duration-300 hover:translate-y-1 hover:shadow-none group-hover:bg-gradient-to-r group-hover:from-[#0a7c15] group-hover:to-[#6d6d18]">
-                                    <span class="relative z-10">Book Now</span>
-                                    <div
-                                        class="absolute inset-0 h-full w-full bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 opacity-20">
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -557,7 +518,6 @@
                     </div>
 
                     <div class="p-8 relative">
-
 
                         <span class="text-sm text-[#0a7c15] font-semibold tracking-wider uppercase">Couple</span>
                         <h3
@@ -610,25 +570,6 @@
                                     <p class="text-sm text-gray-500">From</p>
                                     <div class="flex items-baseline">
                                         <p class="md:text-3xl text-base font-bold text-[#6d6d18]">Rs. 1950</p>
-                                        <p class="text-sm text-gray-500 ml-1">/ night</p>
-                                    </div>
-                                </div>
-                                <a onclick="openBookingModal()"
-                                    class="relative overflow-hidden bg-[#0a7c15] text-white px-4 py-2 lg:px-6 lg:py-3 rounded-lg shadow-lg transform transition-all duration-300 hover:translate-y-1 hover:shadow-none group-hover:bg-gradient-to-r group-hover:from-[#0a7c15] group-hover:to-[#6d6d18]">
-                                    <span class="relative z-10">Book Now</span>
-                                    <div
-                                        class="absolute inset-0 h-full w-full bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 opacity-20">
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="rate off-seasonal-rate hidden transform transition-all duration-500">
-                            <div class="flex justify-between items-start flex-col gap-6">
-                                <div>
-                                    <p class="text-sm text-gray-500">From</p>
-                                    <div class="flex items-baseline">
-                                        <p class="md:text-3xl text-base font-bold text-[#6d6d18]">$145</p>
                                         <p class="text-sm text-gray-500 ml-1">/ night</p>
                                     </div>
                                 </div>
@@ -731,26 +672,94 @@
                             </div>
                         </div>
 
-                        <div class="rate off-seasonal-rate hidden transform transition-all duration-500">
-                            <div class="flex justify-between items-start flex-col gap-6">
+
+                    </div>
+                </div> --}}
+
+                @foreach ($roomRates as $room)
+                    <div
+                        class="relative bg-white rounded-2xl overflow-hidden shadow-xl group transition-all duration-500 hover:-translate-y-2">
+
+                        {{-- Hover Gradient Overlay --}}
+                        <div
+                            class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a7c15]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none">
+                        </div>
+
+                        {{-- Top Animated Border --}}
+                        <div
+                            class="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-[#0a7c15] to-[#6d6d18] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-20">
+                        </div>
+
+                        {{-- Image Section --}}
+                        <div class="relative overflow-hidden aspect-[4/3]">
+                            <img src="{{ asset('storage/' . $room->image) }}" alt="{{ $room->title }}"
+                                class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1">
+
+                            @if ($room->tag)
+                                <div
+                                    class="absolute top-4 right-4 z-20 bg-white/90 backdrop-blur-sm text-[#0a7c15] px-3 py-1 rounded-full text-sm font-bold shadow-lg transform -translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                                    {{ $room->tag }}
+                                </div>
+                            @endif
+                        </div>
+
+                        {{-- Content Section --}}
+                        <div class="p-8 relative">
+                            <span
+                                class="text-sm text-[#0a7c15] font-semibold tracking-wider uppercase">{{ $room->badge }}</span>
+                            <h3
+                                class="text-2xl font-bold text-gray-800 mt-1 mb-3 group-hover:text-[#0a7c15] transition-colors duration-300">
+                                {{ $room->title }}
+                            </h3>
+
+                            {{-- Rating --}}
+                            <div class="flex items-center mb-4">
+                                <div class="flex text-[#6d6d18]">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="h-5 w-5 {{ $i <= $room->rating ? '' : 'text-gray-300' }}"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                    @endfor
+                                </div>
+                                <span class="text-gray-500 ml-2 text-sm">{{ $room->reviews }} reviews</span>
+                            </div>
+
+                            {{-- Features --}}
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                @foreach ($room->features as $index => $feature)
+                                    <span
+                                        class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium border border-gray-50 transition-colors group-hover:bg-white group-hover:border-[#0a7c15]/20">
+                                        {{ $index + 1 }}. {{ $feature }}
+                                    </span>
+                                @endforeach
+                            </div>
+
+                            {{-- Price and Action --}}
+                            <div class="flex justify-between items-end">
                                 <div>
                                     <p class="text-sm text-gray-500">From</p>
                                     <div class="flex items-baseline">
-                                        <p class="text-3xl font-bold text-[#6d6d18]">$210</p>
+                                        <p class="text-3xl font-bold text-[#6d6d18]">
+                                            {{ $room->currency }}{{ $room->price }}</p>
                                         <p class="text-sm text-gray-500 ml-1">/ night</p>
                                     </div>
                                 </div>
-                                <a onclick="openBookingModal()"
-                                    class="relative overflow-hidden bg-[#0a7c15] text-white px-4 py-2 lg:px-6 lg:py-3 rounded-lg shadow-lg transform transition-all duration-300 hover:translate-y-1 hover:shadow-none group-hover:bg-gradient-to-r group-hover:from-[#0a7c15] group-hover:to-[#6d6d18]">
-                                    <span class="relative z-10">Book Now</span>
+
+                                <a href="javascript:void(0)" onclick="openBookingModal()"
+                                    class="relative overflow-hidden bg-[#0a7c15] text-white px-5 py-2.5 rounded-lg shadow-lg transform transition-all duration-300 hover:shadow-none active:scale-95 group/btn">
+                                    <span class="relative z-10 font-bold">Book Now</span>
+                                    {{-- Button Slide Effect --}}
                                     <div
-                                        class="absolute inset-0 h-full w-full bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 opacity-20">
+                                        class="absolute inset-0 h-full w-full bg-gradient-to-r from-[#0a7c15] to-[#6d6d18] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500">
                                     </div>
                                 </a>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
 
             <!-- Enhanced Detailed Rate Table Section with Animation -->
@@ -774,26 +783,9 @@
                     </p>
                 </div>
 
-                <!-- Enhanced Toggle Tabs for Table -->
-                <div class="mb-10 flex justify-center">
-                    <div
-                        class="bg-(--primary)/50  rounded-full inline-flex shadow-md border border-gray-100 relative overflow-hidden">
-                        <div id="tableToggleBackground"
-                            class="absolute h-full w-1/2 bg-gradient-to-r from-[#0a7c15] to-[#6d6d18] rounded-full left-0 transition-all duration-500 ease-in-out">
-                        </div>
-                        <button id="tableSeasonalBtn"
-                            class="relative  z-10 px-4 py-3 rounded-full font-medium transition-all duration-300 text-white">
-                            Peak Season
-                        </button>
-                        <button id="tableOffSeasonBtn"
-                            class="relative z-10 px-4 py-3 rounded-full font-medium transition-all duration-300 text-gray-700">
-                            Off-Season
-                        </button>
-                    </div>
-                </div>
 
                 <!-- Enhanced Seasonal Rate Table -->
-                <div id="seasonalTable"
+                <div
                     class="overflow-hidden bg-white rounded-2xl shadow-xl seasonal-table block transform transition-all duration-500">
                     <div class="overflow-x-auto">
                         <table class="w-full border-collapse">
@@ -870,83 +862,6 @@
                     </div>
                 </div>
 
-                <!-- Enhanced Off-Season Rate Table -->
-                <div id="offSeasonTable"
-                    class="overflow-hidden bg-white rounded-2xl shadow-xl seasonal-table hidden transform transition-all duration-500">
-                    <div class="overflow-x-auto">
-                        <table class="w-full border-collapse">
-                            <thead>
-                                <tr class="bg-gradient-to-r from-[#0a7c15] to-[#6d6d18] text-white">
-                                    <th class="py-4 px-6 text-left font-medium">Room Type</th>
-                                    <th class="py-4 px-6 text-center font-medium">Single Occupancy</th>
-                                    <th class="py-4 px-6 text-center font-medium">Double Occupancy</th>
-                                    <th class="py-4 px-6 text-center font-medium">Extra Bed</th>
-                                    <th class="py-4 px-6 text-center font-medium">Inclusions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b border-gray-100 hover:bg-[#0a7c15]/5 transition-colors duration-300 animate-fade-in"
-                                    style="--delay: 100ms">
-                                    <td class="py-4 px-6 text-left font-medium">Standard Room</td>
-                                    <td class="py-4 px-6 text-center">$85</td>
-                                    <td class="py-4 px-6 text-center">$100</td>
-                                    <td class="py-4 px-6 text-center">$25</td>
-                                    <td class="py-4 px-6 text-center">
-                                        <span
-                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#0a7c15]/10 text-[#0a7c15]">
-                                            Breakfast
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-100 hover:bg-[#0a7c15]/5 transition-colors duration-300 animate-fade-in"
-                                    style="--delay: 200ms">
-                                    <td class="py-4 px-6 text-left font-medium">Deluxe Room</td>
-                                    <td class="py-4 px-6 text-center">$110</td>
-                                    <td class="py-4 px-6 text-center">$125</td>
-                                    <td class="py-4 px-6 text-center">$30</td>
-                                    <td class="py-4 px-6 text-center">
-                                        <span
-                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#0a7c15]/10 text-[#0a7c15]">
-                                            Breakfast
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-gray-100 hover:bg-[#0a7c15]/5 transition-colors duration-300 animate-fade-in"
-                                    style="--delay: 300ms">
-                                    <td class="py-4 px-6 text-left font-medium">Deluxe Suite</td>
-                                    <td class="py-4 px-6 text-center">$145</td>
-                                    <td class="py-4 px-6 text-center">$160</td>
-                                    <td class="py-4 px-6 text-center">$35</td>
-                                    <td class="py-4 px-6 text-center">
-                                        <div class="flex justify-center gap-1 flex-wrap">
-                                            <span
-                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#0a7c15]/10 text-[#0a7c15]">
-                                                Breakfast
-                                            </span>
-                                            <span
-                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#6d6d18]/10 text-[#6d6d18]">
-                                                Dinner
-                                            </span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-[#0a7c15]/5 transition-colors duration-300 animate-fade-in"
-                                    style="--delay: 400ms">
-                                    <td class="py-4 px-6 text-left font-medium">Family Villa</td>
-                                    <td class="py-4 px-6 text-center">N/A</td>
-                                    <td class="py-4 px-6 text-center">$210</td>
-                                    <td class="py-4 px-6 text-center">$45</td>
-                                    <td class="py-4 px-6 text-center">
-                                        <span
-                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#6d6d18]/20 text-[#6d6d18]">
-                                            All Meals
-                                        </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
             </div>
 
             <!-- Enhanced Special Offers Section with Animation -->
@@ -1347,7 +1262,7 @@
 
                 // Observe all sections that should animate on scroll
                 observer.observe(document.getElementById('section-header'));
-                observer.observe(document.getElementById('season-toggle'));
+
                 observer.observe(document.getElementById('rate-table-section'));
                 observer.observe(document.getElementById('special-offers'));
                 observer.observe(document.getElementById('policy-section'));
@@ -1383,86 +1298,6 @@
                     card.style.transitionDelay = `${index * 200}ms`;
                 });
 
-                // Enhanced Seasonal Toggle functionality
-                const seasonalBtn = document.getElementById('seasonalBtn');
-                const offSeasonBtn = document.getElementById('offSeasonBtn');
-                const toggleBackground = document.getElementById('toggleBackground');
-                const seasonalRates = document.querySelectorAll('.seasonal-rate');
-                const offSeasonalRates = document.querySelectorAll('.off-seasonal-rate');
-
-                // Card toggle with enhanced slider effect
-                seasonalBtn.addEventListener('click', function() {
-                    toggleBackground.style.transform = 'translateX(0)';
-                    seasonalBtn.classList.add('text-white');
-                    seasonalBtn.classList.remove('text-gray-700');
-                    offSeasonBtn.classList.remove('text-white');
-                    offSeasonBtn.classList.add('text-gray-700');
-
-                    seasonalRates.forEach(rate => {
-                        rate.classList.remove('hidden');
-                        rate.classList.add('block');
-                    });
-                    offSeasonalRates.forEach(rate => {
-                        rate.classList.add('hidden');
-                        rate.classList.remove('block');
-                    });
-                });
-
-                offSeasonBtn.addEventListener('click', function() {
-                    toggleBackground.style.transform = 'translateX(100%)';
-                    offSeasonBtn.classList.add('text-white');
-                    offSeasonBtn.classList.remove('text-gray-700');
-                    seasonalBtn.classList.remove('text-white');
-                    seasonalBtn.classList.add('text-gray-700');
-
-                    offSeasonalRates.forEach(rate => {
-                        rate.classList.remove('hidden');
-                        rate.classList.add('block');
-                    });
-                    seasonalRates.forEach(rate => {
-                        rate.classList.add('hidden');
-                        rate.classList.remove('block');
-                    });
-                });
-
-                // Enhanced Table Toggle functionality
-                const tableSeasonalBtn = document.getElementById('tableSeasonalBtn');
-                const tableOffSeasonBtn = document.getElementById('tableOffSeasonBtn');
-                const tableToggleBackground = document.getElementById('tableToggleBackground');
-                const seasonalTable = document.getElementById('seasonalTable');
-                const offSeasonTable = document.getElementById('offSeasonTable');
-
-                tableSeasonalBtn.addEventListener('click', function() {
-                    tableToggleBackground.style.transform = 'translateX(0)';
-                    tableSeasonalBtn.classList.add('text-white');
-                    tableSeasonalBtn.classList.remove('text-gray-700');
-                    tableOffSeasonBtn.classList.remove('text-white');
-                    tableOffSeasonBtn.classList.add('text-gray-700');
-
-                    seasonalTable.classList.remove('hidden');
-                    seasonalTable.classList.add('block');
-                    offSeasonTable.classList.add('hidden');
-                    offSeasonTable.classList.remove('block');
-
-                    // Animate rows
-                    animateTableRows(seasonalTable);
-                });
-
-                tableOffSeasonBtn.addEventListener('click', function() {
-                    tableToggleBackground.style.transform = 'translateX(100%)';
-                    tableOffSeasonBtn.classList.add('text-white');
-                    tableOffSeasonBtn.classList.remove('text-gray-700');
-                    tableSeasonalBtn.classList.remove('text-white');
-                    tableSeasonalBtn.classList.add('text-gray-700');
-
-                    offSeasonTable.classList.remove('hidden');
-                    offSeasonTable.classList.add('block');
-                    seasonalTable.classList.add('hidden');
-                    seasonalTable.classList.remove('block');
-
-                    // Animate rows
-                    animateTableRows(offSeasonTable);
-                });
 
                 // Function to animate table rows when shown
                 function animateTableRows(table) {
@@ -1473,8 +1308,7 @@
                     });
                 }
 
-                // Initialize first table animation
-                animateTableRows(seasonalTable);
+
             });
         </script>
     @endpush
