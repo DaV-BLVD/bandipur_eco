@@ -75,7 +75,7 @@
                         'title' => 'Accommodation',
                         'icon' => 'fa-solid fa-envelope-open-text',
                         'routes' => [
-                            'accommodation-hero.*', 'accommodation-header.*', 'rooms.*',
+                            'accommodation-hero.*', 'accommodation-header.*', 'rooms.*', 'accommodation-highlight.*',
                         ],
                         'links' => [
                             [
@@ -92,6 +92,11 @@
                                 'route' => 'rooms.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Rooms',
+                            ],
+                            [
+                                'route' => 'accommodation-highlight.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Highlights',
                             ],
                         ],
                     ],

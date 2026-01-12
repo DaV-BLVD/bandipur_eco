@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\AccommodationHero;
 use App\Models\AccommodationHeader;
 use App\Models\Room;
+use App\Models\AccommodationHighlight;
+use App\Models\AccommodationHighlightPic;
 
 class AccommodationController extends Controller
 {
@@ -18,6 +20,10 @@ class AccommodationController extends Controller
 
         $rooms = Room::all();
 
-        return view('frontend.pages.accommodation', compact('hero', 'header', 'rooms'));
+        $highlights = AccommodationHighlight::where('status', true)->orderBy('sort_order')->get();
+
+        $pics = AccommodationHighlightPic::where('status', true)->orderBy('sort_order')->get();
+
+        return view('frontend.pages.accommodation', compact('hero', 'header', 'rooms', 'highlights', 'pics'));
     }
 }

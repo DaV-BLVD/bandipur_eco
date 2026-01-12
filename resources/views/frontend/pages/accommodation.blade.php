@@ -107,7 +107,7 @@
         </section>
 
         <!-- Room Grid -->
-        <section class="py-20 bg-[#f9f9f9]">
+        {{-- <section class="py-20 bg-[#f9f9f9]">
             <div class="container mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="room-grid">
 
@@ -238,7 +238,8 @@
 
                 </div>
             </div>
-        </section><section class="py-20 bg-[#f9f9f9]">
+        </section> --}}
+        <section class="py-20 bg-[#f9f9f9]">
             <div class="container mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="room-grid">
 
@@ -273,16 +274,16 @@
                                         {{ $room->title }}
                                     </h3>
                                     <div class="text-right">
-    <p class="text-xl font-bold text-[#6d6d18]">
-        {{-- Logical check for currency symbol --}}
-        @if($room->currency == 'NPR')
-            Rs. {{ number_format($room->price) }}
-        @else
-            ${{ number_format($room->price, 2) }}
-        @endif
-    </p>
-    <p class="text-xs text-gray-400">/ night</p>
-</div>
+                                        <p class="text-xl font-bold text-[#6d6d18]">
+                                            {{-- Logical check for currency symbol --}}
+                                            @if ($room->currency == 'NPR')
+                                                Rs. {{ number_format($room->price) }}
+                                            @else
+                                                ${{ number_format($room->price, 2) }}
+                                            @endif
+                                        </p>
+                                        <p class="text-xs text-gray-400">/ night</p>
+                                    </div>
                                 </div>
 
                                 <p class="text-gray-600 text-sm leading-relaxed mb-6">
@@ -310,7 +311,7 @@
                 </div>
             </div>
         </section>
-        
+
 
         <!-- Detailed Amenities / Banner -->
         <section class="py-24 bg-[#1a1a1a] text-white relative">
@@ -318,7 +319,7 @@
             <div class="container mx-auto px-6 relative z-10">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center fade-in-section">
                     <div>
-                        <h4 class="text-[#6d6d18] font-bold uppercase tracking-widest mb-2">Amenities</h4>
+                        {{-- <h4 class="text-[#6d6d18] font-bold uppercase tracking-widest mb-2">Amenities</h4>
                         <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] mb-6">Included in Your Stay</h2>
                         <p class="text-gray-400 mb-8 leading-relaxed">
                             At Bandipur Resort, we believe in providing a seamless blend of rustic charm and modern
@@ -353,17 +354,51 @@
                                 </div>
                                 <span>Guided Village Walk</span>
                             </li>
+                        </ul> --}}
+
+                        <h4 class="text-[#6d6d18] font-bold uppercase tracking-widest mb-2">
+                            Amenities
+                        </h4>
+
+                        <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] mb-6">
+                            Included in Your Stay
+                        </h2>
+
+                        <p class="text-gray-400 mb-8 leading-relaxed">
+                            At Bandipur Resort, we believe in providing a seamless blend of rustic charm and modern
+                            convenience.
+                            Every booking includes:
+                        </p>
+
+                        <ul class="space-y-4">
+                            @foreach ($highlights as $item)
+                                <li class="flex items-center gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-[#0a7c15]/20 flex items-center justify-center text-[#0a7c15]">
+                                        <i class="{{ $item->icon }}"></i>
+                                    </div>
+                                    <span>{{ $item->title }}</span>
+                                </li>
+                            @endforeach
                         </ul>
+
                     </div>
                     <div class="relative">
-                        <div class="border-4 border-[#6d6d18] rounded-lg p-2">
-                            <img src="{{ asset('frontendimages/hotel_entrance.png') }}" alt="Breakfast View"
-                                class="w-full rounded shadow-2xl">
-                        </div>
-                        <div class="absolute -bottom-10 -left-10 bg-[#0a7c15] p-6 rounded-lg shadow-xl hidden md:block">
-                            <p class="text-3xl font-bold font-['Playfair_Display']">4.9/5</p>
-                            <p class="text-sm uppercase tracking-wide">Guest Rating</p>
-                        </div>
+                        @foreach ($pics as $pic)
+                            <div class="border-4 border-[#6d6d18] rounded-lg p-2">
+                                {{-- <img src="{{ asset('frontendimages/hotel_entrance.png') }}" alt="Breakfast View"
+                                class="w-full rounded shadow-2xl"> --}}
+                                <img src="{{ asset('storage/' . $pic->image) }}" alt="Accommodation View"
+                                    class="w-full rounded shadow-2xl">
+                            </div>
+                            <div class="absolute -bottom-10 -left-10 bg-[#0a7c15] p-6 rounded-lg shadow-xl hidden md:block">
+                                {{-- <p class="text-3xl font-bold font-['Playfair_Display']">4.9/5</p> --}}
+                                <p class="text-3xl font-bold font-['Playfair_Display'] mt-4">
+                                    {{ $pic->rating_text }}
+                                </p>
+                                <p class="text-sm uppercase tracking-wide">Guest Rating</p>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
