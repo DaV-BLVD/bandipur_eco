@@ -125,8 +125,6 @@
                                 <span title="solo"><i class="fas fa-bed"></i> solo</span>
                                 <span title="Wifi"><i class="fas fa-wifi"></i> Wifi</span>
                             </div>
-
-
                         </div>
                     </div>
 
@@ -191,9 +189,6 @@
                                 <span title="King Bed"><i class="fas fa-bed"></i> solo</span>
                                 <span title="Wifi"><i class="fas fa-wifi"></i> Wifi</span>
                             </div>
-
-
-
                         </div>
                     </div>
 
@@ -287,10 +282,6 @@
                 </div>
             </div>
         </section>
-
-
-
-
     </section>
 
     <!-- Floating WhatsApp Button -->
