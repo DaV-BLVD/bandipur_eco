@@ -120,6 +120,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/accommodation-hero', \App\Http\Controllers\Admin\AccommodationHeroController::class);
 
         Route::resource('/admin/dashboard/accommodation-header', \App\Http\Controllers\Admin\AccommodationHeaderController::class);
+
+        Route::resource('/admin/dashboard/rooms', \App\Http\Controllers\Admin\RoomController::class);
     });
 });
 

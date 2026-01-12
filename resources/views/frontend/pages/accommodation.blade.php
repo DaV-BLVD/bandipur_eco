@@ -71,11 +71,25 @@
                         {{ $header->description }}
                     </p>
                 @endif
-
             </div>
         </header>
 
         <!-- Filter Buttons -->
+        {{-- <section class="py-12 bg-white sticky top-[70px] z-40 shadow-sm border-b border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-wrap justify-center gap-3 fade-in-section">
+                    <button onclick="filterRooms('all')"
+                        class="filter-btn active px-6 py-2 rounded-full border border-[#0a7c15] bg-[#0a7c15] text-white font-semibold text-sm tracking-wide hover:shadow-lg transition-all duration-300">All
+                        Rooms</button>
+                    <button onclick="filterRooms('single')"
+                        class="filter-btn px-6 py-2 rounded-full border border-[#0a7c15] text-[#0a7c15] bg-transparent hover:bg-[#0a7c15] hover:text-white font-semibold text-sm tracking-wide hover:shadow-lg transition-all duration-300">Single</button>
+                    <button onclick="filterRooms('double')"
+                        class="filter-btn px-6 py-2 rounded-full border border-[#0a7c15] text-[#0a7c15] bg-transparent hover:bg-[#0a7c15] hover:text-white font-semibold text-sm tracking-wide hover:shadow-lg transition-all duration-300">Double</button>
+                    <button onclick="filterRooms('others')"
+                        class="filter-btn px-6 py-2 rounded-full border border-[#0a7c15] text-[#0a7c15] bg-transparent hover:bg-[#0a7c15] hover:text-white font-semibold text-sm tracking-wide hover:shadow-lg transition-all duration-300">Others</button>
+                </div>
+            </div>
+        </section> --}}
         <section class="py-12 bg-white sticky top-[70px] z-40 shadow-sm border-b border-gray-100">
             <div class="container mx-auto px-6">
                 <div class="flex flex-wrap justify-center gap-3 fade-in-section">
@@ -224,7 +238,79 @@
 
                 </div>
             </div>
+        </section><section class="py-20 bg-[#f9f9f9]">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="room-grid">
+
+                    @foreach ($rooms as $room)
+                        <div
+                            class="room-card {{ $room->category }} group bg-white rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden fade-in-section border-t-4 border-transparent hover:border-[#6d6d18]">
+                            <div class="relative h-64 overflow-hidden room-img-wrapper">
+                                {{-- Handle image path correctly for Storage --}}
+                                <img src="{{ asset('storage/' . $room->image) }}" class="w-full h-full object-cover"
+                                    alt="{{ $room->title }}">
+
+                                @if ($room->badge_text)
+                                    <div
+                                        class="absolute bottom-0 left-0 bg-[#0a7c15] text-white text-xs px-4 py-1 font-bold uppercase tracking-wider">
+                                        {{ $room->badge_text }}
+                                    </div>
+                                @endif
+
+                                {{-- Optional: If you want to keep the star badge for Double/Special rooms, check category --}}
+                                @if ($room->category === 'double' || str_contains(strtolower($room->title), 'couple'))
+                                    <div
+                                        class="absolute top-4 right-4 bg-[#6d6d18] text-white rounded-full w-12 h-12 flex items-center justify-center font-['Playfair_Display'] text-lg shadow-lg">
+                                        ★
+                                    </div>
+                                @endif
+                            </div>
+
+                            <div class="p-8">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3
+                                        class="text-2xl font-['Playfair_Display'] font-bold text-gray-900 group-hover:text-[#0a7c15] transition-colors">
+                                        {{ $room->title }}
+                                    </h3>
+                                    <div class="text-right">
+    <p class="text-xl font-bold text-[#6d6d18]">
+        {{-- Logical check for currency symbol --}}
+        @if($room->currency == 'NPR')
+            Rs. {{ number_format($room->price) }}
+        @else
+            ${{ number_format($room->price, 2) }}
+        @endif
+    </p>
+    <p class="text-xs text-gray-400">/ night</p>
+</div>
+                                </div>
+
+                                <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                                    {{ Str::limit($room->description, 100) }}
+                                </p>
+
+                                <div
+                                    class="flex items-center gap-4 text-[#6d6d18] text-sm mb-6 border-t border-gray-100 pt-4">
+                                    <span title="{{ $room->occupancy }}">
+                                        <i
+                                            class="fas fa-user{{ $room->category == 'single' ? '' : ($room->category == 'others' ? 's' : '-friends') }}"></i>
+                                        {{ $room->occupancy }}
+                                    </span>
+                                    <span title="{{ $room->bed_type }}">
+                                        <i class="fas fa-bed"></i> {{ $room->bed_type }}
+                                    </span>
+                                    @if ($room->has_wifi)
+                                        <span title="Wifi"><i class="fas fa-wifi"></i> Wifi</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+            </div>
         </section>
+        
 
         <!-- Detailed Amenities / Banner -->
         <section class="py-24 bg-[#1a1a1a] text-white relative">
@@ -335,6 +421,49 @@
                     if (category === 'all' || card.classList.contains(category)) {
                         card.style.display = 'block';
                         // Small delay to allow display:block to render before adding animation class
+                        setTimeout(() => {
+                            card.classList.add('is-visible');
+                        }, 50);
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.remove('is-visible');
+                    }
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.15
+                });
+
+                const elements = document.querySelectorAll('.fade-in-section');
+                elements.forEach(el => observer.observe(el));
+            });
+
+            function filterRooms(category) {
+                const cards = document.querySelectorAll('.room-card');
+                const buttons = document.querySelectorAll('.filter-btn');
+
+                buttons.forEach(btn => {
+                    btn.classList.remove('bg-[#0a7c15]', 'text-white');
+                    btn.classList.add('bg-transparent', 'text-[#0a7c15]');
+
+                    if (btn.getAttribute('onclick').includes(category)) {
+                        btn.classList.remove('bg-transparent', 'text-[#0a7c15]');
+                        btn.classList.add('bg-[#0a7c15]', 'text-white');
+                    }
+                });
+
+                cards.forEach(card => {
+                    if (category === 'all' || card.classList.contains(category)) {
+                        card.style.display = 'block';
                         setTimeout(() => {
                             card.classList.add('is-visible');
                         }, 50);
