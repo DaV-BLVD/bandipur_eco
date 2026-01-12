@@ -138,6 +138,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/about-one', \App\Http\Controllers\Admin\AboutOneController::class);
 
         Route::resource('/admin/dashboard/about-two', \App\Http\Controllers\Admin\AboutTwoController::class);
+
+        Route::resource('/admin/dashboard/about-images-grid', \App\Http\Controllers\Admin\AboutImagesGridController::class);
     });
 });
 

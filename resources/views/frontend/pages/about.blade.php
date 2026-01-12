@@ -376,20 +376,23 @@
                     <div class="w-full md:w-1/2 order-2 md:order-1 reveal-up">
                         <h4 class="text-[#0a7c15] uppercase tracking-[0.3em] text-sm font-bold mb-4">
                             {{ $about_two->tagline ?? '' }}</h4>
-                        <h2 class="text-5xl font-['Playfair_Display'] text-[#1a1a1a] mb-6">{{ $about_two->title ?? '' }}</h2>
+                        <h2 class="text-5xl font-['Playfair_Display'] text-[#1a1a1a] mb-6">{{ $about_two->title ?? '' }}
+                        </h2>
                         <p class="text-gray-600 leading-relaxed mb-6">{{ $about_two->description1 ?? '' }}</p>
                         <p class="text-gray-600 leading-relaxed mb-8">{{ $about_two->description2 ?? '' }}</p>
 
                         <div class="grid grid-cols-2 gap-8 mt-8">
                             <div>
                                 <i class="{{ $about_two->feature1_icon ?? '' }} text-4xl text-[#0a7c15] mb-3"></i>
-                                <h5 class="font-['Playfair_Display'] font-bold text-xl">{{ $about_two->feature1_title ?? '' }}
+                                <h5 class="font-['Playfair_Display'] font-bold text-xl">
+                                    {{ $about_two->feature1_title ?? '' }}
                                 </h5>
                                 <p class="text-sm text-gray-500">{{ $about_two->feature1_description ?? '' }}</p>
                             </div>
                             <div>
                                 <i class="{{ $about_two->feature2_icon ?? '' }} text-4xl text-[#0a7c15] mb-3"></i>
-                                <h5 class="font-['Playfair_Display'] font-bold text-xl">{{ $about_two->feature2_title ?? '' }}
+                                <h5 class="font-['Playfair_Display'] font-bold text-xl">
+                                    {{ $about_two->feature2_title ?? '' }}
                                 </h5>
                                 <p class="text-sm text-gray-500">{{ $about_two->feature2_description ?? '' }}</p>
                             </div>
@@ -407,7 +410,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -423,7 +425,7 @@
                 class="h-[500px] md:h-[600px] w-full flex flex-col md:flex-row overflow-hidden border-y border-[#6d6d18]/20">
 
                 <!-- Item 1 -->
-                <div
+                {{-- <div
                     class="activity-card relative bg-black overflow-hidden cursor-pointer group border-b md:border-b-0 md:border-r border-white/20">
                     <img src="{{ asset('frontendimages/garden2.png') }}"
                         class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500">
@@ -442,10 +444,10 @@
                     </div>
                     <!-- Mobile Label -->
                     <div class="absolute top-4 right-4 md:hidden text-white"><i class="fas fa-chevron-down"></i></div>
-                </div>
+                </div> --}}
 
                 <!-- Item 2 -->
-                <div
+                {{-- <div
                     class="activity-card relative bg-black overflow-hidden cursor-pointer group border-b md:border-b-0 md:border-r border-white/20">
                     <img src="{{ asset('frontendimages/bandipur1.png') }}"
                         class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500">
@@ -463,10 +465,10 @@
                                 streets of Old Bandipur bazaar.</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Item 3 -->
-                <div
+                {{-- <div
                     class="activity-card relative bg-black overflow-hidden cursor-pointer group border-b md:border-b-0 md:border-r border-white/20">
                     <img src="{{ asset('frontendimages/garden.png') }}"
                         class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500">
@@ -483,10 +485,10 @@
                                 Ramkot village for an authentic rural experience.</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Item 4 -->
-                <div class="activity-card relative bg-black overflow-hidden cursor-pointer group">
+                {{-- <div class="activity-card relative bg-black overflow-hidden cursor-pointer group">
                     <img src="{{ asset('frontendimages/cusin.png') }}"
                         class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500">
                     <div
@@ -503,10 +505,37 @@
                                 offers a spectacular view of the Milky Way.</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+
+                @foreach ($activities as $activity)
+                    <div
+                        class="activity-card relative bg-black overflow-hidden cursor-pointer group border-white/20 border-b md:border-r">
+                        <img src="{{ asset('storage/' . $activity->image) }}"
+                            class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition">
+
+                        <div
+                            class="absolute inset-0 group-hover:bg-gradient-to-t from-black/80 via-transparent to-black/80">
+                        </div>
+
+                        <div class="absolute bottom-0 left-0 w-full p-8 text-white z-10">
+                            <h3 class="text-2xl font-['Playfair_Display'] font-bold mb-2">
+                                {{ $activity->title }}
+                            </h3>
+
+                            @if ($activity->description)
+                                <div class="activity-content h-0 md:h-auto overflow-hidden">
+                                    <p class="text-sm font-light max-w-xs">
+                                        {{ $activity->description }}
+                                    </p>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
 
             </div>
         </section>
+
         {{-- SECTION QUOTE 5 --}}
         <section class="relative py-24 px-6 overflow-hidden bg-white">
             <div
@@ -528,8 +557,6 @@
                         of noise, but the presence of serenity."
                     </h2>
                 </div>
-
-
             </div>
         </section>
     </main>

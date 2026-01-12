@@ -80,6 +80,7 @@
                             'who-we-are-contents.*',
                             'about-one.*',
                             'about-two.*',
+                            'about-images-grid.*',
                         ],
                         'links' => [
                             [
@@ -111,6 +112,11 @@
                                 'route' => 'about-two.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'About Two',
+                            ],
+                            [
+                                'route' => 'about-images-grid.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Images Grid',
                             ],
                         ],
                     ],
