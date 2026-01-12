@@ -119,6 +119,7 @@
         </a>
     </section>
     {{-- end hero --}}
+
     <!-- ABOUT DESCRIPTION SECTION -->
     <section id="about" class="py-[70px]"></section>
     <section class="pb-24 bg-white overflow-hidden relative">
@@ -136,24 +137,37 @@
                     </div>
 
                     <!-- Main Image (Resort/Architecture) -->
-                    <div class="relative overflow-hidden rounded-lg shadow-xl group">
-                        <img src="{{ asset('frontendimages/location.png') }}" alt="Bandipur Architecture"
-                            class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/80"></div>
-                        <!-- Floating Badge -->
-                        <div
-                            class="absolute top-6 left-6 bg-white/95 backdrop-blur-sm px-6 py-3 shadow-lg border-l-4 border-[#0a7c15]">
-                            <p class="font-['Playfair_Display'] font-bold text-[#1a1a1a] text-xl">1,030m</p>
-                            <p class="text-xs uppercase tracking-widest text-[#6d6d18]">Elevation</p>
+                    @foreach ($photos as $photo)
+                        <div class="relative overflow-hidden rounded-lg shadow-xl group">
+                            {{-- <img src="{{ asset('frontendimages/location.png') }}" alt="Bandipur Architecture"
+                            class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"> --}}
+                            <img src="{{ asset('storage/' . $photo->image_primary) }}"
+                                alt="{{ $photo->title ?? 'Who We Are' }}"
+                                class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/80"></div>
+                            <!-- Floating Badge -->
+                            <div
+                                class="absolute top-6 left-6 bg-white/95 backdrop-blur-sm px-6 py-3 shadow-lg border-l-4 border-[#0a7c15]">
+                                {{-- <p class="font-['Playfair_Display'] font-bold text-[#1a1a1a] text-xl">1,030m</p> --}}
+                                @if ($photo->title)
+                                    <p class="font-['Playfair_Display'] font-bold text-[#1a1a1a] text-xl mt-2">
+                                        {{ $photo->title }}</p>
+                                @endif
+                                {{-- <p class="text-xs uppercase tracking-widest text-[#6d6d18]">Elevation</p> --}}
+                                @if ($photo->subtitle)
+                                    <p class="text-xs uppercase tracking-widest text-[#6d6d18]">{{ $photo->subtitle }}</p>
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Secondary Overlapping Image (Detail/Nature) -->
-                    <div
-                        class="absolute -bottom-10 -right-6 w-2/5 border-8 border-white rounded-lg shadow-2xl hidden md:block">
-                        <img src="{{ asset('frontendimages/hotel_entrance.png') }}" alt="Traditional Detail"
-                            class="w-full h-auto object-cover">
-                    </div>
+                        <!-- Secondary Overlapping Image (Detail/Nature) -->
+                        <div
+                            class="absolute -bottom-10 -right-6 w-2/5 border-8 border-white rounded-lg shadow-2xl hidden md:block">
+                            <img src="{{ asset('storage/' . $photo->image_secondary) }}" alt="Detail Image"
+                                class="w-full h-auto object-cover">
+                        </div>
+                    @endforeach
+
                 </div>
 
                 <!-- Right Side: Text Content -->

@@ -68,13 +68,12 @@
                 @endif
             </a>
 
-
             @php
                 $dropdowns = [
                     [
                         'title' => 'About',
                         'icon' => 'fa-solid fa-envelope-open-text',
-                        'routes' => ['about-hero.*', 'about-header.*'],
+                        'routes' => ['about-hero.*', 'about-header.*', 'who-we-are-photos.*'],
                         'links' => [
                             [
                                 'route' => 'about-hero.index',
@@ -85,6 +84,11 @@
                                 'route' => 'about-header.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Header Section',
+                            ],
+                            [
+                                'route' => 'who-we-are-photos.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Who We Are Photos',
                             ],
                         ],
                     ],
