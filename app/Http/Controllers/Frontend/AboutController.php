@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\AboutHero;
+use App\Models\AboutHeader;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -12,6 +13,8 @@ class AboutController extends Controller
     {
         $hero = AboutHero::where('status', true)->orderBy('sort_order')->first();
 
-        return view('frontend.pages.about', compact('hero'));
+        $header = AboutHeader::where('status', true)->orderBy('sort_order')->first();
+
+        return view('frontend.pages.about', compact('hero', 'header'));
     }
 }

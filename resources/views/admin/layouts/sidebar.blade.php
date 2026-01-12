@@ -74,14 +74,17 @@
                     [
                         'title' => 'About',
                         'icon' => 'fa-solid fa-envelope-open-text',
-                        'routes' => [
-                            'about-hero.*',
-                        ],
+                        'routes' => ['about-hero.*', 'about-header.*'],
                         'links' => [
                             [
                                 'route' => 'about-hero.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Hero Section',
+                            ],
+                            [
+                                'route' => 'about-header.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Header Section',
                             ],
                         ],
                     ],
@@ -89,7 +92,11 @@
                         'title' => 'Accommodation',
                         'icon' => 'fa-solid fa-envelope-open-text',
                         'routes' => [
-                            'accommodation-hero.*', 'accommodation-header.*', 'rooms.*', 'accommodation-highlight.*', 'accommodation-highlight-pic.*',
+                            'accommodation-hero.*',
+                            'accommodation-header.*',
+                            'rooms.*',
+                            'accommodation-highlight.*',
+                            'accommodation-highlight-pic.*',
                         ],
                         'links' => [
                             [

@@ -83,19 +83,33 @@
 
         <div class="relative z-20 text-center px-6 max-w-5xl">
             <div class="reveal-up overflow-hidden mb-4">
-                <span
+                @if ($header)
+                    {{-- <span
                     class="text-slate-200 font-semibold uppercase tracking-[0.4em] text-[9px] md:text-base block bg-white/20 backdrop-blur-md py-2 px-6 inline-block rounded-full border border-[#6d6d18]/30">
                     The Hidden Treasure of Gurung Hill
-                </span>
+                </span> --}}
+                    <span
+                        class="text-slate-200 font-semibold uppercase tracking-[0.4em] text-[9px] md:text-base block bg-white/20 backdrop-blur-md py-2 px-6 inline-block rounded-full border border-[#6d6d18]/30">
+                        {{ $header->badge_text }}
+                    </span>
             </div>
-            <h1
+            {{-- <h1
                 class="reveal-up delay-200 text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-tight mb-8 drop-shadow-lg">
                 A Sanctuary Suspended in <span class="italic ">Time</span>
+            </h1> --}}
+            <h1
+                class="reveal-up delay-200 text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-tight mb-8 drop-shadow-lg">
+                {!! $header->heading !!}
             </h1>
-            <p class="reveal-up delay-400 text-stone-100 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed font-light">
+            {{-- <p class="reveal-up delay-400 text-stone-100 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed font-light">
                 Experience the Living Museum of Nepal. Where 18th-century Newari elegance meets the breathtaking
                 panorama of the Himalayas.
+            </p> --}}
+            <p class="reveal-up delay-400 text-stone-100 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed font-light">
+                {{ $header->description }}
             </p>
+            @endif
+
         </div>
 
         <a href='#about'
