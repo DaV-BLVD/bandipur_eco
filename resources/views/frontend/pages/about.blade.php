@@ -172,48 +172,70 @@
 
                 <!-- Right Side: Text Content -->
                 <div class="w-full lg:w-1/2 lg:pl-12 fade-in-section" style="transition-delay: 200ms;">
-                    <h5 class="text-[#0a7c15] font-bold uppercase tracking-[0.2em] text-sm mb-4 flex items-center gap-3">
-                        <span class="w-8 h-[2px] bg-[#0a7c15]"></span> Who We Are
-                    </h5>
+                    @if ($whoWeAre)
+                        <h5
+                            class="text-[#0a7c15] font-bold uppercase tracking-[0.2em] text-sm mb-4 flex items-center gap-3">
+                            {{-- <span class="w-8 h-[2px] bg-[#0a7c15]"></span> Who We Are --}}
+                            <span class="w-8 h-[2px] bg-[#0a7c15]"></span> {{ $whoWeAre->badge_text }}
+                        </h5>
 
-                    <h2 class="text-4xl md:text-5xl font-['Playfair_Display'] font-bold text-[#1a1a1a] mb-6 leading-tight">
-                        The Soul of Bandipur, <br>
-                        <span class="text-[#6d6d18] italic">The Heart of Nature.</span>
-                    </h2>
+                        <h2
+                            class="text-4xl md:text-5xl font-['Playfair_Display'] font-bold text-[#1a1a1a] mb-6 leading-tight">
+                            {{-- The Soul of Bandipur, <br>
+                        <span class="text-[#6d6d18] italic">The Heart of Nature.</span> --}}
+                            {!! $whoWeAre->heading !!}
+                        </h2>
 
-                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        {{-- <p class="text-gray-600 text-lg leading-relaxed mb-6">
                         Bandipur, an ancient Newari mountain town, is a treasure waiting to be discovered by travelers.
                         Situated 7 kilometers above Dumbre Bazaar at an altitude of 1,005 meters, this ancient trading post
                         lies cradled in the saddle of some of the country’s most peculiar-shaped hills. Untouched by
                         modernization, and laced with an abundance of ancient houses, temples of great significance, and
                         historical architecture, this medieval-era town boasts of festivals all year around besides offering
                         a plethora of cultures.
-                    </p>
+                        </p> --}}
+                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                            {{ $whoWeAre->description }}
+                        </p>
 
-
-
-                    <!-- Icon Highlights -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-gray-100 pt-8">
-                        <div class="flex flex-col gap-2">
-                            <i class="fas fa-leaf text-[#0a7c15] text-2xl mb-1"></i>
-                            <h4 class="font-bold font-['Playfair_Display'] text-lg">Eco-First</h4>
-                            <p class="text-xs text-gray-500 leading-snug">Sustainable energy & plastic-free zones.</p>
+                        <!-- Icon Highlights -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-gray-100 pt-8">
+                            {{-- <div class="flex flex-col gap-2">
+                                <i class="fas fa-leaf text-[#0a7c15] text-2xl mb-1"></i>
+                                <h4 class="font-bold font-['Playfair_Display'] text-lg">Eco-First</h4>
+                                <p class="text-xs text-gray-500 leading-snug">Sustainable energy & plastic-free zones.</p>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <i class="fas fa-gopuram text-[#6d6d18] text-2xl mb-1"></i> <!-- Heritage Icon -->
+                                <h4 class="font-bold font-['Playfair_Display'] text-lg">Heritage</h4>
+                                <p class="text-xs text-gray-500 leading-snug">Authentic Newari brick & wood design.</p>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <i class="fas fa-cloud-sun text-[#0a7c15] text-2xl mb-1"></i>
+                                <h4 class="font-bold font-['Playfair_Display'] text-lg">Serenity</h4>
+                                <p class="text-xs text-gray-500 leading-snug">Uninterrupted views of the Annapurnas.</p>
+                            </div> --}}
+                            {{-- Feature 1 --}}
+                            <div class="flex flex-col gap-2">
+                                <i class="{{ $whoWeAre->f1_icon }} text-[#0a7c15] text-2xl mb-1"></i>
+                                <h4 class="font-bold font-['Playfair_Display'] text-lg">{{ $whoWeAre->f1_title }}</h4>
+                                <p class="text-xs text-gray-500 leading-snug">{{ $whoWeAre->f1_desc }}</p>
+                            </div>
+                            {{-- Feature 2 --}}
+                            <div class="flex flex-col gap-2">
+                                <i class="{{ $whoWeAre->f2_icon }} text-[#6d6d18] text-2xl mb-1"></i>
+                                <h4 class="font-bold font-['Playfair_Display'] text-lg">{{ $whoWeAre->f2_title }}</h4>
+                                <p class="text-xs text-gray-500 leading-snug">{{ $whoWeAre->f2_desc }}</p>
+                            </div>
+                            {{-- Feature 3 --}}
+                            <div class="flex flex-col gap-2">
+                                <i class="{{ $whoWeAre->f3_icon }} text-[#0a7c15] text-2xl mb-1"></i>
+                                <h4 class="font-bold font-['Playfair_Display'] text-lg">{{ $whoWeAre->f3_title }}</h4>
+                                <p class="text-xs text-gray-500 leading-snug">{{ $whoWeAre->f3_desc }}</p>
+                            </div>
                         </div>
-                        <div class="flex flex-col gap-2">
-                            <i class="fas fa-gopuram text-[#6d6d18] text-2xl mb-1"></i> <!-- Heritage Icon -->
-                            <h4 class="font-bold font-['Playfair_Display'] text-lg">Heritage</h4>
-                            <p class="text-xs text-gray-500 leading-snug">Authentic Newari brick & wood design.</p>
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <i class="fas fa-cloud-sun text-[#0a7c15] text-2xl mb-1"></i>
-                            <h4 class="font-bold font-['Playfair_Display'] text-lg">Serenity</h4>
-                            <p class="text-xs text-gray-500 leading-snug">Uninterrupted views of the Annapurnas.</p>
-                        </div>
-                    </div>
-
-
+                    @endif
                 </div>
-
             </div>
         </div>
     </section>

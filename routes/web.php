@@ -132,6 +132,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/about-header', \App\Http\Controllers\Admin\AboutHeaderController::class);
 
         Route::resource('/admin/dashboard/who-we-are-photos', \App\Http\Controllers\Admin\WhoWeArePhotoController::class);
+
+        Route::resource('/admin/dashboard/who-we-are-contents', \App\Http\Controllers\Admin\WhoWeAreContentController::class);
     });
 });
 

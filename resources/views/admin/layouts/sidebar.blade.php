@@ -73,7 +73,7 @@
                     [
                         'title' => 'About',
                         'icon' => 'fa-solid fa-envelope-open-text',
-                        'routes' => ['about-hero.*', 'about-header.*', 'who-we-are-photos.*'],
+                        'routes' => ['about-hero.*', 'about-header.*', 'who-we-are-photos.*', 'who-we-are-contents.*'],
                         'links' => [
                             [
                                 'route' => 'about-hero.index',
@@ -89,6 +89,11 @@
                                 'route' => 'who-we-are-photos.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Who We Are Photos',
+                            ],
+                            [
+                                'route' => 'who-we-are-contents.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Who We Are Content',
                             ],
                         ],
                     ],
