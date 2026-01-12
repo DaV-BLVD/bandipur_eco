@@ -134,6 +134,10 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/who-we-are-photos', \App\Http\Controllers\Admin\WhoWeArePhotoController::class);
 
         Route::resource('/admin/dashboard/who-we-are-contents', \App\Http\Controllers\Admin\WhoWeAreContentController::class);
+
+        Route::resource('/admin/dashboard/about-one', \App\Http\Controllers\Admin\AboutOneController::class);
+
+        Route::resource('/admin/dashboard/about-two', \App\Http\Controllers\Admin\AboutTwoController::class);
     });
 });
 

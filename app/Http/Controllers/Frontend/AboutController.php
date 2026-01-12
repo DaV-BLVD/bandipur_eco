@@ -7,6 +7,8 @@ use App\Models\AboutHero;
 use App\Models\AboutHeader;
 use App\Models\WhoWeArePhoto;
 use App\Models\WhoWeAreContent;
+use App\Models\AboutOne;
+use App\Models\AboutTwo;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -21,6 +23,10 @@ class AboutController extends Controller
 
         $whoWeAre = WhoWeAreContent::where('status', 1)->latest()->first();
 
-        return view('frontend.pages.about', compact('hero', 'header', 'photos', 'whoWeAre'));
+        $about = AboutOne::latest()->first();
+
+        $about_two = AboutTwo::latest()->first();
+
+        return view('frontend.pages.about', compact('hero', 'header', 'photos', 'whoWeAre', 'about', 'about_two'));
     }
 }

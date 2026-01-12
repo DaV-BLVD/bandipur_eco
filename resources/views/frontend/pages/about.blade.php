@@ -244,7 +244,7 @@
         <!-- SECTION 1: ABOUT THE RESORT (Architectural Hero) -->
         <section class="relative  mx-auto container flex flex-col md:flex-row">
             <!-- Text Column -->
-            <div class="w-full md:w-5/12 bg-[#0a7c15] text-white flex flex-col justify-center p-12 md:p-20 relative z-20">
+            {{-- <div class="w-full md:w-5/12 bg-[#0a7c15] text-white flex flex-col justify-center p-12 md:p-20 relative z-20">
                 <span
                     class="text-neutral-50 bg-[#6d6d18] px-4 py-1 inline-block w-max text-xs uppercase tracking-widest mb-6">Since
                     1998</span>
@@ -282,15 +282,58 @@
                     class="absolute bottom-10 left-10 bg-white/90 p-4 max-w-xs backdrop-blur-sm border-l-4 border-[#6d6d18] hidden md:block">
                     <p class="text-[#0a7c15] font-['Playfair_Display'] italic">"A masterpiece of preservation."</p>
                 </div>
+            </div> --}}
+            <div class="w-full md:w-5/12 bg-[#0a7c15] text-white flex flex-col justify-center p-12 md:p-20 relative z-20">
+                <span
+                    class="text-neutral-50 bg-[#6d6d18] px-4 py-1 inline-block w-max text-xs uppercase tracking-widest mb-6">
+                    {{ $about->since ?? '' }}
+                </span>
+                <h1 class="text-5xl md:text-7xl font-['Playfair_Display'] font-medium leading-none mb-8 reveal-up">
+                    {{ $about->title ?? '' }} <br>
+                    <span class="italic bg-[#6d6d18] font-serif">{{ $about->subtitle ?? '' }}</span>
+                </h1>
+                <p class="text-white/80 font-light text-lg leading-relaxed mb-10 reveal-up"
+                    style="transition-delay: 100ms;">
+                    {{ $about->description ?? '' }}
+                </p>
+                <div class="flex gap-4 reveal-up" style="transition-delay: 200ms;">
+                    <div class="text-center">
+                        <span class="block text-3xl font-['Playfair_Display']">{{ $about->suites ?? '' }}</span>
+                        <span class="text-xs uppercase text-neutral-50">Suites</span>
+                    </div>
+                    <div class="w-px bg-white/20"></div>
+                    <div class="text-center">
+                        <span class="block text-3xl font-['Playfair_Display']">{{ $about->acres ?? '' }}</span>
+                        <span class="text-xs uppercase text-neutral-50">Acres</span>
+                    </div>
+                    <div class="w-px bg-white/20"></div>
+                    <div class="text-center">
+                        <span class="block text-3xl font-['Playfair_Display']">{{ $about->views ?? '' }}</span>
+                        <span class="text-xs uppercase text-neutral-50">Views</span>
+                    </div>
+                </div>
             </div>
+
+            <div class="w-full md:w-7/12 h-[50vh] md:h-auto overflow-hidden relative">
+                @if ($about && $about->image)
+                    <img src="{{ asset('storage/' . $about->image) }}"
+                        class="absolute inset-0 w-full h-full object-cover animate-ken-burns">
+                @endif
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/80"></div>
+                @if ($about && $about->quote)
+                    <div
+                        class="absolute bottom-10 left-10 bg-white/90 p-4 max-w-xs backdrop-blur-sm border-l-4 border-[#6d6d18] hidden md:block">
+                        <p class="text-[#0a7c15] font-['Playfair_Display'] italic">"{{ $about->quote }}"</p>
+                    </div>
+                @endif
+            </div>
+
         </section>
 
-
-
-        <!-- SECTION 3: CUISINE (Clean & Organic) -->
+        <!-- SECTION 2: CUISINE (Clean & Organic) -->
         <section class="py-24 bg-[#f8f5f2] relative">
             <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-center gap-20">
+                {{-- <div class="flex flex-col md:flex-row items-center gap-20">
                     <!-- Text -->
                     <div class="w-full md:w-1/2 order-2 md:order-1 reveal-up">
                         <h4 class="text-[#0a7c15] uppercase tracking-[0.3em] text-sm font-bold mb-4">Farm to Fork</h4>
@@ -325,9 +368,46 @@
                                 class="w-full mx-auto  shadow-2xl h-[500px] object-cover ">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/60"></div>
                         </div>
+                    </div>
+                </div> --}}
 
+                <div class="flex flex-col md:flex-row items-center gap-20">
+                    <!-- Text -->
+                    <div class="w-full md:w-1/2 order-2 md:order-1 reveal-up">
+                        <h4 class="text-[#0a7c15] uppercase tracking-[0.3em] text-sm font-bold mb-4">
+                            {{ $about_two->tagline ?? '' }}</h4>
+                        <h2 class="text-5xl font-['Playfair_Display'] text-[#1a1a1a] mb-6">{{ $about_two->title ?? '' }}</h2>
+                        <p class="text-gray-600 leading-relaxed mb-6">{{ $about_two->description1 ?? '' }}</p>
+                        <p class="text-gray-600 leading-relaxed mb-8">{{ $about_two->description2 ?? '' }}</p>
+
+                        <div class="grid grid-cols-2 gap-8 mt-8">
+                            <div>
+                                <i class="{{ $about_two->feature1_icon ?? '' }} text-4xl text-[#0a7c15] mb-3"></i>
+                                <h5 class="font-['Playfair_Display'] font-bold text-xl">{{ $about_two->feature1_title ?? '' }}
+                                </h5>
+                                <p class="text-sm text-gray-500">{{ $about_two->feature1_description ?? '' }}</p>
+                            </div>
+                            <div>
+                                <i class="{{ $about_two->feature2_icon ?? '' }} text-4xl text-[#0a7c15] mb-3"></i>
+                                <h5 class="font-['Playfair_Display'] font-bold text-xl">{{ $about_two->feature2_title ?? '' }}
+                                </h5>
+                                <p class="text-sm text-gray-500">{{ $about_two->feature2_description ?? '' }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image -->
+                    <div class="w-full md:w-1/2 order-1 md:order-2 relative reveal-up">
+                        <div class="relative z-10 border-8 border-[#6d6d18]">
+                            @if ($about_two && $about_two->image)
+                                <img src="{{ asset('storage/' . $about_two->image) }}"
+                                    class="w-full mx-auto shadow-2xl h-[500px] object-cover">
+                            @endif
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/60"></div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
