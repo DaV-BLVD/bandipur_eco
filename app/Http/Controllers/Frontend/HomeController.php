@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\ContactInfo;
 class HomeController extends Controller
 {
     /**
@@ -12,7 +12,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view("frontend.pages.home");
+        $phone = ContactInfo::where('is_active', true)->value('value'); // gets JSON column only        $firstPhone = $contactInfo?->value[0] ?? null;
+        $firstPhone = $phone[0] ?? null;
+
+        return view('frontend.pages.home', compact('firstPhone'));
     }
 
     /**

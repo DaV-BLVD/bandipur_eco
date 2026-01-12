@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\ReserveSubmissionController;
 use App\Http\Controllers\Frontend\GalleryController;
 use App\Http\Controllers\Frontend\TareController;
 use App\Http\Controllers\Frontend\AboutController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('welcome', function () {
@@ -16,10 +17,7 @@ Route::get('welcome', function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('/', function () {
-    return view('frontend.pages.home');
-});
-Route::view('/about', 'frontend.pages.about')->name('about');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/accommodation', [AccommodationController::class, 'index'])->name('accommodation');
 Route::get('/tare', [TareController::class, 'index'])->name('tare');

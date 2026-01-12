@@ -836,10 +836,11 @@
                         class="bg-[#6d6d18] text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-white hover:text-[#6d6d18] transition-all duration-500 shadow-2xl uppercase tracking-widest">
                         Book Now
                     </a>
-                    <a href="tel:+977XXXXXXXXXX"
+                    <a href="{{ $firstPhone ? 'tel:' . $firstPhone : '#' }}"
                         class="bg-transparent border-2 border-white text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-white hover:text-[#0a7c15] transition-all duration-500 uppercase tracking-widest">
                         Call Reservations
                     </a>
+
                 </div>
             </div>
         </section>
