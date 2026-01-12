@@ -543,20 +543,32 @@
             </div>
 
             <div class="max-w-5xl mx-auto text-center">
-                <div class="mb-8 animate-bounce transition-all duration-1000">
-                    <i class="fa-solid fa-mountain-sun text-4xl text-[#0a7c15] opacity-60"></i>
-                </div>
+                @if ($aboutQuote)
+                    <div class="mb-8 animate-bounce transition-all duration-1000">
+                        {{-- <i class="fa-solid fa-mountain-sun text-4xl text-[#0a7c15] opacity-60"></i> --}}
+                        <i class="{{ $aboutQuote->icon }} text-4xl text-[#0a7c15] opacity-60"></i>
 
-                <div class="space-y-8">
-                    <p class="text-slate-500 uppercase tracking-[0.3em] text-sm font-poppins font-light">The Spirit of
-                        Bandipur</p>
+                    </div>
 
-                    <h2 class="font-playfair text-3xl md:text-5xl text-slate-800 leading-tight italic px-4">
-                        "Unlike the busy streets of Kathmandu or Pokhara, Bandipur is a place for <span
-                            class="text-[#6d6d18] not-italic font-bold">slow travel</span>, where peace is not the absence
-                        of noise, but the presence of serenity."
-                    </h2>
-                </div>
+                    <div class="space-y-8">
+                        {{-- <p class="text-slate-500 uppercase tracking-[0.3em] text-sm font-poppins font-light">
+                            The Spirit of Bandipur
+                        </p> --}}
+                        <p class="text-slate-500 uppercase tracking-[0.3em] text-sm font-poppins font-light">
+                            {{ $aboutQuote->subtitle }}
+                        </p>
+
+                        {{-- <h2 class="font-playfair text-3xl md:text-5xl text-slate-800 leading-tight italic px-4">
+                            "Unlike the busy streets of Kathmandu or Pokhara, Bandipur is a place for <span
+                                class="text-[#6d6d18] not-italic font-bold">slow travel</span>, where peace is not the
+                            absence
+                            of noise, but the presence of serenity."
+                        </h2> --}}
+                        <h2 class="font-playfair text-3xl md:text-5xl text-slate-800 leading-tight italic px-4">
+                            " {!! $aboutQuote->quote !!} "
+                        </h2>
+                    </div>
+                @endif
             </div>
         </section>
     </main>

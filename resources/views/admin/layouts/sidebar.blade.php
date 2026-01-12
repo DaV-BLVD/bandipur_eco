@@ -81,6 +81,7 @@
                             'about-one.*',
                             'about-two.*',
                             'about-images-grid.*',
+                            'about-quote.*',
                         ],
                         'links' => [
                             [
@@ -117,6 +118,11 @@
                                 'route' => 'about-images-grid.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Images Grid',
+                            ],
+                            [
+                                'route' => 'about-quote.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Quote',
                             ],
                         ],
                     ],

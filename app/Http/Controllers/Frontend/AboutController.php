@@ -10,6 +10,7 @@ use App\Models\WhoWeAreContent;
 use App\Models\AboutOne;
 use App\Models\AboutTwo;
 use App\Models\AboutImagesGrid;
+use App\Models\AboutQuote;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -30,6 +31,8 @@ class AboutController extends Controller
 
         $activities = AboutImagesGrid::where('status', true)->orderBy('order')->get();
 
-        return view('frontend.pages.about', compact('hero', 'header', 'photos', 'whoWeAre', 'about', 'about_two', 'activities'));
+        $aboutQuote = AboutQuote::where('status', true)->latest()->first();
+
+        return view('frontend.pages.about', compact('hero', 'header', 'photos', 'whoWeAre', 'about', 'about_two', 'activities', 'aboutQuote'));
     }
 }
