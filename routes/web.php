@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\ReserveSubmissionController;
 use App\Http\Controllers\Frontend\GalleryController;
 use App\Http\Controllers\Frontend\TareController;
+use App\Http\Controllers\Frontend\AboutController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('welcome', function () {
@@ -19,8 +20,7 @@ Route::get('/', function () {
     return view('frontend.pages.home');
 });
 Route::view('/about', 'frontend.pages.about')->name('about');
-// Route::view('/accommodation', 'frontend.pages.accommodation')->name('accommodation');
-// Route::view('/tare', 'frontend.pages.tare')->name('tare');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/accommodation', [AccommodationController::class, 'index'])->name('accommodation');
 Route::get('/tare', [TareController::class, 'index'])->name('tare');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
@@ -126,6 +126,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/accommodation-highlight', \App\Http\Controllers\Admin\AccommodationHighlightController::class);
 
         Route::resource('/admin/dashboard/accommodation-highlight-pic', \App\Http\Controllers\Admin\AccommodationHighlightPicController::class);
+
+        Route::resource('/admin/dashboard/about-hero', \App\Http\Controllers\Admin\AboutHeroController::class);
     });
 });
 

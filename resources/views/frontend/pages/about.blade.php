@@ -72,8 +72,12 @@
     {{-- hero --}}
     <section class="relative h-screen flex items-center justify-center overflow-hidden bg-black">
         <div class="absolute inset-0 z-0">
-            <img src="{{ asset('frontendimages/location.png') }}" alt="Bandipur mountains at sunrise"
-                class="w-full h-full object-cover animate-ken-burns filter brightness-[0.6]">
+            {{-- <img src="{{ asset('frontendimages/location.png') }}" alt="Bandipur mountains at sunrise"
+                class="w-full h-full object-cover animate-ken-burns filter brightness-[0.6]"> --}}
+            @if ($hero)
+                <img src="{{ asset('storage/' . $hero->image) }}" alt="Bandipur mountains at sunrise"
+                    class="w-full h-full object-cover animate-ken-burns filter brightness-[0.6]">
+            @endif
         </div>
         <div class="absolute inset-0 z-10 bg-gradient-to-t from-(--primary)/40 via-transparent to-black/80"></div>
 

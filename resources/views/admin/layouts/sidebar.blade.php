@@ -72,6 +72,20 @@
             @php
                 $dropdowns = [
                     [
+                        'title' => 'About',
+                        'icon' => 'fa-solid fa-envelope-open-text',
+                        'routes' => [
+                            'about-hero.*',
+                        ],
+                        'links' => [
+                            [
+                                'route' => 'about-hero.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Hero Section',
+                            ],
+                        ],
+                    ],
+                    [
                         'title' => 'Accommodation',
                         'icon' => 'fa-solid fa-envelope-open-text',
                         'routes' => [
