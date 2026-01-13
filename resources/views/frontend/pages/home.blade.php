@@ -567,48 +567,58 @@
                     <div class="lg:w-1/2 relative reveal">
                         <div class="absolute -top-10 -left-10 w-40 h-40 bg-[#6d6d18]/5 rounded-full -z-10 animate-pulse">
                         </div>
-                        <img src="{{ asset('frontendimages/hospitality.png') }}" alt="Organic Dining"
-                            class="rounded-2xl shadow-2xl w-full h-[600px] object-cover ring-8 ring-white">
-                        <div
-                            class="absolute -bottom-10 -right-10 bg-[#0a7c15] p-10 text-white hidden md:block rounded-2xl shadow-2xl transform hover:scale-105 transition-transform">
-                            <p class="text-5xl font-serif mb-1">85%</p>
-                            <p class="text-xs uppercase tracking-[0.2em] font-bold opacity-80 leading-relaxed">Ingredients
-                                from<br>our own garden</p>
-                        </div>
-                    </div>
-                    <div class="lg:w-1/2 reveal delay-200">
-                        <h2 class="text-[#0a7c15] font-bold uppercase tracking-widest text-sm mb-4">Farm to Table</h2>
-                        <h3 class="text-4xl md:text-5xl font-serif mb-8 text-gray-900 leading-tight">A Taste of the
-                            Himalayas</h3>
-                        <p class="text-gray-600 mb-8 leading-relaxed text-lg">
-                            Dining at Bandipur Eco is a journey through Nepal’s rich flavors. Our chefs specialize in
-                            <strong class="text-[#6d6d18]">Newari Cuisine</strong>, utilizing organic vegetables grown in
-                            the red soil of our own terrace
-                            gardens.
-                        </p>
-                        <ul class="space-y-5 mb-10">
-                            <li class="flex items-center gap-4 group">
-                                <span
-                                    class="w-8 h-8 rounded-full bg-[#6d6d18]/10 flex items-center justify-center text-[#6d6d18] font-bold group-hover:bg-[#6d6d18] group-hover:text-white transition-colors">✓</span>
-                                <span class="text-gray-700 font-medium">Traditional Samay Baji Platters</span>
-                            </li>
-                            <li class="flex items-center gap-4 group">
-                                <span
-                                    class="w-8 h-8 rounded-full bg-[#6d6d18]/10 flex items-center justify-center text-[#6d6d18] font-bold group-hover:bg-[#6d6d18] group-hover:text-white transition-colors">✓</span>
-                                <span class="text-gray-700 font-medium">Mountain Herbs & Hand-pressed Oils</span>
-                            </li>
-                            <li class="flex items-center gap-4 group">
-                                <span
-                                    class="w-8 h-8 rounded-full bg-[#6d6d18]/10 flex items-center justify-center text-[#6d6d18] font-bold group-hover:bg-[#6d6d18] group-hover:text-white transition-colors">✓</span>
-                                <span class="text-gray-700 font-medium">Evening Campfire Barbecue</span>
-                            </li>
-                        </ul>
-                        <a href="#"
-                            class="inline-block bg-[#6d6d18] text-white px-10 py-4 font-bold rounded-sm hover:bg-[#0a7c15] transition-all shadow-lg hover:-translate-y-1">
-                            Explore the Menu
-                        </a>
+                        @if ($highlightOne)
+                            {{-- <img src="{{ asset('frontendimages/hospitality.png') }}" alt="Organic Dining"
+                                class="rounded-2xl shadow-2xl w-full h-[600px] object-cover ring-8 ring-white"> --}}
+                            <img src="{{ asset('storage/' . $highlightOne->image) }}" alt="Highlight Image"
+                                class="rounded-2xl shadow-2xl w-full h-[600px] object-cover ring-8 ring-white">
+                            <div
+                                class="absolute -bottom-10 -right-10 bg-[#0a7c15] p-10 text-white hidden md:block rounded-2xl shadow-2xl transform hover:scale-105 transition-transform">
+                                {{-- <p class="text-5xl font-serif mb-1">85%</p> --}}
+                                <p class="text-5xl font-serif mb-1">
+                                    {{ $highlightOne->percentage }}
+                                </p>
+                                {{-- <p class="text-xs uppercase tracking-[0.2em] font-bold opacity-80 leading-relaxed">
+                                    Ingredients from<br>our own garden</p> --}}
+                                <p class="text-xs uppercase tracking-[0.2em] font-bold opacity-80 leading-relaxed">
+                                    {!! $highlightOne->text !!}
+                                </p>
+                        @endif
                     </div>
                 </div>
+                <div class="lg:w-1/2 reveal delay-200">
+                    <h2 class="text-[#0a7c15] font-bold uppercase tracking-widest text-sm mb-4">Farm to Table</h2>
+                    <h3 class="text-4xl md:text-5xl font-serif mb-8 text-gray-900 leading-tight">A Taste of the
+                        Himalayas</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                        Dining at Bandipur Eco is a journey through Nepal’s rich flavors. Our chefs specialize in
+                        <strong class="text-[#6d6d18]">Newari Cuisine</strong>, utilizing organic vegetables grown in
+                        the red soil of our own terrace
+                        gardens.
+                    </p>
+                    <ul class="space-y-5 mb-10">
+                        <li class="flex items-center gap-4 group">
+                            <span
+                                class="w-8 h-8 rounded-full bg-[#6d6d18]/10 flex items-center justify-center text-[#6d6d18] font-bold group-hover:bg-[#6d6d18] group-hover:text-white transition-colors">✓</span>
+                            <span class="text-gray-700 font-medium">Traditional Samay Baji Platters</span>
+                        </li>
+                        <li class="flex items-center gap-4 group">
+                            <span
+                                class="w-8 h-8 rounded-full bg-[#6d6d18]/10 flex items-center justify-center text-[#6d6d18] font-bold group-hover:bg-[#6d6d18] group-hover:text-white transition-colors">✓</span>
+                            <span class="text-gray-700 font-medium">Mountain Herbs & Hand-pressed Oils</span>
+                        </li>
+                        <li class="flex items-center gap-4 group">
+                            <span
+                                class="w-8 h-8 rounded-full bg-[#6d6d18]/10 flex items-center justify-center text-[#6d6d18] font-bold group-hover:bg-[#6d6d18] group-hover:text-white transition-colors">✓</span>
+                            <span class="text-gray-700 font-medium">Evening Campfire Barbecue</span>
+                        </li>
+                    </ul>
+                    <a href="#"
+                        class="inline-block bg-[#6d6d18] text-white px-10 py-4 font-bold rounded-sm hover:bg-[#0a7c15] transition-all shadow-lg hover:-translate-y-1">
+                        Explore the Menu
+                    </a>
+                </div>
+            </div>
             </div>
         </section>
 
