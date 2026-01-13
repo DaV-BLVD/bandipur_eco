@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ContactInfo;
 use App\Models\HomeLocationContent;
 use App\Models\MapLocation;
+use App\Models\HomeImagesGrid;
 class HomeController extends Controller
 {
     /**
@@ -21,7 +22,9 @@ class HomeController extends Controller
 
         $mapLocation = MapLocation::where('is_active', true)->latest()->first();
 
-        return view('frontend.pages.home', compact('firstPhone', 'locationContent', 'mapLocation'));
+        $images = HomeImagesGrid::orderBy('position')->get();
+
+        return view('frontend.pages.home', compact('firstPhone', 'locationContent', 'mapLocation', 'images'));
     }
 
     /**

@@ -743,7 +743,7 @@
                 <div class="text-center mb-20 reveal">
                     <h3 class="text-4xl md:text-5xl font-serif italic text-gray-900">Moments from the Ridge</h3>
                 </div>
-                <div class="flex flex-wrap -m-2 reveal delay-200">
+                {{-- <div class="flex flex-wrap -m-2 reveal delay-200">
                     <div class="flex flex-wrap w-1/2">
                         <div class="w-full p-2">
                             <img alt="Mountain View"
@@ -778,7 +778,31 @@
                                 src="{{ asset('frontendimages/hotel_entrance.png') }}">
                         </div>
                     </div>
-                </div>
+                </div> --}}
+                @if ($images->count())
+                    <div class="flex flex-wrap -m-2 reveal delay-200">
+                        <div class="flex flex-wrap w-1/2">
+                            @foreach ($images->whereIn('position', [1, 2, 3]) as $img)
+                                <div class="{{ $img->position == 1 ? 'w-full' : 'w-1/2' }} p-2">
+                                    <img alt="{{ $img->alt_text }}"
+                                        class="block object-cover object-center w-full {{ $img->position == 1 ? 'h-[500px]' : 'h-[300px]' }} rounded-2xl hover:brightness-75 transition-all duration-700 cursor-pointer"
+                                        src="{{ asset('storage/' . $img->image) }}">
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div class="flex flex-wrap w-1/2">
+                            @foreach ($images->whereIn('position', [4, 5, 6]) as $img)
+                                <div class="{{ $img->position == 6 ? 'w-full' : 'w-1/2' }} p-2">
+                                    <img alt="{{ $img->alt_text }}"
+                                        class="block object-cover object-center w-full {{ $img->position == 6 ? 'h-[500px]' : 'h-[300px]' }} rounded-2xl hover:brightness-75 transition-all duration-700 cursor-pointer"
+                                        src="{{ asset('storage/' . $img->image) }}">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
             </div>
         </section>
 
