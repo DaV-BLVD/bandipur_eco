@@ -11,6 +11,7 @@ use App\Models\HomeImagesGrid;
 use App\Models\HomeHighlightTwo;
 use App\Models\HomeFeature;
 use App\Models\HomeHighlightOne;
+use App\Models\HomeTaste;
 class HomeController extends Controller
 {
     /**
@@ -33,7 +34,9 @@ class HomeController extends Controller
 
         $highlightOne = HomeHighlightOne::first();
 
-        return view('frontend.pages.home', compact('firstPhone', 'locationContent', 'mapLocation', 'images', 'highlightTwo', 'features', 'highlightOne'));
+        $homeTaste = HomeTaste::with('items')->first();
+
+        return view('frontend.pages.home', compact('firstPhone', 'locationContent', 'mapLocation', 'images', 'highlightTwo', 'features', 'highlightOne', 'homeTaste'));
     }
 
     /**

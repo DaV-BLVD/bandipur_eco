@@ -587,36 +587,60 @@
                     </div>
                 </div>
                 <div class="lg:w-1/2 reveal delay-200">
-                    <h2 class="text-[#0a7c15] font-bold uppercase tracking-widest text-sm mb-4">Farm to Table</h2>
-                    <h3 class="text-4xl md:text-5xl font-serif mb-8 text-gray-900 leading-tight">A Taste of the
-                        Himalayas</h3>
-                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
-                        Dining at Bandipur Eco is a journey through Nepal’s rich flavors. Our chefs specialize in
-                        <strong class="text-[#6d6d18]">Newari Cuisine</strong>, utilizing organic vegetables grown in
-                        the red soil of our own terrace
-                        gardens.
-                    </p>
-                    <ul class="space-y-5 mb-10">
-                        <li class="flex items-center gap-4 group">
-                            <span
-                                class="w-8 h-8 rounded-full bg-[#6d6d18]/10 flex items-center justify-center text-[#6d6d18] font-bold group-hover:bg-[#6d6d18] group-hover:text-white transition-colors">✓</span>
-                            <span class="text-gray-700 font-medium">Traditional Samay Baji Platters</span>
-                        </li>
-                        <li class="flex items-center gap-4 group">
-                            <span
-                                class="w-8 h-8 rounded-full bg-[#6d6d18]/10 flex items-center justify-center text-[#6d6d18] font-bold group-hover:bg-[#6d6d18] group-hover:text-white transition-colors">✓</span>
-                            <span class="text-gray-700 font-medium">Mountain Herbs & Hand-pressed Oils</span>
-                        </li>
-                        <li class="flex items-center gap-4 group">
-                            <span
-                                class="w-8 h-8 rounded-full bg-[#6d6d18]/10 flex items-center justify-center text-[#6d6d18] font-bold group-hover:bg-[#6d6d18] group-hover:text-white transition-colors">✓</span>
-                            <span class="text-gray-700 font-medium">Evening Campfire Barbecue</span>
-                        </li>
-                    </ul>
-                    <a href="#"
+                    @if ($homeTaste)
+                        {{-- <h2 class="text-[#0a7c15] font-bold uppercase tracking-widest text-sm mb-4">Farm to Table</h2> --}}
+                        <h2 class="text-[#0a7c15] font-bold uppercase tracking-widest text-sm mb-4">
+                            {{ $homeTaste->subtitle }}
+                        </h2>
+                        {{-- <h3 class="text-4xl md:text-5xl font-serif mb-8 text-gray-900 leading-tight">A Taste of the
+                            Himalayas</h3> --}}
+                        <h3 class="text-4xl md:text-5xl font-serif mb-8 text-gray-900 leading-tight">
+                            {{ $homeTaste->title }}
+                        </h3>
+                        {{-- <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                            Dining at Bandipur Eco is a journey through Nepal’s rich flavors. Our chefs specialize in
+                            <strong class="text-[#6d6d18]">Newari Cuisine</strong>, utilizing organic vegetables grown in
+                            the red soil of our own terrace
+                            gardens.
+                        </p> --}}
+                        <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                            {!! $homeTaste->description !!}
+                        </p>
+                        <ul class="space-y-5 mb-10">
+                            {{-- <li class="flex items-center gap-4 group">
+                                <span
+                                    class="w-8 h-8 rounded-full bg-[#6d6d18]/10 flex items-center justify-center text-[#6d6d18] font-bold group-hover:bg-[#6d6d18] group-hover:text-white transition-colors">✓</span>
+                                <span class="text-gray-700 font-medium">Traditional Samay Baji Platters</span>
+                            </li>
+                            <li class="flex items-center gap-4 group">
+                                <span
+                                    class="w-8 h-8 rounded-full bg-[#6d6d18]/10 flex items-center justify-center text-[#6d6d18] font-bold group-hover:bg-[#6d6d18] group-hover:text-white transition-colors">✓</span>
+                                <span class="text-gray-700 font-medium">Mountain Herbs & Hand-pressed Oils</span>
+                            </li>
+                            <li class="flex items-center gap-4 group">
+                                <span
+                                    class="w-8 h-8 rounded-full bg-[#6d6d18]/10 flex items-center justify-center text-[#6d6d18] font-bold group-hover:bg-[#6d6d18] group-hover:text-white transition-colors">✓</span>
+                                <span class="text-gray-700 font-medium">Evening Campfire Barbecue</span>
+                            </li> --}}
+                            @foreach ($homeTaste->items as $item)
+                                <li class="flex items-center gap-4 group">
+                                    <span
+                                        class="w-8 h-8 rounded-full bg-[#6d6d18]/10 flex items-center justify-center
+                       text-[#6d6d18] font-bold
+                       group-hover:bg-[#6d6d18] group-hover:text-white transition-colors">
+                                        ✓
+                                    </span>
+                                    <span class="text-gray-700 font-medium">
+                                        {{ $item->text }}
+                                    </span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                    {{-- <a href="#"
                         class="inline-block bg-[#6d6d18] text-white px-10 py-4 font-bold rounded-sm hover:bg-[#0a7c15] transition-all shadow-lg hover:-translate-y-1">
                         Explore the Menu
-                    </a>
+                    </a> --}}
                 </div>
             </div>
             </div>

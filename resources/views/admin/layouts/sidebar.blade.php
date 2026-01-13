@@ -73,12 +73,24 @@
                     [
                         'title' => 'Home',
                         'icon' => 'fa-solid fa-envelope-open-text',
-                        'routes' => ['home-location-content.*', 'home-images-grid.*', 'home-highlight-two.*', 'home-features.*', 'home-highlight-one.*'],
+                        'routes' => [
+                            'home-location-content.*',
+                            'home-images-grid.*',
+                            'home-highlight-two.*',
+                            'home-features.*',
+                            'home-highlight-one.*',
+                            'home-taste.*',
+                        ],
                         'links' => [
                             [
                                 'route' => 'home-highlight-one.index',
                                 'icon' => 'fa-solid fa-clapperboard',
                                 'text' => 'Highlight 1 (Photo)',
+                            ],
+                            [
+                                'route' => 'home-taste.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Taste Section',
                             ],
                             [
                                 'route' => 'home-features.index',
