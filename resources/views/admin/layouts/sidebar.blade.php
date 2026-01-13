@@ -72,7 +72,7 @@
                 $dropdowns = [
                     [
                         'title' => 'Home',
-                        'icon' => 'fa-solid fa-envelope-open-text',
+                        'icon' => 'fa-solid fa-house-chimney', // Home specific
                         'routes' => [
                             'home-location-content.*',
                             'home-images-grid.*',
@@ -85,44 +85,44 @@
                         'links' => [
                             [
                                 'route' => 'home-hero-slider.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-images',
                                 'text' => 'Hero Section',
                             ],
                             [
                                 'route' => 'home-highlight-one.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-star',
                                 'text' => 'Highlight 1 (Photo)',
                             ],
                             [
                                 'route' => 'home-taste.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-utensils',
                                 'text' => 'Taste Section',
                             ],
                             [
                                 'route' => 'home-features.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-list-check',
                                 'text' => 'Features',
                             ],
                             [
                                 'route' => 'home-highlight-two.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-wand-magic-sparkles',
                                 'text' => 'Highlight 2',
                             ],
                             [
                                 'route' => 'home-images-grid.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-grid-2',
                                 'text' => 'Images Grid',
                             ],
                             [
                                 'route' => 'home-location-content.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-map-location-dot',
                                 'text' => 'Location Content',
                             ],
                         ],
                     ],
                     [
                         'title' => 'About',
-                        'icon' => 'fa-solid fa-envelope-open-text',
+                        'icon' => 'fa-solid fa-address-card', // About specific
                         'routes' => [
                             'about-hero.*',
                             'about-header.*',
@@ -134,51 +134,35 @@
                             'about-quote.*',
                         ],
                         'links' => [
-                            [
-                                'route' => 'about-hero.index',
-                                'icon' => 'fa-solid fa-clapperboard',
-                                'text' => 'Hero Section',
-                            ],
+                            ['route' => 'about-hero.index', 'icon' => 'fa-solid fa-panorama', 'text' => 'Hero Section'],
                             [
                                 'route' => 'about-header.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-heading',
                                 'text' => 'Header Section',
                             ],
                             [
                                 'route' => 'who-we-are-photos.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-camera-retro',
                                 'text' => 'Who We Are Photos',
                             ],
                             [
                                 'route' => 'who-we-are-contents.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-file-lines',
                                 'text' => 'Who We Are Content',
                             ],
-                            [
-                                'route' => 'about-one.index',
-                                'icon' => 'fa-solid fa-clapperboard',
-                                'text' => 'About One',
-                            ],
-                            [
-                                'route' => 'about-two.index',
-                                'icon' => 'fa-solid fa-clapperboard',
-                                'text' => 'About Two',
-                            ],
+                            ['route' => 'about-one.index', 'icon' => 'fa-solid fa-circle-1', 'text' => 'About One'],
+                            ['route' => 'about-two.index', 'icon' => 'fa-solid fa-circle-2', 'text' => 'About Two'],
                             [
                                 'route' => 'about-images-grid.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-table-cells',
                                 'text' => 'Images Grid',
                             ],
-                            [
-                                'route' => 'about-quote.index',
-                                'icon' => 'fa-solid fa-clapperboard',
-                                'text' => 'Quote',
-                            ],
+                            ['route' => 'about-quote.index', 'icon' => 'fa-solid fa-quote-left', 'text' => 'Quote'],
                         ],
                     ],
                     [
                         'title' => 'Accommodation',
-                        'icon' => 'fa-solid fa-envelope-open-text',
+                        'icon' => 'fa-solid fa-bed', // Accommodation specific
                         'routes' => [
                             'accommodation-hero.*',
                             'accommodation-header.*',
@@ -189,34 +173,30 @@
                         'links' => [
                             [
                                 'route' => 'accommodation-hero.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-hotel',
                                 'text' => 'Hero Section',
                             ],
                             [
                                 'route' => 'accommodation-header.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-window-maximize',
                                 'text' => 'Header Section',
                             ],
-                            [
-                                'route' => 'rooms.index',
-                                'icon' => 'fa-solid fa-clapperboard',
-                                'text' => 'Rooms',
-                            ],
+                            ['route' => 'rooms.index', 'icon' => 'fa-solid fa-door-open', 'text' => 'Rooms'],
                             [
                                 'route' => 'accommodation-highlight.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-tags',
                                 'text' => 'Highlights',
                             ],
                             [
                                 'route' => 'accommodation-highlight-pic.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-image',
                                 'text' => 'Highlight Photo',
                             ],
                         ],
                     ],
                     [
                         'title' => 'Rates',
-                        'icon' => 'fa-solid fa-envelope-open-text',
+                        'icon' => 'fa-solid fa-file-invoice-dollar', // Rates specific
                         'routes' => [
                             'rates-hero.*',
                             'rate-header.*',
@@ -228,61 +208,57 @@
                         'links' => [
                             [
                                 'route' => 'rates-hero.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-money-bill-wave',
                                 'text' => 'Hero Section',
                             ],
-                            [
-                                'route' => 'rate-header.index',
-                                'icon' => 'fa-solid fa-clapperboard',
-                                'text' => 'Rate Headers',
-                            ],
+                            ['route' => 'rate-header.index', 'icon' => 'fa-solid fa-font', 'text' => 'Rate Headers'],
                             [
                                 'route' => 'room-rates.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-hand-holding-dollar',
                                 'text' => 'Room Rates',
                             ],
                             [
                                 'route' => 'rates-table.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-table-list',
                                 'text' => 'Rates Table',
                             ],
                             [
                                 'route' => 'exclusive-special-offer.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-gift',
                                 'text' => 'Exclusive Offers',
                             ],
                             [
                                 'route' => 'important-infos.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-circle-info',
                                 'text' => 'Important Info',
                             ],
                         ],
                     ],
                     [
                         'title' => 'Gallery',
-                        'icon' => 'fa-solid fa-envelope-open-text',
+                        'icon' => 'fa-solid fa-photo-film', // Gallery specific
                         'routes' => ['gallery-hero.*', 'gallery-headers.*', 'gallery-contents.*'],
                         'links' => [
                             [
                                 'route' => 'gallery-hero.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-image-portrait',
                                 'text' => 'Hero Section',
                             ],
                             [
                                 'route' => 'gallery-headers.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-paragraph',
                                 'text' => 'Hero Header',
                             ],
                             [
                                 'route' => 'gallery-contents.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-images',
                                 'text' => 'Gallery Contents',
                             ],
                         ],
                     ],
                     [
                         'title' => 'Contact',
-                        'icon' => 'fa-solid fa-envelope-open-text',
+                        'icon' => 'fa-solid fa-paper-plane', // Contact specific
                         'routes' => [
                             'contact-hero.*',
                             'contact-header.*',
@@ -293,29 +269,25 @@
                         'links' => [
                             [
                                 'route' => 'contact-hero.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-mountain-sun',
                                 'text' => 'Hero Section',
                             ],
                             [
                                 'route' => 'contact-header.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-header',
                                 'text' => 'Hero Header',
                             ],
                             [
                                 'route' => 'contact-info.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-address-book',
                                 'text' => 'Contact Info',
                             ],
                             [
                                 'route' => 'map-location.index',
-                                'icon' => 'fa-solid fa-clapperboard',
+                                'icon' => 'fa-solid fa-location-dot',
                                 'text' => 'Map Location',
                             ],
-                            [
-                                'route' => 'faqs.index',
-                                'icon' => 'fa-solid fa-clapperboard',
-                                'text' => 'FAQs',
-                            ],
+                            ['route' => 'faqs.index', 'icon' => 'fa-solid fa-circle-question', 'text' => 'FAQs'],
                         ],
                     ],
                 ];
