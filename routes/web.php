@@ -144,6 +144,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/home-location-content', \App\Http\Controllers\Admin\HomeLocationContentController::class)->except(['show', 'destroy']);
 
         Route::resource('/admin/dashboard/home-images-grid', \App\Http\Controllers\Admin\HomeImagesGridController::class)->except(['show', 'destroy']);
+
+        Route::resource('/admin/dashboard/home-highlight-two', \App\Http\Controllers\Admin\HomeHighlightTwoController::class)->except(['show', 'destroy']);
     });
 });
 

@@ -8,6 +8,7 @@ use App\Models\ContactInfo;
 use App\Models\HomeLocationContent;
 use App\Models\MapLocation;
 use App\Models\HomeImagesGrid;
+use App\Models\HomeHighlightTwo;
 class HomeController extends Controller
 {
     /**
@@ -24,7 +25,9 @@ class HomeController extends Controller
 
         $images = HomeImagesGrid::orderBy('position')->get();
 
-        return view('frontend.pages.home', compact('firstPhone', 'locationContent', 'mapLocation', 'images'));
+        $highlightTwo = HomeHighlightTwo::with('items')->first();
+
+        return view('frontend.pages.home', compact('firstPhone', 'locationContent', 'mapLocation', 'images', 'highlightTwo'));
     }
 
     /**

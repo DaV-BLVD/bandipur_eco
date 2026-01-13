@@ -695,44 +695,76 @@
             <div class="max-w-7xl mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-20 items-center">
                     <div class="reveal">
-                        <h2 class="text-[#0a7c15] font-bold uppercase tracking-[0.3em] text-xs mb-4">Living History</h2>
-                        <h3 class="text-4xl md:text-5xl font-serif mb-8 text-gray-900 leading-tight">The Heart of Newari
-                            Culture</h3>
-                        <p class="text-gray-600 mb-10 leading-relaxed text-lg">
-                            Bandipur is a "living museum"—a preserved 18th-century trading post where motorized vehicles are
-                            prohibited. Our resort is built using the same red-brick and carved-wood techniques that have
-                            defined this ridge for centuries.
-                        </p>
-                        <div class="space-y-10">
-                            <div class="flex gap-6 group">
-                                <div
-                                    class="flex-shrink-0 w-14 h-14 bg-[#fdfbf7] flex items-center justify-center rounded-2xl text-[#6d6d18] font-bold text-xl group-hover:bg-[#6d6d18] group-hover:text-white transition-all duration-500">
-                                    01
+                        @if ($highlightTwo)
+                            {{-- <h2 class="text-[#0a7c15] font-bold uppercase tracking-[0.3em] text-xs mb-4">Living History
+                            </h2> --}}
+                            <h2 class="text-[#0a7c15] font-bold uppercase tracking-[0.3em] text-xs mb-4">
+                                {{ $highlightTwo->label }}
+                            </h2>
+                            {{-- <h3 class="text-4xl md:text-5xl font-serif mb-8 text-gray-900 leading-tight">The Heart of
+                                Newari Culture</h3> --}}
+                            <h3 class="text-4xl md:text-5xl font-serif mb-8 text-gray-900 leading-tight">
+                                {{ $highlightTwo->heading }}
+                            </h3>
+                            {{-- <p class="text-gray-600 mb-10 leading-relaxed text-lg">
+                                Bandipur is a "living museum"—a preserved 18th-century trading post where motorized vehicles
+                                are prohibited. Our resort is built using the same red-brick and carved-wood techniques that
+                                have defined this ridge for centuries.
+                            </p> --}}
+                            <p class="text-gray-600 mb-10 leading-relaxed text-lg">
+                                {{ $highlightTwo->description }}
+                            </p>
+                            <div class="space-y-10">
+                                {{-- <div class="flex gap-6 group">
+                                    <div
+                                        class="flex-shrink-0 w-14 h-14 bg-[#fdfbf7] flex items-center justify-center rounded-2xl text-[#6d6d18] font-bold text-xl group-hover:bg-[#6d6d18] group-hover:text-white transition-all duration-500">
+                                        01
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-xl mb-1">Authentic Architecture</h4>
+                                        <p class="text-gray-500 leading-relaxed">Every window frame is hand-carved by local
+                                            master craftsmen.</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 text-xl mb-1">Authentic Architecture</h4>
-                                    <p class="text-gray-500 leading-relaxed">Every window frame is hand-carved by local
-                                        master craftsmen.</p>
-                                </div>
+                                <div class="flex gap-6 group">
+                                    <div
+                                        class="flex-shrink-0 w-14 h-14 bg-[#fdfbf7] flex items-center justify-center rounded-2xl text-[#6d6d18] font-bold text-xl group-hover:bg-[#6d6d18] group-hover:text-white transition-all duration-500">
+                                        02
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-xl mb-1">Local Traditions</h4>
+                                        <p class="text-gray-500 leading-relaxed">Participate in seasonal festivals and
+                                            evening
+                                            "Dhan Naach" dances.</p>
+                                    </div>
+                                </div> --}}
+
+                                @foreach ($highlightTwo->items as $item)
+                                    <div class="flex gap-6 group mb-6">
+                                        <div
+                                            class="w-14 h-14 flex items-center justify-center rounded-2xl bg-[#fdfbf7] text-[#6d6d18] font-bold text-xl">
+                                            {{ sprintf('%02d', $item->order) }}
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-900 text-xl">{{ $item->title }}</h4>
+                                            <p class="text-gray-500">{{ $item->text }}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
-                            <div class="flex gap-6 group">
-                                <div
-                                    class="flex-shrink-0 w-14 h-14 bg-[#fdfbf7] flex items-center justify-center rounded-2xl text-[#6d6d18] font-bold text-xl group-hover:bg-[#6d6d18] group-hover:text-white transition-all duration-500">
-                                    02
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-gray-900 text-xl mb-1">Local Traditions</h4>
-                                    <p class="text-gray-500 leading-relaxed">Participate in seasonal festivals and evening
-                                        "Dhan Naach" dances.</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="grid grid-cols-2 gap-4 reveal delay-200">
-                        <img src="{{ asset('frontendimages/cusin.png') }}"
+                        {{-- <img src="{{ asset('frontendimages/cusin.png') }}"
                             class="rounded-2xl h-[400px] w-full object-cover mt-12 shadow-xl" alt="Local Temple">
                         <img src="{{ asset('frontendimages/tempels.png') }}"
-                            class="rounded-2xl h-[400px] w-full object-cover shadow-xl" alt="Newari Woodwork">
+                            class="rounded-2xl h-[400px] w-full object-cover shadow-xl" alt="Newari Woodwork"> --}}
+
+                        <img src="{{ asset('storage/' . $highlightTwo->image_one) }}"
+                            class="rounded-2xl h-[400px] w-full object-cover mt-12">
+
+                        <img src="{{ asset('storage/' . $highlightTwo->image_two) }}"
+                            class="rounded-2xl h-[400px] w-full object-cover mt-6">
+                        @endif
                     </div>
                 </div>
             </div>
