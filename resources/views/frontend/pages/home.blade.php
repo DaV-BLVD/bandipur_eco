@@ -786,22 +786,39 @@
             <div class="max-w-7xl mx-auto">
                 <div class="bg-gray-50 overflow-hidden flex flex-col lg:flex-row shadow-sm border border-gray-100">
                     <div class="p-6 md:p-20 aspect-4/3 reveal">
-                        <h3 class="text-4xl font-serif mb-8 text-gray-900">Getting to Paradise</h3>
-                        <p class="text-gray-600 mb-12 text-lg">Located halfway between Kathmandu and Pokhara, Bandipur is
-                            the perfect midpoint for your Nepal journey.</p>
+                        @if ($locationContent)
+                            {{-- <h3 class="text-4xl font-serif mb-8 text-gray-900">Getting to Paradise</h3> --}}
+                            <h3 class="text-4xl font-serif mb-8 text-gray-900">
+                                {{ $locationContent->heading }}
+                            </h3>
+                            {{-- <p class="text-gray-600 mb-12 text-lg">Located halfway between Kathmandu and Pokhara, Bandipur is the perfect midpoint for your Nepal journey.</p> --}}
+                            <p class="text-gray-600 mb-12 text-lg">
+                                {{ $locationContent->description }}
+                            </p>
 
-                        <div class="space-y-8">
-                            <div class="flex items-start gap-6">
-                                <span class="text-[#6d6d18] font-bold tracking-widest text-sm pt-1">BY CAR:</span>
-                                <span class="text-gray-600 leading-relaxed">4 hours from Kathmandu / 2.5 hours from Pokhara
-                                    via Prithvi Highway.</span>
+                            <div class="space-y-8">
+                                <div class="flex items-start gap-6">
+                                    {{-- <span class="text-[#6d6d18] font-bold tracking-widest text-sm pt-1">BY CAR:</span> --}}
+                                    <span class="text-[#6d6d18] font-bold tracking-widest text-sm pt-1">
+                                        {{ $locationContent->car_label }}:
+                                    </span>
+                                    {{-- <span class="text-gray-600 leading-relaxed">4 hours from Kathmandu / 2.5 hours from Pokhara via Prithvi Highway.</span> --}}
+                                    <span class="text-gray-600 leading-relaxed">
+                                        {{ $locationContent->car_text }}
+                                    </span>
+                                </div>
+                                <div class="flex items-start gap-6 border-t border-gray-200 pt-8">
+                                    {{-- <span class="text-[#6d6d18] font-bold tracking-widest text-sm pt-1">PICKUP:</span> --}}
+                                    <span class="text-[#6d6d18] font-bold tracking-widest text-sm pt-1">
+                                        {{ $locationContent->pickup_label }}:
+                                    </span>
+                                    {{-- <span class="text-gray-600 leading-relaxed">We provide private luxury transfers from Dumre (the gateway to Bandipur).</span> --}}
+                                    <span class="text-gray-600 leading-relaxed">
+                                        {{ $locationContent->pickup_text }}
+                                    </span>
+                                </div>
                             </div>
-                            <div class="flex items-start gap-6 border-t border-gray-200 pt-8">
-                                <span class="text-[#6d6d18] font-bold tracking-widest text-sm pt-1">PICKUP:</span>
-                                <span class="text-gray-600 leading-relaxed">We provide private luxury transfers from Dumre
-                                    (the gateway to Bandipur).</span>
-                            </div>
-                        </div>
+                        @endif
 
                         <button
                             class="mt-16 group flex items-center gap-3 text-[#0a7c15] font-bold hover:gap-6 transition-all duration-500 uppercase tracking-widest text-xs">
@@ -840,7 +857,6 @@
                         class="bg-transparent border-2 border-white text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-white hover:text-[#0a7c15] transition-all duration-500 uppercase tracking-widest">
                         Call Reservations
                     </a>
-
                 </div>
             </div>
         </section>

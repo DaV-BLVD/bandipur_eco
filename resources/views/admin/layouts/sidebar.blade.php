@@ -71,6 +71,18 @@
             @php
                 $dropdowns = [
                     [
+                        'title' => 'Home',
+                        'icon' => 'fa-solid fa-envelope-open-text',
+                        'routes' => ['home-location-content.*'],
+                        'links' => [
+                            [
+                                'route' => 'home-location-content.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Location Content',
+                            ],
+                        ],
+                    ],
+                    [
                         'title' => 'About',
                         'icon' => 'fa-solid fa-envelope-open-text',
                         'routes' => [

@@ -140,6 +140,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/about-images-grid', \App\Http\Controllers\Admin\AboutImagesGridController::class);
 
         Route::resource('/admin/dashboard/about-quote', \App\Http\Controllers\Admin\AboutQuoteController::class);
+
+        Route::resource('/admin/dashboard/home-location-content', \App\Http\Controllers\Admin\HomeLocationContentController::class)->except(['show', 'destroy']);
     });
 });
 
