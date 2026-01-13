@@ -152,6 +152,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/home-highlight-one', \App\Http\Controllers\Admin\HomeHighlightOneController::class)->except(['show', 'destroy']);
 
         Route::resource('/admin/dashboard/home-taste', \App\Http\Controllers\Admin\HomeTasteController::class)->except(['show', 'destroy']);
+
+        Route::resource('/admin/dashboard/home-hero-slider', \App\Http\Controllers\Admin\HomeHeroSliderController::class)->except(['show']);
     });
 });
 

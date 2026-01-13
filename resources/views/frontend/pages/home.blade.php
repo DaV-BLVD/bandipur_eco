@@ -197,7 +197,7 @@
                 <div id="carousel" class="relative w-full h-full bg-black">
 
                     <!-- Slide 1 -->
-                    <div class="carousel-slide active" data-slide="0">
+                    {{-- <div class="carousel-slide active" data-slide="0">
                         <!-- Image -->
                         <div class="slide-image absolute inset-0 w-full h-full">
                             <img src="{{ asset('frontendimages/hotel_entrance.png') }}" alt="Resort Pool View"
@@ -340,6 +340,59 @@
                                 <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                             </a>
                         </div>
+                    </div> --}}
+
+                    <div id="carousel" class="relative w-full h-full bg-black">
+                        @foreach ($heroSlides as $slide)
+                            <div class="carousel-slide {{ $loop->first ? 'active' : '' }}" data-slide="{{ $loop->index }}">
+
+                                <div class="slide-image absolute inset-0 w-full h-full">
+                                    <img src="{{ asset('storage/' . $slide->image) }}" alt="{{ $slide->title_highlight }}"
+                                        class="w-full h-full object-cover" />
+                                </div>
+
+                                <div class="image-overlay absolute inset-0"></div>
+                                <div class="image-overlay-side absolute inset-0"></div>
+
+                                <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8"
+                                    id='hero-text'>
+
+                                    @if ($slide->badge_text)
+                                        <span
+                                            class="text-reveal-1 text-white px-5 py-1 rounded-full font-semibold tracking-[0.3em] uppercase text-sm sm:text-base mb-4"
+                                            style="background-color: {{ $slide->color_hex }}">
+                                            {{ $slide->badge_text }}
+                                        </span>
+                                    @endif
+
+                                    <h1
+                                        class="text-reveal-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                                        {{ $slide->title_prefix }}
+                                        <span style="color: {{ $slide->color_hex }}">{{ $slide->title_highlight }}</span>
+                                        <br class="hidden sm:block">
+                                        {{ $slide->title_suffix }}
+                                    </h1>
+
+                                    @if ($slide->description)
+                                        <p
+                                            class="text-reveal-3 text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
+                                            {{ $slide->description }}
+                                        </p>
+                                    @endif
+
+                                    <a href="{{ $slide->button_link }}"
+                                        class="text-reveal-4 group relative inline-flex items-center gap-2 text-white font-semibold py-3 px-8 sm:py-4 sm:px-10 rounded-full transition-all duration-300 animate-glow"
+                                        style="background-color: {{ $slide->color_hex }}; border: 1px solid {{ $slide->color_hex }};"
+                                        onmouseover="this.style.backgroundColor='{{ $slide->color_hex }}E6'"
+                                        onmouseout="this.style.backgroundColor='{{ $slide->color_hex }}'">
+
+                                        <span>{{ $slide->button_text }}</span>
+                                        <i
+                                            class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
 
                 </div>
@@ -364,7 +417,7 @@
 
                 <!-- Slide Indicators with Progress -->
                 <div class="absolute bottom-24 sm:bottom-28 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
-                    <button
+                    {{-- <button
                         class="slide-dot group relative w-12 sm:w-16 h-1 rounded-full overflow-hidden bg-white/30 transition-all duration-300 cursor-pointer"
                         data-index="0">
                         <span class="progress-bar absolute inset-0 bg-[#6d6d18] rounded-full origin-left"
@@ -387,17 +440,39 @@
                         data-index="3">
                         <span class="progress-bar absolute inset-0 bg-[#6d6d18] rounded-full origin-left"
                             style="width: 0%;"></span>
-                    </button>
+                    </button> --}}
+                    @foreach ($heroSlides as $slide)
+                        <button
+                            class="slide-dot group relative w-12 sm:w-16 h-1 rounded-full overflow-hidden bg-white/30 transition-all duration-300 cursor-pointer"
+                            onclick="goToSlide({{ $loop->index }})" data-index="{{ $loop->index }}">
+
+                            {{-- Dynamic Color: The bar fills with the specific color of the slide it represents --}}
+                            <span class="progress-bar absolute inset-0 rounded-full origin-left w-0"
+                                style="background-color: {{ $slide->color_hex }};">
+                            </span>
+                        </button>
+                    @endforeach
                 </div>
 
                 <!-- Slide Counter -->
-                <div
+                {{-- <div
                     class="absolute bottom-24 sm:bottom-28 right-4 sm:right-8 z-20 flex items-center gap-2 text-white font-medium">
                     <span id="currentSlide" class="text-2xl sm:text-3xl text-[#6d6d18] font-light">01</span>
                     <span class="text-white/30">/</span>
                     <span class="text-sm sm:text-base text-white/50">04</span>
+                </div> --}}
+                <div
+                    class="absolute bottom-24 sm:bottom-28 right-4 sm:right-8 z-20 flex items-center gap-2 text-white font-medium">
+                    {{-- The ID 'currentSlide' will be targeted by JS to update the number --}}
+                    <span id="currentSlide" class="text-2xl sm:text-3xl font-light"
+                        style="color: {{ $heroSlides->first()->color_hex ?? '#6d6d18' }}">
+                        01
+                    </span>
+                    <span class="text-white/30">/</span>
+                    <span class="text-sm sm:text-base text-white/50">
+                        {{ sprintf('%02d', $heroSlides->count()) }}
+                    </span>
                 </div>
-
                 <!-- Scroll Down Indicator -->
                 <div
                     class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 scroll-indicator pointer-events-auto cursor-pointer">
@@ -411,22 +486,40 @@
 
                 <!-- Social Links - Desktop -->
                 <div class="hidden lg:flex absolute left-40 top-1/2 -translate-y-1/2 z-20 flex-col items-center gap-4">
+                    @php
+                        $facebookUrl = $instagramUrl = $twitterUrl = null;
+
+                        if ($socialLinks) {
+                            foreach ($socialLinks as $link) {
+                                $name = strtolower($link->name);
+                                if ($name === 'facebook') {
+                                    $facebookUrl = $link->url;
+                                } elseif ($name === 'instagram') {
+                                    $instagramUrl = $link->url;
+                                } elseif ($name === 'twitter') {
+                                    $twitterUrl = $link->url;
+                                }
+                            }
+                        }
+                    @endphp
+
                     <div class="w-px h-12 bg-gradient-to-b from-transparent to-white/30"></div>
-                    <a href="#"
+                    <a href="{{ $twitterUrl ?? '#' }}" target="_blank" rel="noopener noreferrer"
                         class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-[#6d6d18] hover:border-[#6d6d18] transition-all duration-300">
+
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                         </svg>
                     </a>
-                    <a href="#"
+                    <a href="{{ $instagramUrl ?? '#' }}" target="_blank" rel="noopener noreferrer"
                         class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-[#6d6d18] hover:border-[#6d6d18] transition-all duration-300">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                         </svg>
                     </a>
-                    <a href="#"
+                    <a href="{{ $facebookUrl ?? '#' }}" target="_blank" rel="noopener noreferrer"
                         class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:text-[#6d6d18] hover:border-[#6d6d18] transition-all duration-300">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                             <path
@@ -570,7 +663,8 @@
                                 <h4 class="text-2xl font-serif mb-3">{{ $room->title }}</h4>
                                 <p class="text-gray-600 text-sm mb-4 leading-relaxed">{{ $room->description }}</p>
                                 <p class="text-[#0a7c15] font-bold text-lg">{{ $room->currency }} {{ $room->price }}
-                                    <span class="text-xs text-gray-400 font-normal uppercase">/ Night</span></p>
+                                    <span class="text-xs text-gray-400 font-normal uppercase">/ Night</span>
+                                </p>
                             </div>
                         </div>
                     @endforeach
@@ -1036,192 +1130,188 @@
     </a>
 
     @push('script')
-        {{-- // main --}}
         <script>
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+            document.addEventListener('DOMContentLoaded', function() {
+                // --- 1. INTERSECTION OBSERVER (Scroll Reveal) ---
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, observerOptions);
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                        }
+                    });
+                }, observerOptions);
 
-            document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-        </script>
+                document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-        {{-- carousel --}}
-        <script>
-            document.addEventListener('scroll', () => {
-                const scrollValue = window.scrollY;
-                const windowHeight = window.innerHeight;
+                // --- 2. HERO PARALLAX ANIMATION ---
                 const heroBg = document.getElementById('hero-bg');
                 const heroText = document.getElementById('hero-text');
 
-                // Calculate progress (0 to 1)
-                const scrollRatio = Math.min(scrollValue / windowHeight, 1);
+                if (heroBg || heroText) {
+                    window.addEventListener('scroll', () => {
+                        const scrollValue = window.scrollY;
+                        const windowHeight = window.innerHeight;
+                        const scrollRatio = Math.min(scrollValue / windowHeight, 1);
 
-                if (scrollRatio <= 1) {
-                    const translateY = scrollRatio * -150; // Shifts up 150px
-                    const scale = 1 - (scrollRatio * 0); // Scale from 1 to 0.85
-
-                    // Hero Background Animation
-                    heroBg.style.transform = `translateY(${translateY}px) scale(${scale})`;
-
-                    // Hero Text Animation (Move up faster and fade out)
-                    const textTranslateY = scrollRatio * -100;
-                    heroText.style.transform = `translateY(${textTranslateY}px)`;
-                    heroText.style.opacity = 1 - (scrollRatio * 1); // Fades out faster
+                        if (scrollRatio <= 1) {
+                            // Background movement
+                            if (heroBg) {
+                                const translateY = scrollRatio * -150;
+                                heroBg.style.transform = `translateY(${translateY}px)`;
+                            }
+                            // Text movement and fade
+                            if (heroText) {
+                                const textTranslateY = scrollRatio * -100;
+                                heroText.style.transform = `translateY(${textTranslateY}px)`;
+                                heroText.style.opacity = 1 - (scrollRatio * 1.5);
+                            }
+                        }
+                    }, {
+                        passive: true
+                    });
                 }
-            });
 
+                // --- 3. CAROUSEL LOGIC ---
+                const slides = document.querySelectorAll('.carousel-slide');
+                const dots = document.querySelectorAll('.slide-dot');
+                const counterDisplay = document.getElementById('currentSlide');
+                const heroSection = document.getElementById('hero');
 
-            // Carousel Functionality - Seamless Loop
-            const slides = document.querySelectorAll('.carousel-slide');
-            const dots = document.querySelectorAll('.slide-dot');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const currentSlideDisplay = document.getElementById('currentSlide');
+                let currentIndex = 0;
+                let slideInterval;
+                const intervalTime = 6000;
 
-            let currentIndex = 0;
-            let previousIndex = 0;
-            let autoPlayInterval;
-            const intervalTime = 6000;
+                function updateSlide(newIndex) {
+                    // Reset all slides and progress bars
+                    slides.forEach((slide, i) => {
+                        slide.classList.remove('active', 'opacity-100', 'z-10');
+                        slide.classList.add('opacity-0', 'z-0');
 
-            function updateSlide(newIndex) {
-                // Store previous index for smooth crossfade
-                previousIndex = currentIndex;
-                currentIndex = newIndex;
+                        // Reset internal content animations
+                        const contents = slide.querySelectorAll('.slide-content');
+                        contents.forEach(el => {
+                            el.classList.remove('translate-y-0', 'opacity-100');
+                            el.classList.add('translate-y-8', 'opacity-0');
+                        });
+                    });
 
-                // Update all slides
-                slides.forEach((slide, i) => {
-                    slide.classList.remove('active', 'prev');
+                    dots.forEach(dot => {
+                        const bar = dot.querySelector('.progress-bar');
+                        if (bar) {
+                            bar.style.transition = 'none';
+                            bar.style.width = '0%';
+                        }
+                    });
 
-                    if (i === currentIndex) {
-                        slide.classList.add('active');
-                    } else if (i === previousIndex) {
-                        slide.classList.add('prev');
-                        // Remove prev class after transition completes
-                        setTimeout(() => {
-                            slide.classList.remove('prev');
-                        }, 1200);
+                    // Activate New Slide
+                    currentIndex = newIndex;
+                    const activeSlide = slides[currentIndex];
+                    activeSlide.classList.remove('opacity-0', 'z-0');
+                    activeSlide.classList.add('active', 'opacity-100', 'z-10');
+
+                    // Trigger Content Animations
+                    setTimeout(() => {
+                        const activeContents = activeSlide.querySelectorAll('.slide-content');
+                        activeContents.forEach(el => {
+                            el.classList.remove('translate-y-8', 'opacity-0');
+                            el.classList.add('translate-y-0', 'opacity-100');
+                        });
+                    }, 100);
+
+                    // Update Counter
+                    if (counterDisplay) {
+                        counterDisplay.innerText = String(currentIndex + 1).padStart(2, '0');
                     }
-                });
 
-                // Update progress bars
-                dots.forEach((dot, i) => {
-                    const progressBar = dot.querySelector('.progress-bar');
-                    progressBar.classList.remove('progress-active');
-                    progressBar.style.width = '0%';
-
-                    if (i === currentIndex) {
-                        // Small delay to restart animation
+                    // Animate Progress Bar
+                    const activeBar = dots[currentIndex]?.querySelector('.progress-bar');
+                    if (activeBar) {
                         setTimeout(() => {
-                            progressBar.classList.add('progress-active');
+                            activeBar.style.transition = `width ${intervalTime}ms linear`;
+                            activeBar.style.width = '100%';
                         }, 50);
                     }
+                }
+
+                function nextSlide() {
+                    updateSlide((currentIndex + 1) % slides.length);
+                }
+
+                function prevSlide() {
+                    updateSlide((currentIndex - 1 + slides.length) % slides.length);
+                }
+
+                function startAutoPlay() {
+                    stopAutoPlay();
+                    slideInterval = setInterval(nextSlide, intervalTime);
+                }
+
+                function stopAutoPlay() {
+                    if (slideInterval) clearInterval(slideInterval);
+                }
+
+                // Global function for dot clicks
+                window.goToSlide = function(index) {
+                    if (index === currentIndex) return;
+                    updateSlide(index);
+                    startAutoPlay();
+                };
+
+                // --- 4. EVENT LISTENERS ---
+                document.getElementById('nextBtn')?.addEventListener('click', () => {
+                    nextSlide();
+                    startAutoPlay();
                 });
 
-                // Update counter
-                currentSlideDisplay.textContent = String(currentIndex + 1).padStart(2, '0');
-            }
-
-            function nextSlide() {
-                const newIndex = (currentIndex + 1) % slides.length;
-                updateSlide(newIndex);
-            }
-
-            function prevSlide() {
-                const newIndex = (currentIndex - 1 + slides.length) % slides.length;
-                updateSlide(newIndex);
-            }
-
-            function goToSlide(index) {
-                if (index !== currentIndex) {
-                    updateSlide(index);
-                    resetAutoPlay();
-                }
-            }
-
-            function startAutoPlay() {
-                autoPlayInterval = setInterval(nextSlide, intervalTime);
-            }
-
-            function resetAutoPlay() {
-                clearInterval(autoPlayInterval);
-                startAutoPlay();
-            }
-
-            // Event Listeners
-            nextBtn.addEventListener('click', () => {
-                nextSlide();
-                resetAutoPlay();
-            });
-
-            prevBtn.addEventListener('click', () => {
-                prevSlide();
-                resetAutoPlay();
-            });
-
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => goToSlide(index));
-            });
-
-            // Keyboard Navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight') {
-                    nextSlide();
-                    resetAutoPlay();
-                } else if (e.key === 'ArrowLeft') {
+                document.getElementById('prevBtn')?.addEventListener('click', () => {
                     prevSlide();
-                    resetAutoPlay();
-                }
-            });
+                    startAutoPlay();
+                });
 
-            // Touch/Swipe Support
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            document.getElementById('hero').addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, {
-                passive: true
-            });
-
-            document.getElementById('hero').addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                const diff = touchStartX - touchEndX;
-
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) {
+                // Keyboard support
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') {
                         nextSlide();
-                    } else {
-                        prevSlide();
+                        startAutoPlay();
                     }
-                    resetAutoPlay();
+                    if (e.key === 'ArrowLeft') {
+                        prevSlide();
+                        startAutoPlay();
+                    }
+                });
+
+                // Pause on Hover
+                heroSection?.addEventListener('mouseenter', stopAutoPlay);
+                heroSection?.addEventListener('mouseleave', startAutoPlay);
+
+                // Touch Support
+                let touchStartX = 0;
+                heroSection?.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, {
+                    passive: true
+                });
+
+                heroSection?.addEventListener('touchend', (e) => {
+                    let touchEndX = e.changedTouches[0].screenX;
+                    if (touchStartX - touchEndX > 50) nextSlide();
+                    else if (touchStartX - touchEndX < -50) prevSlide();
+                    startAutoPlay();
+                }, {
+                    passive: true
+                });
+
+                // Initialize
+                if (slides.length > 0) {
+                    updateSlide(0);
+                    startAutoPlay();
                 }
-            }, {
-                passive: true
             });
-
-            // Pause on hover (desktop only)
-            const heroSection = document.getElementById('hero');
-
-            heroSection.addEventListener('mouseenter', () => {
-                clearInterval(autoPlayInterval);
-            });
-
-            heroSection.addEventListener('mouseleave', () => {
-                startAutoPlay();
-            });
-
-            // Initialize
-            updateSlide(0);
-            startAutoPlay();
         </script>
     @endpush
 @endsection

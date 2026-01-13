@@ -13,6 +13,7 @@ use App\Models\HomeFeature;
 use App\Models\HomeHighlightOne;
 use App\Models\HomeTaste;
 use App\Models\Room;
+use App\Models\HomeHeroSlider;
 
 class HomeController extends Controller
 {
@@ -40,7 +41,11 @@ class HomeController extends Controller
 
         $rooms = Room::take(3)->get();
 
-        return view('frontend.pages.home', compact('firstPhone', 'locationContent', 'mapLocation', 'images', 'highlightTwo', 'features', 'highlightOne', 'homeTaste', 'rooms'));
+        $heroSlides = HomeHeroSlider::where('is_active', true)->orderBy('sort_order', 'asc')->get();
+
+        $socialLinks = \App\Models\SocialLink::where('is_active', true)->get();
+
+        return view('frontend.pages.home', compact('firstPhone', 'locationContent', 'mapLocation', 'images', 'highlightTwo', 'features', 'highlightOne', 'homeTaste', 'rooms', 'heroSlides', 'socialLinks'));
     }
 
     /**

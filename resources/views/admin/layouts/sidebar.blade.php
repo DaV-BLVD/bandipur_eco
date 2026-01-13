@@ -80,8 +80,14 @@
                             'home-features.*',
                             'home-highlight-one.*',
                             'home-taste.*',
+                            'home-hero-slider.*',
                         ],
                         'links' => [
+                            [
+                                'route' => 'home-hero-slider.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Hero Section',
+                            ],
                             [
                                 'route' => 'home-highlight-one.index',
                                 'icon' => 'fa-solid fa-clapperboard',
