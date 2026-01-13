@@ -73,8 +73,13 @@
                     [
                         'title' => 'Home',
                         'icon' => 'fa-solid fa-envelope-open-text',
-                        'routes' => ['home-location-content.*', 'home-images-grid.*', 'home-highlight-two.*'],
+                        'routes' => ['home-location-content.*', 'home-images-grid.*', 'home-highlight-two.*', 'home-features.*'],
                         'links' => [
+                            [
+                                'route' => 'home-features.index',
+                                'icon' => 'fa-solid fa-clapperboard',
+                                'text' => 'Features',
+                            ],
                             [
                                 'route' => 'home-highlight-two.index',
                                 'icon' => 'fa-solid fa-clapperboard',

@@ -146,6 +146,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/dashboard/home-images-grid', \App\Http\Controllers\Admin\HomeImagesGridController::class)->except(['show', 'destroy']);
 
         Route::resource('/admin/dashboard/home-highlight-two', \App\Http\Controllers\Admin\HomeHighlightTwoController::class)->except(['show', 'destroy']);
+
+        Route::resource('/admin/dashboard/home-features', \App\Http\Controllers\Admin\HomeFeatureController::class)->except(['show']);
     });
 });
 

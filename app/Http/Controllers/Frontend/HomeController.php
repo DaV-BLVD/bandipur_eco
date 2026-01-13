@@ -9,6 +9,7 @@ use App\Models\HomeLocationContent;
 use App\Models\MapLocation;
 use App\Models\HomeImagesGrid;
 use App\Models\HomeHighlightTwo;
+use App\Models\HomeFeature;
 class HomeController extends Controller
 {
     /**
@@ -27,7 +28,9 @@ class HomeController extends Controller
 
         $highlightTwo = HomeHighlightTwo::with('items')->first();
 
-        return view('frontend.pages.home', compact('firstPhone', 'locationContent', 'mapLocation', 'images', 'highlightTwo'));
+        $features = HomeFeature::orderBy('order')->get();
+
+        return view('frontend.pages.home', compact('firstPhone', 'locationContent', 'mapLocation', 'images', 'highlightTwo', 'features'));
     }
 
     /**

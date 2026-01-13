@@ -617,37 +617,62 @@
                 <h2 class="uppercase tracking-[0.3em] text-xs font-bold opacity-70 mb-4">The Itinerary</h2>
                 <h3 class="text-4xl md:text-5xl font-serif">A Day Above the Clouds</h3>
             </div>
-            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-6">
-                <div
+            @if ($features->count())
+                <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-6">
+                    {{-- <div
                     class="bg-white/5 p-10 rounded-2xl backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all duration-500 reveal delay-100">
                     <p class="text-green-300 font-bold text-sm mb-4">06:00 AM</p>
                     <h4 class="text-2xl font-serif mb-4">Sunrise Ritual</h4>
                     <p class="text-sm text-gray-200 leading-relaxed">Watch the sun paint the Dhaulagiri and Annapurna
                         ranges
                         in shades of gold from your balcony.</p>
+                        </div>
+                        <div
+                            class="bg-white/5 p-10 rounded-2xl backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all duration-500 reveal delay-200">
+                            <p class="text-green-300 font-bold text-sm mb-4">11:00 AM</p>
+                            <h4 class="text-2xl font-serif mb-4">Village Walk</h4>
+                            <p class="text-sm text-gray-200 leading-relaxed">Explore the silent, vehicle-free streets of Bandipur.
+                                Visit the Bindabasini temple and local artisans.</p>
+                        </div>
+                        <div
+                            class="bg-white/5 p-10 rounded-2xl backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all duration-500 reveal delay-300">
+                            <p class="text-green-300 font-bold text-sm mb-4">03:00 PM</p>
+                            <h4 class="text-2xl font-serif mb-4">Siddha Gufa</h4>
+                            <p class="text-sm text-gray-200 leading-relaxed">A short trek to Nepal's largest cave. A must for
+                                thrill-seekers and nature lovers.</p>
+                        </div>
+                        <div
+                            class="bg-white/5 p-10 rounded-2xl backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all duration-500 reveal delay-400">
+                            <p class="text-green-300 font-bold text-sm mb-4">07:00 PM</p>
+                            <h4 class="text-2xl font-serif mb-4">Star Gazing</h4>
+                            <p class="text-sm text-gray-200 leading-relaxed">Zero light pollution means the Milky Way is your roof.
+                                Enjoy with a cup of local Himalayan tea.</p>
+                        </div> --}}
+
+                    @foreach ($features as $index => $feature)
+                        <div
+                            class="bg-white/5 p-10 rounded-2xl backdrop-blur-md border border-white/10
+                            hover:bg-white/20 transition-all duration-500
+                            reveal delay-{{ ($index + 1) * 100 }}">
+
+                            <p class="text-green-300 font-bold text-sm mb-4">
+                                {{ $feature->time }}
+                            </p>
+
+                            <h4 class="text-2xl font-serif mb-4">
+                                {{ $feature->title }}
+                            </h4>
+
+                            <p class="text-sm text-gray-200 leading-relaxed">
+                                {{ $feature->description }}
+                            </p>
+                        </div>
+                    @endforeach
+
+
                 </div>
-                <div
-                    class="bg-white/5 p-10 rounded-2xl backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all duration-500 reveal delay-200">
-                    <p class="text-green-300 font-bold text-sm mb-4">11:00 AM</p>
-                    <h4 class="text-2xl font-serif mb-4">Village Walk</h4>
-                    <p class="text-sm text-gray-200 leading-relaxed">Explore the silent, vehicle-free streets of Bandipur.
-                        Visit the Bindabasini temple and local artisans.</p>
-                </div>
-                <div
-                    class="bg-white/5 p-10 rounded-2xl backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all duration-500 reveal delay-300">
-                    <p class="text-green-300 font-bold text-sm mb-4">03:00 PM</p>
-                    <h4 class="text-2xl font-serif mb-4">Siddha Gufa</h4>
-                    <p class="text-sm text-gray-200 leading-relaxed">A short trek to Nepal's largest cave. A must for
-                        thrill-seekers and nature lovers.</p>
-                </div>
-                <div
-                    class="bg-white/5 p-10 rounded-2xl backdrop-blur-md border border-white/10 hover:bg-white/20 transition-all duration-500 reveal delay-400">
-                    <p class="text-green-300 font-bold text-sm mb-4">07:00 PM</p>
-                    <h4 class="text-2xl font-serif mb-4">Star Gazing</h4>
-                    <p class="text-sm text-gray-200 leading-relaxed">Zero light pollution means the Milky Way is your roof.
-                        Enjoy with a cup of local Himalayan tea.</p>
-                </div>
-            </div>
+            @endif
+
         </section>
 
         <section id="eco" class="py-28 bg-[#fdfbf7]">
@@ -681,10 +706,17 @@
                             <h4 class="text-white font-serif text-3xl mb-4">Join Our Mission</h4>
                             <p class="text-white/80 text-lg mb-10 leading-relaxed">Stay with us and contribute to the
                                 reforestation of the Tanahun hills.</p>
-                            <button
+                            {{-- <button
                                 class="w-full bg-[#6d6d18] text-white py-5 rounded-xl font-bold hover:bg-white hover:text-[#0a7c15] transition-all duration-500 shadow-xl uppercase tracking-widest text-sm">
                                 Learn About Our Eco-Projects
-                            </button>
+                            </button> --}}
+                            <a href="{{ route('about') }}"
+                                class="inline-block w-full text-center bg-[#6d6d18] text-white py-5 rounded-xl font-bold
+                                hover:bg-white hover:text-[#0a7c15] transition-all duration-500
+                                shadow-xl uppercase tracking-widest text-sm">
+                                Learn About Our Eco-Projects
+                            </a>
+
                         </div>
                     </div>
                 </div>
