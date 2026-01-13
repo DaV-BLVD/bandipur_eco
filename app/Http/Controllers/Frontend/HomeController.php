@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ContactInfo;
 use App\Models\HomeLocationContent;
+use App\Models\MapLocation;
 class HomeController extends Controller
 {
     /**
@@ -18,7 +19,9 @@ class HomeController extends Controller
 
         $locationContent = HomeLocationContent::first();
 
-        return view('frontend.pages.home', compact('firstPhone', 'locationContent'));
+        $mapLocation = MapLocation::where('is_active', true)->latest()->first();
+
+        return view('frontend.pages.home', compact('firstPhone', 'locationContent', 'mapLocation'));
     }
 
     /**

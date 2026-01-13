@@ -827,10 +827,38 @@
                         </button>
                     </div>
                     <div class=" w-full bg-gray-200  aspect-4/3 overflow-hidden relative reveal delay-200">
-                        <iframe class="absolute inset-0 w-full h-full rounded-xl transition-all duration-1000"
+                        {{-- <iframe class="absolute inset-0 w-full h-full rounded-xl transition-all duration-1000"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14092.34863261642!2d84.4069!3d27.93!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399502909477610f%3A0x6b490f2b3e89569!2sBandipur!5e0!3m2!1sen!2snp!4v1625000000000"
                             allowfullscreen="" loading="lazy">
-                        </iframe>
+                        </iframe> --}}
+                        @if ($mapLocation)
+                            <iframe src="{{ $mapLocation->embed_url }}"
+                                class="absolute inset-0 w-full h-full grayscale-[0.3] contrast-[1.1] transition-all duration-700 group-hover:grayscale-0"
+                                style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+
+                            <div
+                                class="absolute bottom-6 left-6 right-6 lg:right-auto bg-white/90 backdrop-blur-lg p-6 rounded-2xl shadow-2xl max-w-sm border border-white/50 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-[{{ $mapLocation->primary_color }}] flex items-center justify-center text-white shadow-md">
+                                        <i class="fas fa-route text-xs"></i>
+                                    </div>
+                                    <p
+                                        class="text-[{{ $mapLocation->primary_color }}] font-black text-[11px] uppercase tracking-[0.15em]">
+                                        {{ $mapLocation->title }}
+                                    </p>
+                                </div>
+
+                                @if ($mapLocation->description)
+                                    <p class="text-sm text-gray-700 leading-relaxed font-medium">
+                                        {!! nl2br(e($mapLocation->description)) !!}
+                                    </p>
+                                @endif
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
