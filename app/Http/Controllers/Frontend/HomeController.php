@@ -12,6 +12,8 @@ use App\Models\HomeHighlightTwo;
 use App\Models\HomeFeature;
 use App\Models\HomeHighlightOne;
 use App\Models\HomeTaste;
+use App\Models\Room;
+
 class HomeController extends Controller
 {
     /**
@@ -36,7 +38,9 @@ class HomeController extends Controller
 
         $homeTaste = HomeTaste::with('items')->first();
 
-        return view('frontend.pages.home', compact('firstPhone', 'locationContent', 'mapLocation', 'images', 'highlightTwo', 'features', 'highlightOne', 'homeTaste'));
+        $rooms = Room::take(3)->get();
+
+        return view('frontend.pages.home', compact('firstPhone', 'locationContent', 'mapLocation', 'images', 'highlightTwo', 'features', 'highlightOne', 'homeTaste', 'rooms'));
     }
 
     /**

@@ -513,7 +513,7 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <div class="group cursor-pointer reveal delay-100">
+                    {{-- <div class="group cursor-pointer reveal delay-100">
                         <div class="overflow-hidden relative rounded-lg">
                             <img src="{{ asset('frontendimages/rooms/single.png') }}" alt="Single"
                                 class="w-full h-96 object-cover group-hover:scale-110 transition duration-1000">
@@ -556,7 +556,24 @@
                             <p class="text-[#0a7c15] font-bold text-lg">From Rs. 2800 <span
                                     class="text-xs text-gray-400 font-normal uppercase">/ Night</span></p>
                         </div>
-                    </div>
+                    </div> --}}
+
+                    @foreach ($rooms as $room)
+                        <div class="group cursor-pointer reveal delay-300">
+                            <div class="overflow-hidden relative rounded-lg">
+                                <img src="{{ asset('storage/' . $room->image) }}" alt="Eco Cabin"
+                                    class="w-full h-96 object-cover group-hover:scale-110 transition duration-1000">
+                                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors">
+                                </div>
+                            </div>
+                            <div class="mt-8">
+                                <h4 class="text-2xl font-serif mb-3">{{ $room->title }}</h4>
+                                <p class="text-gray-600 text-sm mb-4 leading-relaxed">{{ $room->description }}</p>
+                                <p class="text-[#0a7c15] font-bold text-lg">{{ $room->currency }} {{ $room->price }}
+                                    <span class="text-xs text-gray-400 font-normal uppercase">/ Night</span></p>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </section>
