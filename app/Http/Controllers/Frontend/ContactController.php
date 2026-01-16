@@ -10,6 +10,8 @@ use App\Models\ContactInfo;
 use App\Models\ContactSubmission;
 use App\Models\MapLocation;
 use App\Models\Faq;
+use App\Mail\WelcomeMail; // Make sure this is here
+use Illuminate\Support\Facades\Mail; // IMPORTANT: Add this!
 
 class ContactController extends Controller
 {
@@ -25,7 +27,7 @@ class ContactController extends Controller
 
         $faqs = Faq::where('is_active', true)->get();
 
-        return view('frontend.pages.contact', compact('hero', 'header', 'contactInfos', 'mapLocation' ,'faqs'));
+        return view('frontend.pages.contact', compact('hero', 'header', 'contactInfos', 'mapLocation', 'faqs'));
     }
 
     // Handle form submission
@@ -38,10 +40,16 @@ class ContactController extends Controller
             'message' => 'required|string|max:2000',
         ]);
 
-        // Save to database
+        // 1. Save to database
         ContactSubmission::create($data);
 
-        // Return JSON response for AJAX
+        // 2. Define the missing variables
+        $to = 'aaryandangol.g@gmail.com';
+        $subject = 'New Inquiry from ' . $data['name'];
+
+        // 3. Send the Mail (Passing the whole $data array)
+        Mail::to($to)->send(new WelcomeMail($data, $subject));
+
         return response()->json([
             'success' => true,
             'message' => 'Your message has been sent successfully!',
