@@ -1124,8 +1124,7 @@
 
     </main>
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/9779812345678" target="_blank"
-        class="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-[#128C7E] transition-all duration-300 hover:scale-110 animate-bounce">
+    <a href="https://wa.me/97798" target="_blank" class="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-[#128C7E] transition-all duration-300 hover:scale-110 animate-bounce">
         <i class="fab fa-whatsapp text-4xl"></i>
     </a>
 

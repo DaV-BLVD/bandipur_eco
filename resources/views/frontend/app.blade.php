@@ -18,6 +18,8 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
+    {{-- @vite('resources/css/app.css', 'resources/js/app.js') --}}
+
     @stack('style')
 
 </head>
@@ -25,9 +27,9 @@
 <body>
     @include('frontend.components.headers')
     <main>@yield('content')</main>
-     @include('frontend.components.bookingoverlay')
+    @include('frontend.components.bookingoverlay')
     <footer>@include('frontend.components.footers')</footer>
-   
+
 
     @stack('script')
     {{-- Removed duplicate JavaScript - now handled by asap.js --}}

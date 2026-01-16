@@ -110,7 +110,7 @@
                             ],
                             [
                                 'route' => 'home-images-grid.index',
-                                'icon' => 'fa-solid fa-grid-2',
+                                'icon' => 'fa-solid fa-border-all',
                                 'text' => 'Images Grid',
                             ],
                             [
@@ -150,8 +150,8 @@
                                 'icon' => 'fa-solid fa-file-lines',
                                 'text' => 'Who We Are Content',
                             ],
-                            ['route' => 'about-one.index', 'icon' => 'fa-solid fa-circle-1', 'text' => 'About One'],
-                            ['route' => 'about-two.index', 'icon' => 'fa-solid fa-circle-2', 'text' => 'About Two'],
+                            ['route' => 'about-one.index', 'icon' => 'fa-solid fa-1', 'text' => 'About One'],
+                            ['route' => 'about-two.index', 'icon' => 'fa-solid fa-2', 'text' => 'About Two'],
                             [
                                 'route' => 'about-images-grid.index',
                                 'icon' => 'fa-solid fa-table-cells',
