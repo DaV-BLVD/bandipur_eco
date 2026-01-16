@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\ReserveSubmission;
 use Illuminate\Http\Request;
+use App\Mail\ReserveSubmissionMail;
+use Illuminate\Support\Facades\Mail;
 
 class ReserveSubmissionController extends Controller
 {
@@ -20,6 +22,12 @@ class ReserveSubmissionController extends Controller
         ]);
 
         ReserveSubmission::create($data);
+
+        $to = 'aaryandangol.g@gmail.com';
+        $subject = '🏨 New Booking: ' . $data['full_name'];
+
+        // 4. Send using the new ReserveSubmissionMail
+        Mail::to($to)->send(new ReserveSubmissionMail($data, $subject));
 
         return back()->with('success', 'Your reservation request has been submitted.');
     }
